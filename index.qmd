@@ -2,7 +2,6 @@
 title: "Welcome to my Lab"
 subtitle: "PhD Candidate in [Your Field] at [Your University]"
 title-block-banner: "images/banner.jpg"
-bibliography: myPapers.bib
 ---
 
 ## About Me

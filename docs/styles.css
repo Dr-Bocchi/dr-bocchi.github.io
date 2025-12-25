@@ -1,1 +1,12 @@
 /* css styles */
+/* Make the main page background transparent so we can see the canvas */
+body {
+    background-color: transparent !important;
+}
+
+/* Optional: Make the text area semi-transparent white so text is readable */
+.quarto-title-block, .quarto-document-content {
+    background-color: rgba(255, 255, 255, 0.85); /* 85% opacity white */
+    padding: 20px;
+    border-radius: 10px;
+}
