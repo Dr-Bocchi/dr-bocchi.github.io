@@ -1,0 +1,20 @@
+---
+title: "Welcome to my Lab"
+subtitle: "PhD Candidate in [Your Field] at [Your University]"
+title-block-banner: "images/banner.jpg"
+bibliography: myPapers.bib
+---
+
+## About Me
+
+Welcome! I am a PhD student researching **Artificial Intelligence** and **Climate Change**.
+
+Here you will find my:
+
+* [📄 Publications](research.qmd)
+* [💻 Code Projects](https://github.com)
+* [🎓 CV](cv.qmd)
+
+### Recent News
+* **Dec 2025:** I will be presenting at NeurIPS!
+* **Nov 2025:** Passed my qualifying exam.

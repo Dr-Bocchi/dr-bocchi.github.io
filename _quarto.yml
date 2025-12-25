@@ -1,0 +1,25 @@
+project:
+  type: website
+  output-dir: docs  # Important: This makes GitHub hosting easier later
+
+website:
+  title: Dario Bocchi  # Will appear in the top left corner
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: research.qmd
+        text: Research
+      - href: cv.qmd
+        text: CV
+    right:
+      - icon: github
+        href: https://github.com/yourusername
+      - icon: twitter
+        href: https://twitter.com/yourusername
+
+format:
+  html:
+    theme: cosmo  # Try others later: darkly, flatly, journal, litera
+    css: styles.css
+    toc: true

@@ -1,0 +1,51 @@
+[
+  {
+    "objectID": "cv.html",
+    "href": "cv.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome to my Lab",
+    "section": "",
+    "text": "Welcome! I am a PhD student researching Artificial Intelligence and Climate Change.\nHere you will find my:\n\n📄 Publications\n💻 Code Projects\n🎓 CV\n\n\n\n\nDec 2025: I will be presenting at NeurIPS!\nNov 2025: Passed my qualifying exam."
+  },
+  {
+    "objectID": "index.html#about-me",
+    "href": "index.html#about-me",
+    "title": "Welcome to my Lab",
+    "section": "",
+    "text": "Welcome! I am a PhD student researching Artificial Intelligence and Climate Change.\nHere you will find my:\n\n📄 Publications\n💻 Code Projects\n🎓 CV\n\n\n\n\nDec 2025: I will be presenting at NeurIPS!\nNov 2025: Passed my qualifying exam."
+  },
+  {
+    "objectID": "research.html",
+    "href": "research.html",
+    "title": "Research",
+    "section": "",
+    "text": "My First Paper, Journal of X, 2024."
+  },
+  {
+    "objectID": "research.html#publications",
+    "href": "research.html#publications",
+    "title": "Research",
+    "section": "",
+    "text": "My First Paper, Journal of X, 2024."
+  },
+  {
+    "objectID": "research.html#methodology",
+    "href": "research.html#methodology",
+    "title": "Research",
+    "section": "Methodology",
+    "text": "Methodology\nWe define the loss function \\(L(\\theta)\\) as follows:\n\\[\nL(\\theta) = \\sum_{i=1}^{N} (y_i - f(x_i; \\theta))^2 + \\lambda ||\\theta||^2\n\\]\nThis converges when \\(\\lambda \\to 0\\).\nAs discussed by D. E. Knuth (1984), literate programming is essential. However, others disagree (D. E. Knuth 1984; D. E22. Knuth 1984)."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  }
+]
