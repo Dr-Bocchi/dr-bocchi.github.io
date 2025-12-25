@@ -254,10 +254,24 @@ Knuth, Donald E22. 1984. <span>“Literate Progr13amming.”</span> <em>The Comp
   const ctx = canvas.getContext('2d');
   
   let width, height, columns, rows;
-  const cellSize = 20; // Size of the squares
+  const cellSize = 20; 
   let grid, nextGrid;
+  
+  // Track the width to ignore vertical-only resizes (mobile scrolling)
+  let lastWidth = window.innerWidth; 
 
-  // Resize canvas to fill screen
+  function initGrid() {
+    grid = new Array(columns).fill(null).map(() => new Array(rows).fill(0));
+    nextGrid = new Array(columns).fill(null).map(() => new Array(rows).fill(0));
+    
+    for (let i = 0; i < columns; i++) {
+      for (let j = 0; j < rows; j++) {
+        // Density 0.7 means 30% alive (flipped logic), or keep your preferred > 0.8
+        grid[i][j] = Math.random() > 0.8 ? 1 : 0; 
+      }
+    }
+  }
+
   function resize() {
     width = canvas.width = window.innerWidth;
     height = canvas.height = window.innerHeight;
@@ -266,24 +280,11 @@ Knuth, Donald E22. 1984. <span>“Literate Progr13amming.”</span> <em>The Comp
     initGrid();
   }
 
-  function initGrid() {
-    grid = new Array(columns).fill(null).map(() => new Array(rows).fill(0));
-    nextGrid = new Array(columns).fill(null).map(() => new Array(rows).fill(0));
-    
-    // Randomly fill grid (density 10%)
-    for (let i = 0; i < columns; i++) {
-      for (let j = 0; j < rows; j++) {
-        grid[i][j] = Math.random() > 0.7 ? 1 : 0;
-      }
-    }
-  }
-
   function draw() {
-    // Clear screen
-    ctx.fillStyle = '#ffffff'; // Background color (white)
+    ctx.fillStyle = '#ffffff'; 
     ctx.fillRect(0, 0, width, height);
     
-    // Draw live cells
+    // Your preferred opacity
     ctx.fillStyle = 'rgba(0, 0, 0, 0.10)';
     for (let i = 0; i < columns; i++) {
       for (let j = 0; j < rows; j++) {
@@ -306,23 +307,16 @@ Knuth, Donald E22. 1984. <span>“Literate Progr13amming.”</span> <em>The Comp
             neighbors += grid[col][row];
           }
         }
-
-        // Rules of Life
         if (grid[x][y] === 1 && (neighbors < 2 || neighbors > 3)) nextGrid[x][y] = 0;
         else if (grid[x][y] === 0 && neighbors === 3) nextGrid[x][y] = 1;
         else nextGrid[x][y] = grid[x][y];
       }
     }
-    // Swap grids
     let temp = grid;
     grid = nextGrid;
     nextGrid = temp;
   }
 
-  // Control the speed here (milliseconds)
-  // 100 = fast (10 ticks/sec)
-  // 500 = slow (2 ticks/sec)
-  // 1000 = very slow (1 tick/sec)
   const tickDelay = 200; 
 
   function loop() {
@@ -333,7 +327,18 @@ Knuth, Donald E22. 1984. <span>“Literate Progr13amming.”</span> <em>The Comp
     }, tickDelay);
   }
 
-  window.addEventListener('resize', resize);
+  // --- THE FIX IS HERE ---
+  // Instead of passing resize directly, we check if width changed
+  window.addEventListener('resize', () => {
+      // If width is different, it means we rotated phone or resized desktop window
+      if (window.innerWidth !== lastWidth) {
+          lastWidth = window.innerWidth;
+          resize();
+      }
+      // If only height changed (scrolling), do nothing!
+  });
+
+  // Initial setup
   resize();
   loop();
 </script>
