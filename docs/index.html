@@ -155,16 +155,8 @@ background-size: cover;
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#about-me" id="toc-about-me" class="nav-link active" data-scroll-target="#about-me">About Me</a></li>
-  <li><a href="#layout-of-the-website" id="toc-layout-of-the-website" class="nav-link" data-scroll-target="#layout-of-the-website">Layout of the website</a></li>
-  <li><a href="#recent-news" id="toc-recent-news" class="nav-link" data-scroll-target="#recent-news">Recent News</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
@@ -204,8 +196,31 @@ background-size: cover;
     -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0.2), black);
             mask-image: linear-gradient(to right, rgba(0, 0, 0, 0.2), black);
 }
+
+/* 1. Default (Mobile) View */
+#profile-photo {
+    width: 200px;
+    border-radius: 15px;
+    
+    /* Center the image on mobile and stack it on top */
+    display: block;
+    margin: 20px auto; 
+    float: none; 
+}
+
+/* 2. Desktop View (Screens larger than 768px) */
+@media (min-width: 768px) {
+    #profile-photo {
+        float: left;
+        margin-right: 30px;
+        margin-top: 30px; 
+        margin-bottom: 5px;
+        margin-left: 0; /* Un-center it */
+    }
+}
 </style>
-<p><img src="photo.jpeg" class="img-fluid" style="float: left; margin-right:30px; margin-bottom: 5px; border-radius: 15px; margin-top:30px" width="200"></p>
+<div style="display: flow-root;">
+<p><img src="photo.jpeg" id="profile-photo" class="img-fluid"></p>
 <section id="about-me" class="level2">
 <h2 class="anchored" data-anchor-id="about-me">About Me</h2>
 <p>Hello! I am a 3rd year PhD student in Physics at Sapienza University of Rome researching <strong>Statistical Mechanics</strong>, with a focus on <strong>Artificial Intelligence</strong>.</p>
@@ -221,7 +236,7 @@ background-size: cover;
 <h2 class="anchored" data-anchor-id="layout-of-the-website">Layout of the website</h2>
 <p>Here you will find a detailed list of my:</p>
 <ul>
-<li><p><a href="./papers.html">📄 Pubblications and Preprints</a></p></li>
+<li><p><a href="./papers.html">📄 Publications and Preprints</a></p></li>
 <li><p><a href="./presentations.html">🎤 Talks and Presentations</a></p></li>
 </ul>
 </section>
@@ -233,6 +248,7 @@ background-size: cover;
 
 
 </section>
+</div>
 
 </main> <!-- /main -->
 <canvas id="lifeCanvas"></canvas>
