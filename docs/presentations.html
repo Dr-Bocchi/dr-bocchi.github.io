@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Talks, orals and posters by Dario Bocchi.">
 
-<title>Talks and Presentations – Dario Bocchi</title>
+<title>Talks – Dario Bocchi</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -25,36 +26,25 @@ ul.task-list li input[type="checkbox"] {
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
 <link href="./images/perceptron.svg" rel="icon" type="image/svg+xml">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-9ade03a996393c3fe1ae1b6997dfe453.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-aeb05c5154661e36ae59fa8a36fb2a99.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-9ade03a996393c3fe1ae1b6997dfe453.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ffbe6ecca4fdf0127caae42c85e14552.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-3f8b6eaafc5d98d299a682e9f2d3001d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-ffbe6ecca4fdf0127caae42c85e14552.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
-  "copy-button": false,
-  "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -69,23 +59,259 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-talks .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-when','listing-kind','listing-label','listing-title','listing-event','listing-place','listing-links',{ data: ['index'] },{ data: ['categories'] }],
+      
+      searchColumns: ["listing-when","listing-kind","listing-label","listing-title","listing-event","listing-place","listing-links"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-talks'] = new List('listing-talks', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Instrument+Serif:ital@0;1&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="Talks – Dario Bocchi">
+<meta property="og:description" content="Talks, orals and posters by Dario Bocchi.">
+<meta property="og:site_name" content="Dario Bocchi">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg border-bottom" data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Dario Bocchi</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
@@ -97,11 +323,15 @@ ul.task-list li input[type="checkbox"] {
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./papers.html"> 
-<span class="menu-text">Papers</span></a>
+<span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./presentations.html" aria-current="page"> 
-<span class="menu-text">Presentations</span></a>
+<span class="menu-text">Talks</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./bocchi_CV.pdf" target="_blank"> 
+<span class="menu-text">CV</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
@@ -120,9 +350,15 @@ ul.task-list li input[type="checkbox"] {
 </i> 
 <span class="menu-text"></span></a>
   </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:bocchi.dario@gmail.com"> <i class="bi bi-envelope" role="img" aria-label="Email">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -131,17 +367,21 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Talks and Presentations</h1>
+<h1 class="title">Talks</h1>
 </div>
 
+<div>
+  <div class="description">
+    Talks, orals and posters by Dario Bocchi.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -156,128 +396,136 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>About this site</p>
+<div id="listing-talks" class="quarto-listing quarto-listing-container-custom">
+
+<ol class="talks">
+
+<li class="talk talk-oral">
+<div class="talk-when">Apr 2026</div>
+<div class="talk-body">
+<span class="talk-kind"><span class="talk-dot"></span>Oral</span>
+<div class="talk-title">Overparametrization bends the landscape: BBP transitions at initialization in simple Neural Networks</div>
+<div class="talk-event">ICLR 2026 <span class="sep">·</span> Rio de Janeiro, Brazil</div>
+
+<div class="pub-links">
+<a class="pill" href="https://iclr.cc/virtual/2026/oral/10006659" target="_blank" rel="noopener"><i class="bi bi-mic"></i> Oral</a><a class="pill" href="https://iclr.cc/virtual/2026/poster/10006658" target="_blank" rel="noopener"><i class="bi bi-easel"></i> Poster</a><a class="pill" href="https://openreview.net/forum?id=xDLE5n3x9Y" target="_blank" rel="noopener"><i class="bi bi-file-earmark-text"></i> Paper</a>
+</div>
+
+</div>
+</li>
+
+<li class="talk talk-poster">
+<div class="talk-when">Apr 2026</div>
+<div class="talk-body">
+<span class="talk-kind"><span class="talk-dot"></span>Poster</span>
+<div class="talk-title">Implicit bias produces neural scaling laws in learning curves, from perceptrons to deep networks</div>
+<div class="talk-event">ICLR 2026 <span class="sep">·</span> Rio de Janeiro, Brazil</div>
+
+<div class="pub-links">
+<a class="pill" href="https://iclr.cc/virtual/2026/poster/10007275" target="_blank" rel="noopener"><i class="bi bi-easel"></i> ICLR</a><a class="pill" href="https://iclr.cc/media/iclr-2026/Slides/10007275.pdf" target="_blank" rel="noopener"><i class="bi bi-file-slides"></i> Slides</a><a class="pill" href="https://iclr.cc/media/PosterPDFs/ICLR%202026/10007275.png" target="_blank" rel="noopener"><i class="bi bi-image"></i> Poster</a><a class="pill" href="https://openreview.net/forum?id=qBAV2DEvAC" target="_blank" rel="noopener"><i class="bi bi-file-earmark-text"></i> Paper</a>
+</div>
+
+</div>
+</li>
+
+<li class="talk talk-talk">
+<div class="talk-when">Jan 2026</div>
+<div class="talk-body">
+<span class="talk-kind"><span class="talk-dot"></span>Contributed talk</span>
+<div class="talk-title">BBP transitions in optimization landscapes</div>
+<div class="talk-event">4th Workshop of the UMI Group “Mathematics for Artificial Intelligence and Machine Learning”</div>
+
+</div>
+</li>
+
+<li class="talk talk-seminar">
+<div class="talk-when">Dec 2025</div>
+<div class="talk-body">
+<span class="talk-kind"><span class="talk-dot"></span>Seminar</span>
+<div class="talk-title">Discontinuous BBP transitions</div>
+<div class="talk-event">Chimera Group seminar, Sapienza University of Rome <span class="sep">·</span> Rome, Italy</div>
+
+<div class="pub-links">
+<a class="pill" href="https://arxiv.org/abs/2604.27992" target="_blank" rel="noopener"><i class="bi bi-file-earmark-text"></i> Paper</a>
+</div>
+
+</div>
+</li>
+
+<li class="talk talk-poster">
+<div class="talk-when">Sep 2025</div>
+<div class="talk-body">
+<span class="talk-kind"><span class="talk-dot"></span>Poster</span>
+<div class="talk-title">Overparametrization bends the landscape: BBP transitions at initialization in simple Neural Networks</div>
+<div class="talk-event">Summer school “Mathematical methods for high-dimensional data”</div>
+
+<div class="pub-links">
+<a class="pill" href="https://arxiv.org/abs/2510.18435" target="_blank" rel="noopener"><i class="bi bi-file-earmark-text"></i> Paper</a>
+</div>
+
+</div>
+</li>
+
+<li class="talk talk-poster">
+<div class="talk-when">Jun 2025</div>
+<div class="talk-body">
+<span class="talk-kind"><span class="talk-dot"></span>Poster</span>
+<div class="talk-title">Implicit bias produces neural scaling laws in learning curves, from perceptrons to deep networks</div>
+<div class="talk-event">Beg Rohu Summer School of Physics <span class="sep">·</span> Saint-Pierre-Quiberon, France</div>
+
+<div class="pub-links">
+<a class="pill" href="https://arxiv.org/abs/2505.13230" target="_blank" rel="noopener"><i class="bi bi-file-earmark-text"></i> Paper</a>
+</div>
+
+</div>
+</li>
+
+<li class="talk talk-poster">
+<div class="talk-when">Jun 2024</div>
+<div class="talk-body">
+<span class="talk-kind"><span class="talk-dot"></span>Poster</span>
+<div class="talk-title">Daydreaming Hopfield networks and their surprising effectiveness on correlated data</div>
+<div class="talk-event">Beg Rohu Summer School of Physics <span class="sep">·</span> Saint-Pierre-Quiberon, France</div>
+
+<div class="pub-links">
+<a class="pill" href="https://doi.org/10.1016/j.neunet.2025.107216" target="_blank" rel="noopener"><i class="bi bi-file-earmark-text"></i> Paper</a>
+</div>
+
+</div>
+</li>
+
+</ol>
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
+<h2 class="sec">Schools &amp; conferences</h2>
+<ul class="news schools">
+  <li><span class="news-when">Jun 2026</span><span>Beg Rohu Summer School — <em>Optimization and Control of Nonequilibrium Systems</em> · Saint-Pierre-Quiberon, France</span></li>
+  <li><span class="news-when">Apr 2026</span><span>ICLR 2026 · Rio de Janeiro, Brazil</span></li>
+  <li><span class="news-when">Apr 2026</span><span>2nd Barcelona School of Non-Equilibrium Physics · University of Barcelona, Spain</span></li>
+  <li><span class="news-when">Sep 2025</span><span>Summer school — <em>Mathematical methods for high-dimensional data</em></span></li>
+  <li><span class="news-when">Jun 2025</span><span>Beg Rohu Summer School of Physics · Saint-Pierre-Quiberon, France</span></li>
+  <li><span class="news-when">Jun 2024</span><span>Beg Rohu Summer School of Physics · Saint-Pierre-Quiberon, France</span></li>
+</ul>
+
 
 
 
 </main> <!-- /main -->
-<canvas id="lifeCanvas"></canvas>
-
-<style>
-  /* Fix the canvas to the background */
-  #lifeCanvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1; /* Puts it behind everything */
-    opacity: 0.3; /* Makes it subtle */
-    pointer-events: none; /* Lets clicks pass through to your links */
-  }
-</style>
-
-<script>
-  const canvas = document.getElementById('lifeCanvas');
-  const ctx = canvas.getContext('2d');
-  
-  let width, height, columns, rows;
-  const cellSize = 20; 
-  let grid, nextGrid;
-  
-  // Track the width to ignore vertical-only resizes (mobile scrolling)
-  let lastWidth = window.innerWidth; 
-
-  function initGrid() {
-    grid = new Array(columns).fill(null).map(() => new Array(rows).fill(0));
-    nextGrid = new Array(columns).fill(null).map(() => new Array(rows).fill(0));
-    
-    for (let i = 0; i < columns; i++) {
-      for (let j = 0; j < rows; j++) {
-        grid[i][j] = Math.random() > 0.85 ? 1 : 0; 
-      }
-    }
-  }
-
-  function resize() {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
-    columns = Math.floor(width / cellSize);
-    rows = Math.floor(height / cellSize);
-    initGrid();
-  }
-
-  function draw() {
-    ctx.fillStyle = '#ffffff'; 
-    ctx.fillRect(0, 0, width, height);
-    
-    // Your preferred opacity
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.10)';
-    for (let i = 0; i < columns; i++) {
-      for (let j = 0; j < rows; j++) {
-        if (grid[i][j] === 1) {
-          ctx.fillRect(i * cellSize, j * cellSize, cellSize - 1, cellSize - 1);
-        }
-      }
-    }
-  }
-
-  function update() {
-    for (let x = 0; x < columns; x++) {
-      for (let y = 0; y < rows; y++) {
-        let neighbors = 0;
-        for (let i = -1; i <= 1; i++) {
-          for (let j = -1; j <= 1; j++) {
-            if (i === 0 && j === 0) continue;
-            const col = (x + i + columns) % columns;
-            const row = (y + j + rows) % rows;
-            neighbors += grid[col][row];
-          }
-        }
-        if (grid[x][y] === 1 && (neighbors < 2 || neighbors > 3)) nextGrid[x][y] = 0;
-        else if (grid[x][y] === 0 && neighbors === 3) nextGrid[x][y] = 1;
-        else nextGrid[x][y] = grid[x][y];
-      }
-    }
-    let temp = grid;
-    grid = nextGrid;
-    nextGrid = temp;
-  }
-
-  const tickDelay = 200; 
-
-  function loop() {
-    setTimeout(() => {
-        draw();
-        update();
-        requestAnimationFrame(loop);
-    }, tickDelay);
-  }
-
-  // --- THE FIX IS HERE ---
-  // Instead of passing resize directly, we check if width changed
-  window.addEventListener('resize', () => {
-      // If width is different, it means we rotated phone or resized desktop window
-      if (window.innerWidth !== lastWidth) {
-          lastWidth = window.innerWidth;
-          resize();
-      }
-      // If only height changed (scrolling), do nothing!
-  });
-
-  // Initial setup
-  resize();
-  loop();
-</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     
@@ -342,7 +590,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/dr-bocchi\.github\.io\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -670,8 +918,23 @@ ul.task-list li input[type="checkbox"] {
   });
   </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Dario Bocchi</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Rome → Paris</p>
+</div>
+  </div>
+</footer>
+<script src="assets/site.js"></script>
 
 
 
 
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

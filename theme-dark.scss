@@ -1,0 +1,29 @@
+/*-- scss:defaults --*/
+$body-bg: #0f1013;
+$body-color: #e6e6e9;
+$link-color: #93a3ff;
+$font-family-sans-serif: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+$font-family-monospace: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+$headings-font-weight: 600;
+$navbar-bg: $body-bg;
+$navbar-fg: #9a9aa5;
+$navbar-hl: #f4f4f5;
+$footer-bg: $body-bg;
+$footer-fg: #7a7a85;
+
+/*-- scss:rules --*/
+:root {
+  --bg: #0f1013;
+  --fg: #e6e6e9;
+  --muted: #9a9aa5;
+  --faint: #5f5f69;
+  --line: #24252b;
+  --card: #16171b;
+  --accent: #93a3ff;
+  --accent-soft: rgba(147, 163, 255, 0.1);
+  --c-early: #78716c;
+  --c-edu: #60a5fa;
+  --c-research: #a78bfa;
+  --c-milestone: #fbbf24;
+  --c-next: #34d399;
+}

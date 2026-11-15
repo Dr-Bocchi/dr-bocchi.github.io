@@ -1,5 +1,25 @@
 ---
-title: "Talks and Presentations"
+title: "Talks"
+description: "Talks, orals and posters by Dario Bocchi."
+listing:
+  - id: talks
+    contents: data/talks.yml
+    template: _templates/talks.ejs
+    sort: false
+    page-size: 100
 ---
 
-About this site
+::: {#talks}
+:::
+
+```{=html}
+<h2 class="sec">Schools &amp; conferences</h2>
+<ul class="news schools">
+  <li><span class="news-when">Jun 2026</span><span>Beg Rohu Summer School — <em>Optimization and Control of Nonequilibrium Systems</em> · Saint-Pierre-Quiberon, France</span></li>
+  <li><span class="news-when">Apr 2026</span><span>ICLR 2026 · Rio de Janeiro, Brazil</span></li>
+  <li><span class="news-when">Apr 2026</span><span>2nd Barcelona School of Non-Equilibrium Physics · University of Barcelona, Spain</span></li>
+  <li><span class="news-when">Sep 2025</span><span>Summer school — <em>Mathematical methods for high-dimensional data</em></span></li>
+  <li><span class="news-when">Jun 2025</span><span>Beg Rohu Summer School of Physics · Saint-Pierre-Quiberon, France</span></li>
+  <li><span class="news-when">Jun 2024</span><span>Beg Rohu Summer School of Physics · Saint-Pierre-Quiberon, France</span></li>
+</ul>
+```

@@ -1,0 +1,22 @@
+```{=html}
+<%
+const esc = s => String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+%>
+<ol class="talks">
+<% for (const t of items) { %>
+<li class="talk talk-<%= esc(t.kind) %>">
+<div class="talk-when"><%= esc(t.when) %></div>
+<div class="talk-body">
+<span class="talk-kind"><span class="talk-dot"></span><%= esc(t.label) %></span>
+<div class="talk-title"><%= esc(t.title) %></div>
+<div class="talk-event"><%= esc(t.event) %><% if (t.place) { %> <span class="sep">·</span> <%= esc(t.place) %><% } %></div>
+<% if (t.links && t.links.length) { %>
+<div class="pub-links">
+<% for (const l of t.links) { %><a class="pill" href="<%= esc(l.url) %>" target="_blank" rel="noopener"><i class="bi bi-<%= esc(l.icon) %>"></i> <%= esc(l.label) %></a><% } %>
+</div>
+<% } %>
+</div>
+</li>
+<% } %>
+</ol>
+```

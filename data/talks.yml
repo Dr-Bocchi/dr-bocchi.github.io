@@ -1,0 +1,67 @@
+# One entry per talk/poster, newest first. kind: oral | talk | seminar | poster
+- when: "Apr 2026"
+  kind: oral
+  label: "Oral"
+  title: "Overparametrization bends the landscape: BBP transitions at initialization in simple Neural Networks"
+  event: "ICLR 2026"
+  place: "Rio de Janeiro, Brazil"
+  links:
+    - { label: Oral, url: "https://iclr.cc/virtual/2026/oral/10006659", icon: mic }
+    - { label: Poster, url: "https://iclr.cc/virtual/2026/poster/10006658", icon: easel }
+    - { label: Paper, url: "https://openreview.net/forum?id=xDLE5n3x9Y", icon: file-earmark-text }
+
+- when: "Apr 2026"
+  kind: poster
+  label: "Poster"
+  title: "Implicit bias produces neural scaling laws in learning curves, from perceptrons to deep networks"
+  event: "ICLR 2026"
+  place: "Rio de Janeiro, Brazil"
+  links:
+    - { label: ICLR, url: "https://iclr.cc/virtual/2026/poster/10007275", icon: easel }
+    - { label: Slides, url: "https://iclr.cc/media/iclr-2026/Slides/10007275.pdf", icon: file-slides }
+    - { label: Poster, url: "https://iclr.cc/media/PosterPDFs/ICLR%202026/10007275.png", icon: image }
+    - { label: Paper, url: "https://openreview.net/forum?id=qBAV2DEvAC", icon: file-earmark-text }
+
+- when: "Jan 2026"
+  kind: talk
+  label: "Contributed talk"
+  title: "BBP transitions in optimization landscapes"
+  event: "4th Workshop of the UMI Group “Mathematics for Artificial Intelligence and Machine Learning”"
+  place: ""
+  links: []
+
+- when: "Dec 2025"
+  kind: seminar
+  label: "Seminar"
+  title: "Discontinuous BBP transitions"
+  event: "Chimera Group seminar, Sapienza University of Rome"
+  place: "Rome, Italy"
+  links:
+    - { label: Paper, url: "https://arxiv.org/abs/2604.27992", icon: file-earmark-text }
+
+- when: "Sep 2025"
+  kind: poster
+  label: "Poster"
+  title: "Overparametrization bends the landscape: BBP transitions at initialization in simple Neural Networks"
+  event: "Summer school “Mathematical methods for high-dimensional data”"
+  place: ""
+  links:
+    - { label: Paper, url: "https://arxiv.org/abs/2510.18435", icon: file-earmark-text }
+
+- when: "Jun 2025"
+  kind: poster
+  label: "Poster"
+  title: "Implicit bias produces neural scaling laws in learning curves, from perceptrons to deep networks"
+  event: "Beg Rohu Summer School of Physics"
+  place: "Saint-Pierre-Quiberon, France"
+  links:
+    - { label: Paper, url: "https://arxiv.org/abs/2505.13230", icon: file-earmark-text }
+
+- when: "Jun 2024"
+  kind: poster
+  label: "Poster"
+  title: "Daydreaming Hopfield networks and their surprising effectiveness on correlated data"
+  event: "Beg Rohu Summer School of Physics"
+  place: "Saint-Pierre-Quiberon, France"
+  links:
+    - { label: Paper, url: "https://doi.org/10.1016/j.neunet.2025.107216", icon: file-earmark-text }

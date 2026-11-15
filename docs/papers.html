@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Publications and preprints by Dario Bocchi.">
 
-<title>Publications and Preprints – Dario Bocchi</title>
+<title>Research – Dario Bocchi</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,61 +21,30 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
 <link href="./images/perceptron.svg" rel="icon" type="image/svg+xml">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-9ade03a996393c3fe1ae1b6997dfe453.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-aeb05c5154661e36ae59fa8a36fb2a99.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-9ade03a996393c3fe1ae1b6997dfe453.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ffbe6ecca4fdf0127caae42c85e14552.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-3f8b6eaafc5d98d299a682e9f2d3001d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-ffbe6ecca4fdf0127caae42c85e14552.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
-  "copy-button": false,
-  "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -89,6 +59,40 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-pubs .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-authors','listing-year','listing-kind','listing-venue','listing-url','listing-links','listing-abstract','listing-bibtex','listing-featured','listing-venue_long','listing-badge',{ data: ['index'] },{ data: ['categories'] }],
+      
+      searchColumns: ["listing-title","listing-authors","listing-year","listing-kind","listing-venue","listing-url","listing-links","listing-abstract","listing-bibtex","listing-featured","listing-venue_long","listing-badge"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-pubs'] = new List('listing-pubs', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Instrument+Serif:ital@0;1&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -121,20 +125,193 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="Research – Dario Bocchi">
+<meta property="og:description" content="Publications and preprints by Dario Bocchi.">
+<meta property="og:site_name" content="Dario Bocchi">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg border-bottom" data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Dario Bocchi</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
@@ -146,11 +323,15 @@ window.Quarto = {
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./papers.html" aria-current="page"> 
-<span class="menu-text">Papers</span></a>
+<span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./presentations.html"> 
-<span class="menu-text">Presentations</span></a>
+<span class="menu-text">Talks</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./bocchi_CV.pdf" target="_blank"> 
+<span class="menu-text">CV</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
@@ -169,9 +350,15 @@ window.Quarto = {
 </i> 
 <span class="menu-text"></span></a>
   </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:bocchi.dario@gmail.com"> <i class="bi bi-envelope" role="img" aria-label="Email">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -180,24 +367,21 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#publications" id="toc-publications" class="nav-link active" data-scroll-target="#publications">Publications</a></li>
-  <li><a href="#methodology" id="toc-methodology" class="nav-link" data-scroll-target="#methodology">Methodology</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Publications and Preprints</h1>
+<h1 class="title">Research</h1>
 </div>
 
+<div>
+  <div class="description">
+    Publications and preprints by Dario Bocchi.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -212,150 +396,268 @@ window.Quarto = {
 </header>
 
 
-<section id="publications" class="level2">
-<h2 class="anchored" data-anchor-id="publications">Publications</h2>
-<ol type="1">
-<li><strong>My First Paper</strong>, Journal of X, 2024.</li>
-</ol>
-</section>
-<section id="methodology" class="level2">
-<h2 class="anchored" data-anchor-id="methodology">Methodology</h2>
-<p>We define the loss function <span class="math inline">\(L(\theta)\)</span> as follows:</p>
-<p><span class="math display">\[
-L(\theta) = \sum_{i=1}^{N} (y_i - f(x_i; \theta))^2 + \lambda ||\theta||^2
-\]</span></p>
-<p>This converges when <span class="math inline">\(\lambda \to 0\)</span>.</p>
-<p>As discussed by <span class="citation" data-cites="knuth84">D. E. Knuth (<a href="#ref-knuth84" role="doc-biblioref">1984</a>)</span>, literate programming is essential. However, others disagree <span class="citation" data-cites="knuth84 anotherpaper20">(<a href="#ref-knuth84" role="doc-biblioref">D. E. Knuth 1984</a>; <a href="#ref-anotherpaper20" role="doc-biblioref">D. E22. Knuth 1984</a>)</span>.</p>
+<p class="lede">I study learning in high dimensions with the tools of statistical physics: random matrix theory,
+replica calculations and exact dynamical equations for solvable models of neural networks.</p>
 
-
-
-</section>
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-knuth84" class="csl-entry" role="listitem">
-Knuth, Donald E. 1984. <span>“Literate Programming.”</span> <em>The Computer Journal</em> 27 (2).
+<div class="topics">
+  <span>BBP transitions</span><span>Random matrices</span><span>Loss landscapes</span>
+  <span>SGD dynamics</span><span>Implicit bias</span><span>Scaling laws</span><span>Associative memories</span>
 </div>
-<div id="ref-anotherpaper20" class="csl-entry" role="listitem">
-Knuth, Donald E22. 1984. <span>“Literate Progr13amming.”</span> <em>The Comput123er Journal</em> 27 (2).
+<div id="listing-pubs" class="quarto-listing quarto-listing-container-custom">
+
+<div class="pub-filters" role="group" aria-label="Filter publications">
+
+<button type="button" class="chip active" data-filter="all" aria-pressed="true">All <span class="chip-n">9</span></button>
+
+<button type="button" class="chip" data-filter="conference" aria-pressed="false">Conference <span class="chip-n">2</span></button>
+
+<button type="button" class="chip" data-filter="journal" aria-pressed="false">Journal <span class="chip-n">2</span></button>
+
+<button type="button" class="chip" data-filter="preprint" aria-pressed="false">Preprint <span class="chip-n">5</span></button>
+
 </div>
-</div></section></div></main> <!-- /main -->
-<canvas id="lifeCanvas"></canvas>
+<div class="pub-list">
 
-<style>
-  /* Fix the canvas to the background */
-  #lifeCanvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1; /* Puts it behind everything */
-    opacity: 0.3; /* Makes it subtle */
-    pointer-events: none; /* Lets clicks pass through to your links */
-  }
-</style>
+<div class="pub-year" data-year="2026">2026</div>
 
-<script>
-  const canvas = document.getElementById('lifeCanvas');
-  const ctx = canvas.getContext('2d');
-  
-  let width, height, columns, rows;
-  const cellSize = 20; 
-  let grid, nextGrid;
-  
-  // Track the width to ignore vertical-only resizes (mobile scrolling)
-  let lastWidth = window.innerWidth; 
+<article class="pub" data-kind="preprint" data-year="2026">
+<div class="pub-head">
+<span class="pub-venue pub-venue-preprint">arXiv:2610.32788</span>
 
-  function initGrid() {
-    grid = new Array(columns).fill(null).map(() => new Array(rows).fill(0));
-    nextGrid = new Array(columns).fill(null).map(() => new Array(rows).fill(0));
-    
-    for (let i = 0; i < columns; i++) {
-      for (let j = 0; j < rows; j++) {
-        grid[i][j] = Math.random() > 0.85 ? 1 : 0; 
-      }
-    }
-  }
+</div>
+<a class="pub-title" href="https://arxiv.org/abs/2610.32788" target="_blank" rel="noopener">Generalization properties of the token perceptron: the role of embedding and vocabulary</a>
+<div class="pub-authors"><span class="me">Dario Bocchi</span>, Matteo Negri, Flavio Nicoletti, Francesco D'Amico</div>
 
-  function resize() {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
-    columns = Math.floor(width / cellSize);
-    rows = Math.floor(height / cellSize);
-    initGrid();
-  }
+<div class="pub-links">
+<a class="pill" href="https://arxiv.org/abs/2610.32788" target="_blank" rel="noopener"><i class="bi bi-file-earmark-text"></i> arXiv</a><a class="pill" href="https://arxiv.org/pdf/2610.32788" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i> PDF</a>
+<button type="button" class="pill pill-toggle" data-toggle="abs" aria-expanded="false"><i class="bi bi-text-paragraph"></i> Abstract</button>
+<button type="button" class="pill pill-toggle" data-toggle="bib" aria-expanded="false"><i class="bi bi-quote"></i> BibTeX</button>
+</div>
+<div class="pub-drawer" data-drawer="abs" hidden=""><p>Large language models are trained to predict tokens from a finite vocabulary, each represented by a vector in a d-dimensional embedding space. Therefore, token prediction is a classification problem whose classes have a geometry determined by the embedding. We study how this geometry affects learning in a minimal solvable model: a linear predictor that maps a sequence of N embedded tokens to a d-dimensional output through one d×d matrix per position, trained in the teacher–student setting. We call this the token perceptron. We compute its generalization error with the replica method, taking N → ∞ at fixed number of examples per position α = P/N and keeping d and the vocabulary size D finite. As a first reference case, we consider continuous embeddings on the sphere, which isolate the role of the embedding dimension. The natural load is then α/d, and for d &gt; 1 a normalized label fixes the direction of the teacher output, so the problem becomes a noiseless regression: the teacher is recovered exactly above α_rec = d²/(d−1), and spherical cross-entropy reaches this threshold at large inverse temperature. In the same setting the storage capacity of random associations scales as d² for margins O(1/√d). We then turn to vocabulary embeddings, where a label only identifies the Voronoi cell of the teacher output, so that each example imposes inequalities rather than equations, as in the classical perceptron. We compute the Bayes-optimal error for a given embedding matrix through an approximate spectral closure and show that the optimal learner first resolves the directions in which the vocabulary has the largest variance, even when the teacher is isotropic.</p></div>
+<div class="pub-drawer" data-drawer="bib" hidden=""><button type="button" class="copy-btn" aria-label="Copy BibTeX"><i class="bi bi-clipboard"></i> Copy</button><pre><code>@article{bocchi2026token,
+  title={Generalization properties of the token perceptron: the role of embedding and vocabulary},
+  author={Bocchi, Dario and Negri, Matteo and Nicoletti, Flavio and D'Amico, Francesco},
+  journal={arXiv preprint arXiv:2610.32788},
+  year={2026}
+}</code></pre></div>
+</article>
 
-  function draw() {
-    ctx.fillStyle = '#ffffff'; 
-    ctx.fillRect(0, 0, width, height);
-    
-    // Your preferred opacity
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.10)';
-    for (let i = 0; i < columns; i++) {
-      for (let j = 0; j < rows; j++) {
-        if (grid[i][j] === 1) {
-          ctx.fillRect(i * cellSize, j * cellSize, cellSize - 1, cellSize - 1);
-        }
-      }
-    }
-  }
+<article class="pub" data-kind="preprint" data-year="2026">
+<div class="pub-head">
+<span class="pub-venue pub-venue-preprint">arXiv:2606.28486</span>
 
-  function update() {
-    for (let x = 0; x < columns; x++) {
-      for (let y = 0; y < rows; y++) {
-        let neighbors = 0;
-        for (let i = -1; i <= 1; i++) {
-          for (let j = -1; j <= 1; j++) {
-            if (i === 0 && j === 0) continue;
-            const col = (x + i + columns) % columns;
-            const row = (y + j + rows) % rows;
-            neighbors += grid[col][row];
-          }
-        }
-        if (grid[x][y] === 1 && (neighbors < 2 || neighbors > 3)) nextGrid[x][y] = 0;
-        else if (grid[x][y] === 0 && neighbors === 3) nextGrid[x][y] = 1;
-        else nextGrid[x][y] = grid[x][y];
-      }
-    }
-    let temp = grid;
-    grid = nextGrid;
-    nextGrid = temp;
-  }
+</div>
+<a class="pub-title" href="https://arxiv.org/abs/2606.28486" target="_blank" rel="noopener">Spectral phase transitions and trainability in neural network learning dynamics</a>
+<div class="pub-authors">Chanju Park, <span class="me">Dario Bocchi</span>, Francesco D'Amico, Biagio Lucini, Gert Aarts</div>
 
-  const tickDelay = 200; 
+<div class="pub-links">
+<a class="pill" href="https://arxiv.org/abs/2606.28486" target="_blank" rel="noopener"><i class="bi bi-file-earmark-text"></i> arXiv</a><a class="pill" href="https://arxiv.org/pdf/2606.28486" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i> PDF</a>
+<button type="button" class="pill pill-toggle" data-toggle="abs" aria-expanded="false"><i class="bi bi-text-paragraph"></i> Abstract</button>
+<button type="button" class="pill pill-toggle" data-toggle="bib" aria-expanded="false"><i class="bi bi-quote"></i> BibTeX</button>
+</div>
+<div class="pub-drawer" data-drawer="abs" hidden=""><p>The emergence of low-dimensional structures in the spectra of neural network weight matrices is a common empirical feature of trained models, but the dynamical origin of this phenomenon during learning remains an open problem. We formulate neural network training as the stochastic evolution of an initially random matrix ensemble, driven by stochastic gradient descent (SGD) updates that reshape the spectral bulk while amplifying signal strength. This induces a Baik–Ben Arous–Péché (BBP) transition during training, where isolated eigenvalues detach from the random bulk distribution, providing a dynamical framework for representation formation in high-dimensional learning dynamics. We demonstrate this in a solvable linear teacher–student model, where spectral evolution is analytically tractable and a phase diagram of trainability governed by the step size (or learning rate) and initial weight variance is obtained, and subsequently extend our formalism beyond the linear regime to nonlinear and stochastic settings. Numerical simulations in realistic settings support this picture, showing robust emergence of spectral alignment during training. Our results suggest that spectral analysis may provide a unified perspective of stochastic learning dynamics, linking trainability, optimisation hyperparameters, spectral phase transitions, and representation learning in neural networks.</p></div>
+<div class="pub-drawer" data-drawer="bib" hidden=""><button type="button" class="copy-btn" aria-label="Copy BibTeX"><i class="bi bi-clipboard"></i> Copy</button><pre><code>@article{park2026spectral,
+  title={Spectral phase transitions and trainability in neural network learning dynamics},
+  author={Park, Chanju and Bocchi, Dario and D'Amico, Francesco and Lucini, Biagio and Aarts, Gert},
+  journal={arXiv preprint arXiv:2606.28486},
+  year={2026}
+}</code></pre></div>
+</article>
 
-  function loop() {
-    setTimeout(() => {
-        draw();
-        update();
-        requestAnimationFrame(loop);
-    }, tickDelay);
-  }
+<article class="pub" data-kind="preprint" data-year="2026">
+<div class="pub-head">
+<span class="pub-venue pub-venue-preprint">arXiv:2604.27992</span>
 
-  // --- THE FIX IS HERE ---
-  // Instead of passing resize directly, we check if width changed
-  window.addEventListener('resize', () => {
-      // If width is different, it means we rotated phone or resized desktop window
-      if (window.innerWidth !== lastWidth) {
-          lastWidth = window.innerWidth;
-          resize();
-      }
-      // If only height changed (scrolling), do nothing!
-  });
+</div>
+<a class="pub-title" href="https://arxiv.org/abs/2604.27992" target="_blank" rel="noopener">Discontinuous BBP transitions</a>
+<div class="pub-authors"><span class="me">Dario Bocchi</span>, Giulio Biroli, Chiara Cammarota, Federico Ricci-Tersenghi</div>
 
-  // Initial setup
-  resize();
-  loop();
-</script>
+<div class="pub-links">
+<a class="pill" href="https://arxiv.org/abs/2604.27992" target="_blank" rel="noopener"><i class="bi bi-file-earmark-text"></i> arXiv</a><a class="pill" href="https://arxiv.org/pdf/2604.27992" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i> PDF</a>
+<button type="button" class="pill pill-toggle" data-toggle="abs" aria-expanded="false"><i class="bi bi-text-paragraph"></i> Abstract</button>
+<button type="button" class="pill pill-toggle" data-toggle="bib" aria-expanded="false"><i class="bi bi-quote"></i> BibTeX</button>
+</div>
+<div class="pub-drawer" data-drawer="abs" hidden=""><p>The Baik–Ben Arous–Péché (BBP) transition sets fundamental limits for detecting low-rank structure in noisy high-dimensional data and underlies a wide range of spectral methods in many fields from physics to statistics and data sciences. In standard settings, this transition is continuous, implying that signal recovery emerges gradually above a sharp threshold. We show that BBP transitions can instead be discontinuous in very general settings and provide a full theory of this phenomenon. When the eigenvalue density vanishes faster than linearly at the spectral edge, the overlap between the leading eigenvector and the signal jumps discontinuously at the critical point. We study this mechanism in deformed Gaussian and reweighted Wishart ensembles. We analyze in detail the finite-size effects, which play a central and qualitatively new role in the discontinuous BBP transition. Unlike the continuous BBP transition, we establish the existence of an extended pre-critical region where informative eigenvectors emerge well before the asymptotic threshold. The main consequence — and difference from the continuous BBP transition — is that signal recovery can occur at significantly lower signal-to-noise ratio and it is accompanied by strong sample-to-sample variability. Our results show the relevance and the novelty of the discontinuous BBP transition, and highlight the practical implications for signal detection.</p></div>
+<div class="pub-drawer" data-drawer="bib" hidden=""><button type="button" class="copy-btn" aria-label="Copy BibTeX"><i class="bi bi-clipboard"></i> Copy</button><pre><code>@article{bocchi2026discontinuous,
+  title={Discontinuous {BBP} transitions},
+  author={Bocchi, Dario and Biroli, Giulio and Cammarota, Chiara and Ricci-Tersenghi, Federico},
+  journal={arXiv preprint arXiv:2604.27992},
+  year={2026}
+}</code></pre></div>
+</article>
+
+<article class="pub" data-kind="preprint" data-year="2026">
+<div class="pub-head">
+<span class="pub-venue pub-venue-preprint">arXiv:2604.03068</span>
+
+</div>
+<a class="pub-title" href="https://arxiv.org/abs/2604.03068" target="_blank" rel="noopener">Escape dynamics and implicit bias of one-pass SGD in overparameterized quadratic networks</a>
+<div class="pub-authors"><span class="me">Dario Bocchi</span>, Theotime Regimbeau, Carlo Lucibello, Luca Saglietti, Chiara Cammarota</div>
+
+<div class="pub-links">
+<a class="pill" href="https://arxiv.org/abs/2604.03068" target="_blank" rel="noopener"><i class="bi bi-file-earmark-text"></i> arXiv</a><a class="pill" href="https://arxiv.org/pdf/2604.03068" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i> PDF</a>
+<button type="button" class="pill pill-toggle" data-toggle="abs" aria-expanded="false"><i class="bi bi-text-paragraph"></i> Abstract</button>
+<button type="button" class="pill pill-toggle" data-toggle="bib" aria-expanded="false"><i class="bi bi-quote"></i> BibTeX</button>
+</div>
+<div class="pub-drawer" data-drawer="abs" hidden=""><p>We analyze the one-pass stochastic gradient descent dynamics of a two-layer neural network with quadratic activations in a teacher–student framework. In the high-dimensional regime, where the input dimension N and the number of samples M diverge at fixed ratio α = M/N, and for finite hidden widths (p, p*) of the student and teacher, respectively, we study the low-dimensional ordinary differential equations that govern the evolution of the student–teacher and student–student overlap matrices. We show that overparameterization (p &gt; p*) only modestly accelerates escape from a plateau of poor generalization by modifying the prefactor of the exponential decay of the loss. We then examine how unconstrained weight norms introduce a continuous rotational symmetry that results in a nontrivial manifold of zero-loss solutions for p &gt; 1. From this manifold the dynamics consistently selects the closest solution to the random initialization, as enforced by a conserved quantity in the ODEs governing the evolution of the overlaps. Finally, a Hessian analysis of the population-loss landscape confirms that the plateau and the solution manifold correspond to saddles with at least one negative eigenvalue and to marginal minima in the population-loss geometry, respectively.</p></div>
+<div class="pub-drawer" data-drawer="bib" hidden=""><button type="button" class="copy-btn" aria-label="Copy BibTeX"><i class="bi bi-clipboard"></i> Copy</button><pre><code>@article{bocchi2026escape,
+  title={Escape dynamics and implicit bias of one-pass {SGD} in overparameterized quadratic networks},
+  author={Bocchi, Dario and Regimbeau, Theotime and Lucibello, Carlo and Saglietti, Luca and Cammarota, Chiara},
+  journal={arXiv preprint arXiv:2604.03068},
+  year={2026}
+}</code></pre></div>
+</article>
+
+<article class="pub" data-kind="conference" data-year="2026">
+<div class="pub-head">
+<span class="pub-venue pub-venue-conference">ICLR 2026</span>
+<span class="pub-badge"><i class="bi bi-star-fill"></i> Oral</span>
+</div>
+<a class="pub-title" href="https://openreview.net/forum?id=xDLE5n3x9Y" target="_blank" rel="noopener">Overparametrization bends the landscape: BBP transitions at initialization in simple Neural Networks</a>
+<div class="pub-authors">Brandon Livio Annesi, <span class="me">Dario Bocchi</span>, Chiara Cammarota</div>
+<div class="pub-venue-long">International Conference on Learning Representations, 2026</div>
+<div class="pub-links">
+<a class="pill" href="https://openreview.net/forum?id=xDLE5n3x9Y" target="_blank" rel="noopener"><i class="bi bi-chat-square-text"></i> OpenReview</a><a class="pill" href="https://arxiv.org/abs/2510.18435" target="_blank" rel="noopener"><i class="bi bi-file-earmark-text"></i> arXiv</a><a class="pill" href="https://iclr.cc/virtual/2026/oral/10006659" target="_blank" rel="noopener"><i class="bi bi-mic"></i> Oral</a><a class="pill" href="https://iclr.cc/virtual/2026/poster/10006658" target="_blank" rel="noopener"><i class="bi bi-easel"></i> Poster</a>
+<button type="button" class="pill pill-toggle" data-toggle="abs" aria-expanded="false"><i class="bi bi-text-paragraph"></i> Abstract</button>
+<button type="button" class="pill pill-toggle" data-toggle="bib" aria-expanded="false"><i class="bi bi-quote"></i> BibTeX</button>
+</div>
+<div class="pub-drawer" data-drawer="abs" hidden=""><p>High-dimensional non-convex loss landscapes play a central role in the theory of Machine Learning. Gaining insight into how these landscapes interact with gradient-based optimization methods, even in relatively simple models, can shed light on this enigmatic feature of neural networks. In this work, we will focus on a prototypical simple learning problem, which generalizes the Phase Retrieval inference problem by allowing the exploration of overparametrized settings. Using techniques from field theory, we analyze the spectrum of the Hessian at initialization and identify a Baik–Ben Arous–Péché (BBP) transition in the amount of data that separates regimes where the initialization is informative or uninformative about a planted signal of a teacher–student setup. Crucially, we demonstrate how overparameterization can bend the loss landscape, shifting the transition point, even reaching the information-theoretic weak-recovery threshold in the large overparameterization limit, while also altering its qualitative nature. We distinguish between continuous and discontinuous BBP transitions and support our analytical predictions with simulations, examining how they compare to the finite-N behavior. In the case of discontinuous BBP transitions strong finite-N corrections allow the retrieval of information at a signal-to-noise ratio (SNR) smaller than the predicted BBP transition. In these cases we provide estimates for a new lower SNR threshold that marks the point at which initialization becomes entirely uninformative.</p></div>
+<div class="pub-drawer" data-drawer="bib" hidden=""><button type="button" class="copy-btn" aria-label="Copy BibTeX"><i class="bi bi-clipboard"></i> Copy</button><pre><code>@inproceedings{annesi2026overparametrization,
+  title={Overparametrization bends the landscape: {BBP} transitions at initialization in simple Neural Networks},
+  author={Annesi, Brandon Livio and Bocchi, Dario and Cammarota, Chiara},
+  booktitle={Proceedings of the Fourteenth International Conference on Learning Representations ({ICLR})},
+  year={2026},
+  pages={117386--117411},
+  url={https://openreview.net/forum?id=xDLE5n3x9Y}
+}</code></pre></div>
+</article>
+
+<article class="pub" data-kind="conference" data-year="2026">
+<div class="pub-head">
+<span class="pub-venue pub-venue-conference">ICLR 2026</span>
+
+</div>
+<a class="pub-title" href="https://openreview.net/forum?id=qBAV2DEvAC" target="_blank" rel="noopener">Implicit bias produces neural scaling laws in learning curves, from perceptrons to deep networks</a>
+<div class="pub-authors">Francesco D'Amico, <span class="me">Dario Bocchi</span>, Matteo Negri</div>
+<div class="pub-venue-long">International Conference on Learning Representations, 2026</div>
+<div class="pub-links">
+<a class="pill" href="https://openreview.net/forum?id=qBAV2DEvAC" target="_blank" rel="noopener"><i class="bi bi-chat-square-text"></i> OpenReview</a><a class="pill" href="https://arxiv.org/abs/2505.13230" target="_blank" rel="noopener"><i class="bi bi-file-earmark-text"></i> arXiv</a><a class="pill" href="https://iclr.cc/virtual/2026/poster/10007275" target="_blank" rel="noopener"><i class="bi bi-easel"></i> ICLR</a><a class="pill" href="https://iclr.cc/media/iclr-2026/Slides/10007275.pdf" target="_blank" rel="noopener"><i class="bi bi-file-slides"></i> Slides</a><a class="pill" href="https://iclr.cc/media/PosterPDFs/ICLR%202026/10007275.png" target="_blank" rel="noopener"><i class="bi bi-image"></i> Poster</a>
+<button type="button" class="pill pill-toggle" data-toggle="abs" aria-expanded="false"><i class="bi bi-text-paragraph"></i> Abstract</button>
+<button type="button" class="pill pill-toggle" data-toggle="bib" aria-expanded="false"><i class="bi bi-quote"></i> BibTeX</button>
+</div>
+<div class="pub-drawer" data-drawer="abs" hidden=""><p>Scaling laws in deep learning — empirical power-law relationships linking model performance to resource growth — have emerged as simple yet striking regularities across architectures, datasets, and tasks. These laws are particularly impactful in guiding the design of state-of-the-art models, since they quantify the benefits of increasing data or model size, and hint at the foundations of interpretability in machine learning. However, most studies focus on asymptotic behavior at the end of training. In this work, we describe a richer picture by analyzing the entire training dynamics: we identify two novel dynamical scaling laws that govern how performance evolves as function of different norm-based complexity measures. Combined, our new laws recover the well-known scaling for test error at convergence. Our findings are consistent across CNNs, ResNets, and Vision Transformers trained on MNIST, CIFAR-10 and CIFAR-100. Furthermore, we provide analytical support using a single-layer perceptron trained with logistic loss, where we derive the new dynamical scaling laws, and we explain them through the implicit bias induced by gradient-based training.</p></div>
+<div class="pub-drawer" data-drawer="bib" hidden=""><button type="button" class="copy-btn" aria-label="Copy BibTeX"><i class="bi bi-clipboard"></i> Copy</button><pre><code>@inproceedings{damico2026implicit,
+  title={Implicit bias produces neural scaling laws in learning curves, from perceptrons to deep networks},
+  author={D'Amico, Francesco and Bocchi, Dario and Negri, Matteo},
+  booktitle={Proceedings of the Fourteenth International Conference on Learning Representations ({ICLR})},
+  year={2026},
+  pages={54318--54344},
+  url={https://openreview.net/forum?id=qBAV2DEvAC}
+}</code></pre></div>
+</article>
+
+<article class="pub" data-kind="journal" data-year="2026">
+<div class="pub-head">
+<span class="pub-venue pub-venue-journal">Physica A</span>
+
+</div>
+<a class="pub-title" href="https://doi.org/10.1016/j.physa.2026.131497" target="_blank" rel="noopener">Pseudo-likelihood produces associative memories able to generalize, even for asymmetric couplings</a>
+<div class="pub-authors">Francesco D'Amico, <span class="me">Dario Bocchi</span>, Luca Maria Del Bono, Saverio Rossi, Matteo Negri</div>
+<div class="pub-venue-long">Physica A: Statistical Mechanics and its Applications 692, 131497, 2026</div>
+<div class="pub-links">
+<a class="pill" href="https://doi.org/10.1016/j.physa.2026.131497" target="_blank" rel="noopener"><i class="bi bi-link-45deg"></i> DOI</a><a class="pill" href="https://arxiv.org/abs/2507.05147" target="_blank" rel="noopener"><i class="bi bi-file-earmark-text"></i> arXiv</a>
+<button type="button" class="pill pill-toggle" data-toggle="abs" aria-expanded="false"><i class="bi bi-text-paragraph"></i> Abstract</button>
+<button type="button" class="pill pill-toggle" data-toggle="bib" aria-expanded="false"><i class="bi bi-quote"></i> BibTeX</button>
+</div>
+<div class="pub-drawer" data-drawer="abs" hidden=""><p>Energy-based probabilistic models learned by maximizing the likelihood of the data are limited by the intractability of the partition function. A widely used workaround is to maximize the pseudo-likelihood, which replaces the global normalization with tractable local normalizations. Here we show that, in the zero-temperature limit, a network trained to maximize pseudo-likelihood naturally implements an associative memory: if the training set is small, patterns become fixed-point attractors whose basins of attraction exceed those of any classical Hopfield rule. We explain quantitatively this effect on uncorrelated random patterns. Moreover, we show that, for different structured datasets coming from computer science (random feature model, MNIST), physics (spin glasses) and biology (proteins), as the number of training examples increases the learned network goes beyond memorization, developing meaningful attractors with non-trivial correlations with test examples, thus showing the ability to generalize. Our results therefore reveal pseudo-likelihood works both as an efficient inference tool and as a principled mechanism for memory and generalization.</p></div>
+<div class="pub-drawer" data-drawer="bib" hidden=""><button type="button" class="copy-btn" aria-label="Copy BibTeX"><i class="bi bi-clipboard"></i> Copy</button><pre><code>@article{damico2026pseudo,
+  title={Pseudo-likelihood produces associative memories able to generalize, even for asymmetric couplings},
+  author={D'Amico, Francesco and Bocchi, Dario and Del Bono, Luca Maria and Rossi, Saverio and Negri, Matteo},
+  journal={Physica A: Statistical Mechanics and its Applications},
+  volume={692},
+  pages={131497},
+  year={2026},
+  doi={10.1016/j.physa.2026.131497}
+}</code></pre></div>
+</article>
+
+<div class="pub-year" data-year="2025">2025</div>
+
+<article class="pub" data-kind="preprint" data-year="2025">
+<div class="pub-head">
+<span class="pub-venue pub-venue-preprint">arXiv:2507.02574</span>
+
+</div>
+<a class="pub-title" href="https://arxiv.org/abs/2507.02574" target="_blank" rel="noopener">Learning and testing inverse statistical problems for interacting systems undergoing phase transition</a>
+<div class="pub-authors">Stefano Bae, <span class="me">Dario Bocchi</span>, Luca Maria Del Bono, Luca Leuzzi</div>
+
+<div class="pub-links">
+<a class="pill" href="https://arxiv.org/abs/2507.02574" target="_blank" rel="noopener"><i class="bi bi-file-earmark-text"></i> arXiv</a><a class="pill" href="https://arxiv.org/pdf/2507.02574" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf"></i> PDF</a>
+<button type="button" class="pill pill-toggle" data-toggle="abs" aria-expanded="false"><i class="bi bi-text-paragraph"></i> Abstract</button>
+<button type="button" class="pill pill-toggle" data-toggle="bib" aria-expanded="false"><i class="bi bi-quote"></i> BibTeX</button>
+</div>
+<div class="pub-drawer" data-drawer="abs" hidden=""><p>Inverse problems arise in situations where data is available, but the underlying model is not. It can therefore be necessary to infer the parameters of the latter starting from the former. Statistical mechanics offers a toolbox of techniques to address this challenge. In this work, we illustrate three of the main methods: the Maximum Likelihood, Maximum Pseudo-Likelihood, and Mean-Field approaches. We begin with a thorough theoretical introduction to these methods, followed by their application to inference in several well-known statistical physics systems undergoing phase transitions. Namely, we consider the ordered and disordered Ising models, the vector Potts model, and the Blume–Capel model on both regular lattices and random graphs. This discussion is accompanied by a GitHub repository that allows users to both reproduce the results and experiment with new systems.</p></div>
+<div class="pub-drawer" data-drawer="bib" hidden=""><button type="button" class="copy-btn" aria-label="Copy BibTeX"><i class="bi bi-clipboard"></i> Copy</button><pre><code>@article{bae2025learning,
+  title={Learning and Testing Inverse Statistical Problems For Interacting Systems Undergoing Phase Transition},
+  author={Bae, Stefano and Bocchi, Dario and Del Bono, Luca Maria and Leuzzi, Luca},
+  journal={arXiv preprint arXiv:2507.02574},
+  year={2025}
+}</code></pre></div>
+</article>
+
+<article class="pub" data-kind="journal" data-year="2025">
+<div class="pub-head">
+<span class="pub-venue pub-venue-journal">Neural Networks</span>
+
+</div>
+<a class="pub-title" href="https://doi.org/10.1016/j.neunet.2025.107216" target="_blank" rel="noopener">Daydreaming Hopfield networks and their surprising effectiveness on correlated data</a>
+<div class="pub-authors">Ludovica Serricchio, <span class="me">Dario Bocchi</span>, Claudio Chilin, Raffaele Marino, Matteo Negri, Chiara Cammarota, Federico Ricci-Tersenghi</div>
+<div class="pub-venue-long">Neural Networks 186, 107216, 2025</div>
+<div class="pub-links">
+<a class="pill" href="https://doi.org/10.1016/j.neunet.2025.107216" target="_blank" rel="noopener"><i class="bi bi-link-45deg"></i> DOI</a><a class="pill" href="https://arxiv.org/abs/2405.08777" target="_blank" rel="noopener"><i class="bi bi-file-earmark-text"></i> arXiv</a>
+<button type="button" class="pill pill-toggle" data-toggle="abs" aria-expanded="false"><i class="bi bi-text-paragraph"></i> Abstract</button>
+<button type="button" class="pill pill-toggle" data-toggle="bib" aria-expanded="false"><i class="bi bi-quote"></i> BibTeX</button>
+</div>
+<div class="pub-drawer" data-drawer="abs" hidden=""><p>To improve the storage capacity of the Hopfield model, we develop a version of the dreaming algorithm that perpetually reinforces the patterns to be stored (as in the Hebb rule), and erases the spurious memories (as in dreaming algorithms). For this reason, we called it Daydreaming. Daydreaming is not destructive and it converges asymptotically to stationary retrieval maps. When trained on random uncorrelated examples, the model shows optimal performance in terms of the size of the basins of attraction of stored examples and the quality of reconstruction. We also train the Daydreaming algorithm on correlated data obtained via the random-features model and argue that it spontaneously exploits the correlations thus increasing even further the storage capacity and the size of the basins of attraction. Moreover, the Daydreaming algorithm is also able to stabilize the features hidden in the data. Finally, we test Daydreaming on the MNIST dataset and show that it still works surprisingly well, producing attractors that are close to unseen examples and class prototypes.</p></div>
+<div class="pub-drawer" data-drawer="bib" hidden=""><button type="button" class="copy-btn" aria-label="Copy BibTeX"><i class="bi bi-clipboard"></i> Copy</button><pre><code>@article{serricchio2025daydreaming,
+  title={Daydreaming {H}opfield networks and their surprising effectiveness on correlated data},
+  author={Serricchio, Ludovica and Bocchi, Dario and Chilin, Claudio and Marino, Raffaele and Negri, Matteo and Cammarota, Chiara and Ricci-Tersenghi, Federico},
+  journal={Neural Networks},
+  volume={186},
+  pages={107216},
+  year={2025},
+  doi={10.1016/j.neunet.2025.107216}
+}</code></pre></div>
+</article>
+
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
+<p class="more">
+  <a href="https://scholar.google.com/citations?user=LQc7rbIAAAAJ" target="_blank" rel="noopener"><i class="bi bi-mortarboard"></i> Google Scholar</a>
+  <span class="sep">·</span>
+  <a href="myPapers.bib" download=""><i class="bi bi-download"></i> All BibTeX</a>
+</p>
+
+
+
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     
@@ -420,7 +722,7 @@ Knuth, Donald E22. 1984. <span>“Literate Progr13amming.”</span> <em>The Comp
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/dr-bocchi\.github\.io\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -748,8 +1050,23 @@ Knuth, Donald E22. 1984. <span>“Literate Progr13amming.”</span> <em>The Comp
   });
   </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Dario Bocchi</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Rome → Paris</p>
+</div>
+  </div>
+</footer>
+<script src="assets/site.js"></script>
 
 
 
 
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

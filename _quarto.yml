@@ -1,18 +1,32 @@
 project:
   type: website
-  output-dir: docs  # Important: This makes GitHub hosting easier later
+  output-dir: docs # GitHub Pages serves main:/docs
+  resources:
+    - bocchi_CV.pdf
+    - myPapers.bib
+    - assets/
+    - photo.jpeg
 
 website:
-  title: Dario Bocchi  # Will appear in the top left corner
+  title: "Dario Bocchi"
+  description: "Statistical physics of learning — PhD in Theoretical Physics at Sapienza, incoming postdoc at ENS Paris."
+  site-url: https://dr-bocchi.github.io/
   favicon: images/perceptron.svg
+  open-graph: true
+  search: false
+  page-navigation: false
   navbar:
+    background: none
     left:
       - href: index.qmd
         text: Home
       - href: papers.qmd
-        text: Papers
+        text: Research
       - href: presentations.qmd
-        text: Presentations
+        text: Talks
+      - href: bocchi_CV.pdf
+        text: CV
+        target: _blank
     right:
       - icon: mortarboard-fill
         href: https://scholar.google.com/citations?user=LQc7rbIAAAAJ
@@ -23,11 +37,32 @@ website:
       - icon: linkedin
         href: https://www.linkedin.com/in/dario-bocchi-025999218/
         aria-label: LinkedIn
-
+      - icon: envelope
+        href: mailto:bocchi.dario@gmail.com
+        aria-label: Email
+  page-footer:
+    left: "© 2026 Dario Bocchi"
+    right: "Rome → Paris"
 
 format:
   html:
-    theme: cosmo  # Try others later: darkly, flatly, journal, litera
+    theme:
+      light: [cosmo, theme-light.scss]
+      dark: [cosmo, theme-dark.scss]
+    respect-user-color-scheme: true
     css: styles.css
-    toc: true
-    include-after-body: life.html
+    toc: false
+    anchor-sections: false
+    smooth-scroll: true
+    grid:
+      body-width: 760px
+      margin-width: 200px
+    include-in-header:
+      - text: |
+          <script>document.documentElement.classList.add('js')</script>
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    include-after-body:
+      - text: |
+          <script src="assets/site.js"></script>

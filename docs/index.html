@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Statistical physics of learning — PhD in Theoretical Physics at Sapienza, incoming postdoc at ENS Paris.">
 
 <title>Dario Bocchi</title>
 <style>
@@ -25,36 +26,25 @@ ul.task-list li input[type="checkbox"] {
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
 <link href="./images/perceptron.svg" rel="icon" type="image/svg+xml">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-9ade03a996393c3fe1ae1b6997dfe453.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-aeb05c5154661e36ae59fa8a36fb2a99.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-9ade03a996393c3fe1ae1b6997dfe453.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ffbe6ecca4fdf0127caae42c85e14552.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-3f8b6eaafc5d98d299a682e9f2d3001d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-ffbe6ecca4fdf0127caae42c85e14552.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
-  "copy-button": false,
-  "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -69,30 +59,261 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<style>
+<script>
 
-      .quarto-title-block .quarto-title-banner {
-        background-image: url(images/banner.jpeg);
-background-size: cover;
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-featured .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-authors','listing-year','listing-kind','listing-venue','listing-url','listing-featured','listing-links','listing-abstract','listing-bibtex','listing-venue_long','listing-badge',{ data: ['index'] },{ data: ['categories'] }],
+      
+      searchColumns: ["listing-title","listing-authors","listing-year","listing-kind","listing-venue","listing-url","listing-featured","listing-links","listing-abstract","listing-bibtex","listing-venue_long","listing-badge"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-featured'] = new List('listing-featured', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Instrument+Serif:ital@0;1&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
       }
-</style>
-
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="Dario Bocchi">
+<meta property="og:description" content="Statistical physics of learning — PhD in Theoretical Physics at Sapienza, incoming postdoc at ENS Paris.">
+<meta property="og:image" content="https://dr-bocchi.github.io/photo.jpeg">
+<meta property="og:site_name" content="Dario Bocchi">
+<meta property="og:image:alt" content="Portrait of Dario Bocchi">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed home fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg border-bottom" data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Dario Bocchi</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
@@ -104,11 +325,15 @@ background-size: cover;
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./papers.html"> 
-<span class="menu-text">Papers</span></a>
+<span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./presentations.html"> 
-<span class="menu-text">Presentations</span></a>
+<span class="menu-text">Talks</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./bocchi_CV.pdf" target="_blank"> 
+<span class="menu-text">CV</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
@@ -127,247 +352,215 @@ background-size: cover;
 </i> 
 <span class="menu-text"></span></a>
   </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:bocchi.dario@gmail.com"> <i class="bi bi-envelope" role="img" aria-label="Email">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title">Dario Bocchi</h1>
-            <p class="subtitle lead">PhD Student in Physics at Sapienza University of Rome</p>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
-    </div>
-<!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
-
-
-
-
-
-<style>
-/* 1. Set up the main container */
-.quarto-title-banner {
-    position: relative;
-    z-index: 1; /* Creates a stacking context for text */
-    /* Crucial: Remove the default image so we don't see a double */
-    background-image: none !important;
-    /* Optional: Sets the color behind the transparent part (e.g., white) */
-    background-color: transparent; 
-}
-
-/* 2. Create a separate layer *behind* the text for the image */
-.quarto-title-banner::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* Put this layer behind the text content */
-    z-index: -1;
-
-    /* Define your image here */
-    background-image: url("images/banner.jpeg");
-    background-size: cover;
-    background-position: center;
-
-    /* Apply the mask ONLY to this background layer */
-    -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0.2), black);
-            mask-image: linear-gradient(to right, rgba(0, 0, 0, 0.2), black);
-}
-
-/* 1. Default (Mobile) View */
-#profile-photo {
-    width: 200px;
-    border-radius: 15px;
     
-    /* Center the image on mobile and stack it on top */
-    display: block;
-    margin: 20px auto; 
-    float: none; 
-}
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
-/* 2. Desktop View (Screens larger than 768px) */
-@media (min-width: 768px) {
-    #profile-photo {
-        float: left;
-        margin-right: 30px;
-        margin-top: 30px; 
-        margin-bottom: 5px;
-        margin-left: 0; /* Un-center it */
-    }
-}
-</style>
-<div style="display: flow-root;">
-<p><img src="photo.jpeg" id="profile-photo" class="img-fluid"></p>
-<section id="about-me" class="level2">
-<h2 class="anchored" data-anchor-id="about-me">About Me</h2>
-<p>Hello! I am a 3rd year PhD student in Physics at Sapienza University of Rome researching <strong>Statistical Mechanics</strong>, with a focus on <strong>Artificial Intelligence</strong>.</p>
-<div style="height: 10px;">
 
-</div>
-<p>Here is my updated CV: <a href="bocchi_CV.pdf" class="btn btn-primary" role="button" target="_blank" style="margin-left: 15px;"><i class="bi bi-file-earmark-pdf"></i> Download CV</a></p>
-<div style="height: 10px;">
 
-</div>
+
+
+<section class="hero">
+  <canvas id="spectrum" aria-hidden="true"></canvas>
+  <div class="hero-text">
+    <p class="eyebrow">Statistical physics <span class="x">×</span> machine learning</p>
+    <h1 class="hero-name">Dario Bocchi</h1>
+    <p class="hero-role">PhD · Sapienza University of Rome<br>
+      <span class="next-dot"></span>Incoming postdoc · ENS Paris</p>
+  </div>
+  <div class="spectrum-caption" aria-hidden="true">
+    <span>spiked random matrix</span>
+    <span id="spectrum-readout">θ = 1.00</span>
+  </div>
 </section>
-<section id="layout-of-the-website" class="level2">
-<h2 class="anchored" data-anchor-id="layout-of-the-website">Layout of the website</h2>
-<p>Here you will find a detailed list of my:</p>
-<ul>
-<li><p><a href="./papers.html">📄 Publications and Preprints</a></p></li>
-<li><p><a href="./presentations.html">🎤 Talks and Presentations</a></p></li>
+
+<section class="about">
+  <img src="photo.jpeg" alt="Portrait of Dario Bocchi" class="portrait">
+  <div class="about-text">
+    <p>I'm a theoretical physicist working where <strong>statistical mechanics</strong> meets
+    <strong>machine learning</strong>. I use tools from the physics of disordered systems and random
+    matrix theory to understand how neural networks learn: the geometry of their loss landscapes,
+    the dynamics and implicit biases of gradient descent, and the origin of neural scaling laws.</p>
+    <p>I'm completing my PhD at Sapienza University of Rome, and I will soon join the
+    <strong>École Normale Supérieure</strong> in Paris as a postdoctoral researcher.</p>
+    <div class="about-actions">
+      <a class="btn-min btn-solid" href="bocchi_CV.pdf" target="_blank"><i class="bi bi-file-earmark-person"></i> CV</a>
+      <a class="btn-min" href="https://scholar.google.com/citations?user=LQc7rbIAAAAJ" target="_blank" rel="noopener"><i class="bi bi-mortarboard"></i> Scholar</a>
+      <a class="btn-min" href="mailto:bocchi.dario@gmail.com"><i class="bi bi-envelope"></i> Email</a>
+    </div>
+  </div>
+</section>
+
+<h2 class="sec">Path</h2>
+
+<div class="tl-legend" aria-hidden="true">
+  <span><i style="--c: var(--c-next)"></i>Next</span>
+  <span><i style="--c: var(--c-milestone)"></i>Milestones</span>
+  <span><i style="--c: var(--c-research)"></i>Research</span>
+  <span><i style="--c: var(--c-edu)"></i>Education</span>
+</div>
+
+<ol class="timeline">
+  <li class="tl tl-next">
+    <div class="tl-when">Next</div>
+    <div class="tl-dot"></div>
+    <div class="tl-body">
+      <div class="tl-title">Postdoctoral researcher</div>
+      <div class="tl-org">École Normale Supérieure · Paris</div>
+    </div>
+  </li>
+  <li class="tl tl-milestone">
+    <div class="tl-when">Apr 2026</div>
+    <div class="tl-dot"></div>
+    <div class="tl-body">
+      <div class="tl-title">Oral at ICLR 2026</div>
+      <div class="tl-org">Rio de Janeiro</div>
+      <p class="tl-desc"><a href="https://iclr.cc/virtual/2026/oral/10006659" target="_blank" rel="noopener">Overparametrization bends the landscape</a>, plus a poster on neural scaling laws.</p>
+    </div>
+  </li>
+  <li class="tl tl-milestone">
+    <div class="tl-when">2026</div>
+    <div class="tl-dot"></div>
+    <div class="tl-body">
+      <div class="tl-title">RAPTOR project funded</div>
+      <div class="tl-org">Sapienza · “Avvio alla ricerca”</div>
+      <p class="tl-desc">Random-matrix Applications and Theory of neural networks in the Overparameterized Regime.</p>
+    </div>
+  </li>
+  <li class="tl tl-research">
+    <div class="tl-when">2023 – 2026</div>
+    <div class="tl-dot"></div>
+    <div class="tl-body">
+      <div class="tl-title">PhD in Theoretical Physics</div>
+      <div class="tl-org">Sapienza University of Rome</div>
+      <p class="tl-desc">Statistical mechanics of learning: BBP transitions, loss landscapes, SGD dynamics, associative memories.</p>
+    </div>
+  </li>
+  <li class="tl tl-edu">
+    <div class="tl-when">2021 – 2023</div>
+    <div class="tl-dot"></div>
+    <div class="tl-body">
+      <div class="tl-title">MSc in Theoretical Physics</div>
+      <div class="tl-org">Sapienza University of Rome</div>
+      <p class="tl-desc">110/110 cum laude · Excellence track. Thesis: <em>Beyond Hopfield models: from structured synthetic datasets to real images</em>.</p>
+    </div>
+  </li>
+  <li class="tl tl-research">
+    <div class="tl-when">2021</div>
+    <div class="tl-dot"></div>
+    <div class="tl-body">
+      <div class="tl-title">Research internship</div>
+      <div class="tl-org">INFN · Turin</div>
+      <p class="tl-desc">Machine learning analysis of Fermi-LAT telescope data.</p>
+    </div>
+  </li>
+  <li class="tl tl-edu">
+    <div class="tl-when">2018 – 2021</div>
+    <div class="tl-dot"></div>
+    <div class="tl-body">
+      <div class="tl-title">BSc in Physics</div>
+      <div class="tl-org">University of Turin</div>
+      <p class="tl-desc">110/110 cum laude. Thesis: <em>Unsupervised machine learning techniques for cosmic electron selection in Fermi-LAT data</em>.</p>
+    </div>
+  </li>
+  <li class="tl tl-early">
+    <div class="tl-when">2013 – 2018</div>
+    <div class="tl-dot"></div>
+    <div class="tl-body">
+      <div class="tl-title">Liceo Scientifico “Galileo Ferraris”</div>
+      <div class="tl-org">Turin</div>
+      <p class="tl-desc">Math Olympiad national finalist, 2016 – 2018.</p>
+    </div>
+  </li>
+</ol>
+
+<h2 class="sec">Selected research</h2>
+<div id="listing-featured" class="quarto-listing quarto-listing-container-custom">
+
+<div class="featured">
+
+<a class="feat" href="https://arxiv.org/abs/2604.27992" target="_blank" rel="noopener">
+<div class="pub-head">
+<span class="pub-venue pub-venue-preprint">arXiv:2604.27992</span>
+
+</div>
+<div class="feat-title">Discontinuous BBP transitions</div>
+<div class="pub-authors"><span class="me">Dario Bocchi</span>, Giulio Biroli, Chiara Cammarota, Federico Ricci-Tersenghi</div>
+<i class="bi bi-arrow-up-right feat-arrow"></i>
+</a>
+
+<a class="feat" href="https://openreview.net/forum?id=xDLE5n3x9Y" target="_blank" rel="noopener">
+<div class="pub-head">
+<span class="pub-venue pub-venue-conference">ICLR 2026</span>
+<span class="pub-badge"><i class="bi bi-star-fill"></i> Oral</span>
+</div>
+<div class="feat-title">Overparametrization bends the landscape: BBP transitions at initialization in simple Neural Networks</div>
+<div class="pub-authors">Brandon Livio Annesi, <span class="me">Dario Bocchi</span>, Chiara Cammarota</div>
+<i class="bi bi-arrow-up-right feat-arrow"></i>
+</a>
+
+<a class="feat" href="https://openreview.net/forum?id=qBAV2DEvAC" target="_blank" rel="noopener">
+<div class="pub-head">
+<span class="pub-venue pub-venue-conference">ICLR 2026</span>
+
+</div>
+<div class="feat-title">Implicit bias produces neural scaling laws in learning curves, from perceptrons to deep networks</div>
+<div class="pub-authors">Francesco D'Amico, <span class="me">Dario Bocchi</span>, Matteo Negri</div>
+<i class="bi bi-arrow-up-right feat-arrow"></i>
+</a>
+
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
+<p class="more"><a href="papers.html">All publications <i class="bi bi-arrow-right"></i></a></p>
+
+<h2 class="sec">News</h2>
+
+<ul class="news">
+  <li><span class="news-when">Oct 2026</span><span>New preprint: <a href="https://arxiv.org/abs/2610.32788" target="_blank" rel="noopener">Generalization properties of the token perceptron</a>, on how the geometry of token embeddings shapes learning.</span></li>
+  <li><span class="news-when">Jun 2026</span><span>New preprint: <a href="https://arxiv.org/abs/2606.28486" target="_blank" rel="noopener">Spectral phase transitions and trainability in neural network learning dynamics</a>.</span></li>
+  <li><span class="news-when">Jun 2026</span><span>At the Beg Rohu Summer School on optimization and control of nonequilibrium systems.</span></li>
+  <li><span class="news-when">Apr 2026</span><span>Two papers at <strong>ICLR 2026</strong> in Rio de Janeiro, one selected for an <a href="https://iclr.cc/virtual/2026/oral/10006659" target="_blank" rel="noopener">Oral</a>.</span></li>
+  <li><span class="news-when">Apr 2026</span><span>Two new preprints: <a href="https://arxiv.org/abs/2604.27992" target="_blank" rel="noopener">Discontinuous BBP transitions</a> and <a href="https://arxiv.org/abs/2604.03068" target="_blank" rel="noopener">Escape dynamics of one-pass SGD</a>.</span></li>
+  <li><span class="news-when">Jan 2026</span><span>Contributed talk at the 4th Workshop of the UMI group “Mathematics for AI and Machine Learning”.</span></li>
 </ul>
-</section>
-<section id="recent-news" class="level2">
-<h2 class="anchored" data-anchor-id="recent-news">Recent News</h2>
-<ul>
-<li><strong>Dec 2025:</strong> I will present a contributed talk at the 4th Workshop of the UMI Group “Mathematics for Artificial Intelligence and Machine Learning” in January 2026!</li>
-</ul>
 
 
-</section>
-</div>
+
 
 </main> <!-- /main -->
-<canvas id="lifeCanvas"></canvas>
-
-<style>
-  /* Fix the canvas to the background */
-  #lifeCanvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1; /* Puts it behind everything */
-    opacity: 0.3; /* Makes it subtle */
-    pointer-events: none; /* Lets clicks pass through to your links */
-  }
-</style>
-
-<script>
-  const canvas = document.getElementById('lifeCanvas');
-  const ctx = canvas.getContext('2d');
-  
-  let width, height, columns, rows;
-  const cellSize = 20; 
-  let grid, nextGrid;
-  
-  // Track the width to ignore vertical-only resizes (mobile scrolling)
-  let lastWidth = window.innerWidth; 
-
-  function initGrid() {
-    grid = new Array(columns).fill(null).map(() => new Array(rows).fill(0));
-    nextGrid = new Array(columns).fill(null).map(() => new Array(rows).fill(0));
-    
-    for (let i = 0; i < columns; i++) {
-      for (let j = 0; j < rows; j++) {
-        grid[i][j] = Math.random() > 0.85 ? 1 : 0; 
-      }
-    }
-  }
-
-  function resize() {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
-    columns = Math.floor(width / cellSize);
-    rows = Math.floor(height / cellSize);
-    initGrid();
-  }
-
-  function draw() {
-    ctx.fillStyle = '#ffffff'; 
-    ctx.fillRect(0, 0, width, height);
-    
-    // Your preferred opacity
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.10)';
-    for (let i = 0; i < columns; i++) {
-      for (let j = 0; j < rows; j++) {
-        if (grid[i][j] === 1) {
-          ctx.fillRect(i * cellSize, j * cellSize, cellSize - 1, cellSize - 1);
-        }
-      }
-    }
-  }
-
-  function update() {
-    for (let x = 0; x < columns; x++) {
-      for (let y = 0; y < rows; y++) {
-        let neighbors = 0;
-        for (let i = -1; i <= 1; i++) {
-          for (let j = -1; j <= 1; j++) {
-            if (i === 0 && j === 0) continue;
-            const col = (x + i + columns) % columns;
-            const row = (y + j + rows) % rows;
-            neighbors += grid[col][row];
-          }
-        }
-        if (grid[x][y] === 1 && (neighbors < 2 || neighbors > 3)) nextGrid[x][y] = 0;
-        else if (grid[x][y] === 0 && neighbors === 3) nextGrid[x][y] = 1;
-        else nextGrid[x][y] = grid[x][y];
-      }
-    }
-    let temp = grid;
-    grid = nextGrid;
-    nextGrid = temp;
-  }
-
-  const tickDelay = 200; 
-
-  function loop() {
-    setTimeout(() => {
-        draw();
-        update();
-        requestAnimationFrame(loop);
-    }, tickDelay);
-  }
-
-  // --- THE FIX IS HERE ---
-  // Instead of passing resize directly, we check if width changed
-  window.addEventListener('resize', () => {
-      // If width is different, it means we rotated phone or resized desktop window
-      if (window.innerWidth !== lastWidth) {
-          lastWidth = window.innerWidth;
-          resize();
-      }
-      // If only height changed (scrolling), do nothing!
-  });
-
-  // Initial setup
-  resize();
-  loop();
-</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     
@@ -432,7 +625,7 @@ background-size: cover;
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/dr-bocchi\.github\.io\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -760,8 +953,23 @@ background-size: cover;
   });
   </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Dario Bocchi</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Rome → Paris</p>
+</div>
+  </div>
+</footer>
+<script src="assets/site.js"></script>
 
 
 
 
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

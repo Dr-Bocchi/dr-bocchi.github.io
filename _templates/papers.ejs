@@ -1,0 +1,35 @@
+```{=html}
+<%
+const esc = s => String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const me = s => esc(s).replace('Dario Bocchi', '<span class="me">Dario Bocchi</span>');
+const kinds = [['all','All'],['conference','Conference'],['journal','Journal'],['preprint','Preprint']];
+const count = k => k === 'all' ? items.length : items.filter(i => i.kind === k).length;
+%>
+<div class="pub-filters" role="group" aria-label="Filter publications">
+<% for (const [k, label] of kinds) { if (count(k) === 0) continue; %>
+<button type="button" class="chip<%= k === 'all' ? ' active' : '' %>" data-filter="<%= k %>" aria-pressed="<%= k === 'all' ? 'true' : 'false' %>"><%= label %> <span class="chip-n"><%= count(k) %></span></button>
+<% } %>
+</div>
+<div class="pub-list">
+<% let last = null; for (const item of items) { if (item.year !== last) { last = item.year; %>
+<div class="pub-year" data-year="<%= item.year %>"><%= item.year %></div>
+<% } %>
+<article class="pub" data-kind="<%= esc(item.kind) %>" data-year="<%= item.year %>">
+<div class="pub-head">
+<span class="pub-venue pub-venue-<%= esc(item.kind) %>"><%= esc(item.venue) %></span>
+<% if (item.badge) { %><span class="pub-badge"><i class="bi bi-star-fill"></i> <%= esc(item.badge) %></span><% } %>
+</div>
+<a class="pub-title" href="<%= esc(item.url) %>" target="_blank" rel="noopener"><%= esc(item.title) %></a>
+<div class="pub-authors"><%= me(item.authors) %></div>
+<% if (item.venue_long) { %><div class="pub-venue-long"><%= esc(item.venue_long) %>, <%= item.year %></div><% } %>
+<div class="pub-links">
+<% for (const l of (item.links || [])) { %><a class="pill" href="<%= esc(l.url) %>" target="_blank" rel="noopener"><i class="bi bi-<%= esc(l.icon) %>"></i> <%= esc(l.label) %></a><% } %>
+<% if (item.abstract) { %><button type="button" class="pill pill-toggle" data-toggle="abs" aria-expanded="false"><i class="bi bi-text-paragraph"></i> Abstract</button><% } %>
+<% if (item.bibtex) { %><button type="button" class="pill pill-toggle" data-toggle="bib" aria-expanded="false"><i class="bi bi-quote"></i> BibTeX</button><% } %>
+</div>
+<% if (item.abstract) { %><div class="pub-drawer" data-drawer="abs" hidden><p><%= esc(item.abstract) %></p></div><% } %>
+<% if (item.bibtex) { %><div class="pub-drawer" data-drawer="bib" hidden><button type="button" class="copy-btn" aria-label="Copy BibTeX"><i class="bi bi-clipboard"></i> Copy</button><pre><code><%= esc(item.bibtex) %></code></pre></div><% } %>
+</article>
+<% } %>
+</div>
+```
