@@ -3,8 +3,8 @@
 
    The eigenvalues of a slowly evolving random symmetric matrix, traced over
    time. They repel each other and never cross (level repulsion), fanning out
-   from a single point, then weaving on forever. At the head, the eigenvalues
-   pile up into Wigner's semicircle, drawn as a stippled density.
+   from a single point, then weaving on forever. On the right, the current
+   spectrum is drawn as a column of spectral lines; the curves are its trail.
 
    Implementation: a GOE matrix in tridiagonal (Dumitriu–Edelman) form whose
    underlying Gaussians follow an Ornstein–Uhlenbeck process, started from
@@ -90,25 +90,10 @@
   var hist = [];           // sorted spectra, newest last
   var cap = 0;
 
-  // time-averaged density on the eigenvalue axis (starts at the semicircle,
-  // then follows the live spectrum once the flow has left the zero matrix)
-  var BINS = 44, BMIN = -2.2, BMAX = 2.2, BW = (BMAX - BMIN) / BINS;
-  var dens = new Float64Array(BINS), pushes = 0;
-  for (i = 0; i < BINS; i++) {
-    var lc = BMIN + (i + 0.5) * BW;
-    dens[i] = Math.sqrt(Math.max(0, 4 - lc * lc)) / (2 * Math.PI);
-  }
-
   function push() {
     evolve(RHO);
-    var sp = spectrum();
-    hist.push(sp);
+    hist.push(spectrum());
     if (hist.length > cap) hist.shift();
-    if (++pushes > 300) {
-      var cnt = new Float64Array(BINS), k, b;
-      for (k = 0; k < N; k++) { b = Math.floor((sp[k] - BMIN) / BW); if (b >= 0 && b < BINS) cnt[b]++; }
-      for (b = 0; b < BINS; b++) dens[b] += 0.004 * (cnt[b] / (N * BW) - dens[b]);
-    }
   }
 
   /* ---------------- layout & colours ---------------- */
@@ -129,45 +114,36 @@
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     var narrow = W < 640;
     Lay = narrow
-      ? { x0: 0, x1: W - 62, cy: H - 90, amp: 64, semW: 46, fadeFrom: 0, fadeTo: W * 0.45 }
-      : { x0: W * 0.50, x1: W - 92, cy: H * 0.5, amp: H * 0.36, semW: 74, fadeFrom: W * 0.53, fadeTo: W * 0.84 };
+      ? { x0: 0, x1: W - 40, cy: H - 90, amp: 64, specW: 26, fadeFrom: 0, fadeTo: W * 0.45 }
+      : { x0: W * 0.50, x1: W - 52, cy: H * 0.5, amp: H * 0.36, specW: 34, fadeFrom: W * 0.53, fadeTo: W * 0.86 };
     cap = Math.ceil((Lay.x1 - Lay.x0) / STEP) + 2;
     while (hist.length > cap) hist.shift();
   }
 
   /* ---------------- drawing ---------------- */
+  function Y(l) { return Lay.cy - l / 2 * Lay.amp; }
+
   function draw(frac) {
     ctx.clearRect(0, 0, W, H);
     var n = hist.length;
     if (n < 2) return;
-    var xHead = Lay.x1, k, j, x, y, top = N - 1;
+    var xHead = Lay.x1, k, j, x, top = N - 1;
 
-    // worldlines
+    // trails: the history of each eigenvalue, newest point pinned at the head
     ctx.lineJoin = "round";
     for (k = 0; k < N; k++) {
-      var edge = k === 0;
       ctx.strokeStyle = k === top ? colors.hot : colors.fg;
-      ctx.globalAlpha = k === top ? 0.9 : (edge ? 0.45 : 0.26);
-      ctx.lineWidth = k === top ? 1.6 : 1;
+      ctx.globalAlpha = k === top ? 0.85 : (k === 0 ? 0.42 : 0.24);
+      ctx.lineWidth = k === top ? 1.5 : 1;
       ctx.beginPath();
       for (j = 0; j < n; j++) {
-        x = xHead - (n - 1 - j + frac) * STEP;
-        y = Lay.cy - hist[j][k] / 2 * Lay.amp;
-        if (j === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+        x = j === n - 1 ? xHead : xHead - (n - 1 - j + frac) * STEP;
+        if (j === 0) ctx.moveTo(x, Y(hist[j][k])); else ctx.lineTo(x, Y(hist[j][k]));
       }
       ctx.stroke();
     }
 
-    // current spectrum: a column of dots at the head
-    var last = hist[n - 1];
-    for (k = 0; k < N; k++) {
-      y = Lay.cy - last[k] / 2 * Lay.amp;
-      ctx.globalAlpha = k === top ? 1 : 0.7;
-      ctx.fillStyle = k === top ? colors.hot : colors.fg;
-      ctx.beginPath(); ctx.arc(xHead - frac * STEP, y, k === top ? 2.6 : 1.6, 0, 6.2832); ctx.fill();
-    }
-
-    // fade the trail out towards the left
+    // fade the trails out towards the left
     ctx.globalAlpha = 1;
     ctx.globalCompositeOperation = "destination-in";
     var g = ctx.createLinearGradient(Lay.fadeFrom, 0, Lay.fadeTo, 0);
@@ -177,33 +153,16 @@
     ctx.fillRect(0, 0, W, H);
     ctx.globalCompositeOperation = "source-over";
 
-    drawSemicircle(xHead + 9);
-  }
-
-  // stippled eigenvalue density at the head, plus a hairline semicircle
-  function drawSemicircle(xs) {
-    var b, k, y, n;
-    var maxDots = Math.floor(Lay.semW / 4.6);
-    ctx.fillStyle = colors.fg;
-    for (b = 0; b < BINS; b++) {
-      y = Lay.cy - (BMIN + (b + 0.5) * BW) / 2 * Lay.amp;
-      n = Math.min(maxDots + 2, Math.round(dens[b] * Math.PI * maxDots));
-      for (k = 0; k < n; k++) {
-        ctx.globalAlpha = 0.5 - 0.32 * k / (maxDots + 1);
-        ctx.beginPath(); ctx.arc(xs + k * 4.6, y, 1.25, 0, 6.2832); ctx.fill();
-      }
+    // the current spectrum: one short spectral line per eigenvalue
+    var last = hist[n - 1], xs = xHead + 4, y;
+    ctx.lineCap = "round";
+    for (k = 0; k < N; k++) {
+      y = Math.round(Y(last[k])) + 0.5;
+      ctx.strokeStyle = k === top ? colors.hot : colors.fg;
+      ctx.globalAlpha = k === top ? 1 : 0.62;
+      ctx.lineWidth = k === top ? 2 : 1.3;
+      ctx.beginPath(); ctx.moveTo(xs, y); ctx.lineTo(xs + Lay.specW, y); ctx.stroke();
     }
-    ctx.globalAlpha = 0.35;
-    ctx.strokeStyle = colors.fg;
-    ctx.lineWidth = 1;
-    ctx.beginPath();
-    for (k = 0; k <= 60; k++) {
-      var l = -2 + 4 * k / 60;
-      var xx = xs + Math.sqrt(Math.max(0, 4 - l * l)) / 2 * (maxDots - 1) * 4.6;
-      y = Lay.cy - l / 2 * Lay.amp;
-      if (k === 0) ctx.moveTo(xx, y); else ctx.lineTo(xx, y);
-    }
-    ctx.stroke();
     ctx.globalAlpha = 1;
   }
 

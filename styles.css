@@ -80,8 +80,6 @@ h2.sec::after, main.content h2::after {
   background: var(--line);
 }
 
-.lede { font-size: 1.08rem; color: var(--muted); max-width: 62ch; }
-
 .more { margin-top: 1.5rem; font-size: .92rem; }
 .more a { color: var(--fg); font-weight: 500; }
 .more .bi { transition: transform .2s ease; display: inline-block; }
@@ -181,16 +179,6 @@ h2.sec::after, main.content h2::after {
 @media (max-width: 640px) {
   .about { grid-template-columns: 1fr; gap: 1.25rem; }
   .portrait { width: 112px; height: 112px; }
-}
-
-.topics { display: flex; flex-wrap: wrap; gap: .4rem; margin: 1.2rem 0 .5rem; }
-.topics span {
-  font-family: "JetBrains Mono", ui-monospace, monospace;
-  font-size: .72rem;
-  padding: .2rem .6rem;
-  border-radius: 999px;
-  background: var(--accent-soft);
-  color: var(--accent);
 }
 
 /* ---------- Timeline ---------- */
