@@ -19,7 +19,7 @@ listing:
   <li><span class="news-when">Apr 2026</span><span>ICLR 2026 · Rio de Janeiro, Brazil</span></li>
   <li><span class="news-when">Apr 2026</span><span>2nd Barcelona School of Non-Equilibrium Physics · University of Barcelona, Spain</span></li>
   <li><span class="news-when">Sep 2025</span><span>Summer school — <em>Mathematical methods for high-dimensional data</em></span></li>
-  <li><span class="news-when">Jun 2025</span><span>Beg Rohu Summer School of Physics · Saint-Pierre-Quiberon, France</span></li>
-  <li><span class="news-when">Jun 2024</span><span>Beg Rohu Summer School of Physics · Saint-Pierre-Quiberon, France</span></li>
+  <li><span class="news-when">Jun 2025</span><span>Beg Rohu Summer School — <em>Learning with Machines, Physics and Minds</em> · Saint-Pierre-Quiberon, France</span></li>
+  <li><span class="news-when">Jun 2024</span><span>Beg Rohu Summer School — <em>Concepts and Methods of Statistical Physics</em> · Saint-Pierre-Quiberon, France</span></li>
 </ul>
 ```

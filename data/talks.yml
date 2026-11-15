@@ -52,7 +52,7 @@
   kind: poster
   label: "Poster"
   title: "Implicit bias produces neural scaling laws in learning curves, from perceptrons to deep networks"
-  event: "Beg Rohu Summer School of Physics"
+  event: "Beg Rohu Summer School — Learning with Machines, Physics and Minds"
   place: "Saint-Pierre-Quiberon, France"
   links:
     - { label: Paper, url: "https://arxiv.org/abs/2505.13230", icon: file-earmark-text }
@@ -61,7 +61,7 @@
   kind: poster
   label: "Poster"
   title: "Daydreaming Hopfield networks and their surprising effectiveness on correlated data"
-  event: "Beg Rohu Summer School of Physics"
+  event: "Beg Rohu Summer School — Concepts and Methods of Statistical Physics"
   place: "Saint-Pierre-Quiberon, France"
   links:
     - { label: Paper, url: "https://doi.org/10.1016/j.neunet.2025.107216", icon: file-earmark-text }
