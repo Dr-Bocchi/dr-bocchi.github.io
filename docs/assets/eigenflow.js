@@ -3,8 +3,8 @@
 
    The eigenvalues of a slowly evolving random symmetric matrix, traced over
    time. They repel each other and never cross (level repulsion), fanning out
-   from a single point, then weaving on forever. On the right, the current
-   spectrum is drawn as a column of spectral lines; the curves are its trail.
+   from a single point, then weaving on forever. The dots on the right are the
+   current spectrum; the curves behind them are its trail.
 
    Implementation: a GOE matrix in tridiagonal (Dumitriu–Edelman) form whose
    underlying Gaussians follow an Ornstein–Uhlenbeck process, started from
@@ -114,8 +114,8 @@
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     var narrow = W < 640;
     Lay = narrow
-      ? { x0: 0, x1: W - 40, cy: H - 90, amp: 64, specW: 26, fadeFrom: 0, fadeTo: W * 0.45 }
-      : { x0: W * 0.50, x1: W - 52, cy: H * 0.5, amp: H * 0.36, specW: 34, fadeFrom: W * 0.53, fadeTo: W * 0.86 };
+      ? { x0: 0, x1: W - 12, cy: H - 90, amp: 64, fadeFrom: 0, fadeTo: W * 0.45 }
+      : { x0: W * 0.50, x1: W - 16, cy: H * 0.5, amp: H * 0.36, fadeFrom: W * 0.53, fadeTo: W * 0.86 };
     cap = Math.ceil((Lay.x1 - Lay.x0) / STEP) + 2;
     while (hist.length > cap) hist.shift();
   }
@@ -153,15 +153,21 @@
     ctx.fillRect(0, 0, W, H);
     ctx.globalCompositeOperation = "source-over";
 
-    // the current spectrum: one short spectral line per eigenvalue
-    var last = hist[n - 1], xs = xHead + 4, y;
-    ctx.lineCap = "round";
+    // the current spectrum: a column of dots at the head of the trails
+    var last = hist[n - 1], y;
     for (k = 0; k < N; k++) {
-      y = Math.round(Y(last[k])) + 0.5;
-      ctx.strokeStyle = k === top ? colors.hot : colors.fg;
-      ctx.globalAlpha = k === top ? 1 : 0.62;
-      ctx.lineWidth = k === top ? 2 : 1.3;
-      ctx.beginPath(); ctx.moveTo(xs, y); ctx.lineTo(xs + Lay.specW, y); ctx.stroke();
+      y = Y(last[k]);
+      if (k === top) {
+        ctx.fillStyle = colors.hot;
+        ctx.globalAlpha = 0.18;
+        ctx.beginPath(); ctx.arc(xHead, y, 7, 0, 6.2832); ctx.fill();
+        ctx.globalAlpha = 1;
+        ctx.beginPath(); ctx.arc(xHead, y, 3.2, 0, 6.2832); ctx.fill();
+      } else {
+        ctx.fillStyle = colors.fg;
+        ctx.globalAlpha = 0.78;
+        ctx.beginPath(); ctx.arc(xHead, y, 2.1, 0, 6.2832); ctx.fill();
+      }
     }
     ctx.globalAlpha = 1;
   }
