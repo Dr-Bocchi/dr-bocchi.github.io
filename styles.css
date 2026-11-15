@@ -179,7 +179,7 @@ h2.sec::after, main.content h2::after {
 
 @media (max-width: 640px) {
   .about { grid-template-columns: 1fr; gap: 1.25rem; }
-  .portrait { width: 112px; height: 112px; }
+  .portrait { width: 132px; height: 132px; justify-self: center; }
 }
 
 /* ---------- Timeline ---------- */
