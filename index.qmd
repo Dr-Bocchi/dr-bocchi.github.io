@@ -101,6 +101,7 @@ listing:
 <h2 class="sec">News</h2>
 
 <ul class="news">
+  <li><span class="news-when">Nov 2026</span><span><a href="https://doi.org/10.1088/2632-2153/aeb5a0" target="_blank" rel="noopener">Escape dynamics and implicit bias of one-pass SGD</a> published in <em>Machine Learning: Science and Technology</em>.</span></li>
   <li><span class="news-when">Oct 2026</span><span>New preprint: <a href="https://arxiv.org/abs/2610.32788" target="_blank" rel="noopener">Generalization properties of the token perceptron</a>, on how the geometry of token embeddings shapes learning.</span></li>
   <li><span class="news-when">Jun 2026</span><span>New preprint: <a href="https://arxiv.org/abs/2606.28486" target="_blank" rel="noopener">Spectral phase transitions and trainability in neural network learning dynamics</a>.</span></li>
   <li><span class="news-when">Jun 2026</span><span>At the Beg Rohu Summer School on optimization and control of nonequilibrium systems.</span></li>

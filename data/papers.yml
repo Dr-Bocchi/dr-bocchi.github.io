@@ -102,12 +102,13 @@
 - title: "Escape dynamics and implicit bias of one-pass SGD in overparameterized quadratic networks"
   authors: "Dario Bocchi, Theotime Regimbeau, Carlo Lucibello, Luca Saglietti, Chiara Cammarota"
   year: 2026
-  kind: preprint
-  venue: "arXiv:2604.03068"
-  url: https://arxiv.org/abs/2604.03068
+  kind: journal
+  venue: "Mach. Learn.: Sci. Technol."
+  venue_long: "Machine Learning: Science and Technology 7, 065011"
+  url: https://doi.org/10.1088/2632-2153/aeb5a0
   links:
+    - { label: DOI, url: "https://doi.org/10.1088/2632-2153/aeb5a0", icon: link-45deg }
     - { label: arXiv, url: "https://arxiv.org/abs/2604.03068", icon: file-earmark-text }
-    - { label: PDF, url: "https://arxiv.org/pdf/2604.03068", icon: file-earmark-pdf }
   abstract: >-
     We analyze the one-pass stochastic gradient descent dynamics of a two-layer neural network with quadratic
     activations in a teacher–student framework. In the high-dimensional regime, where the input dimension N and the
@@ -125,8 +126,12 @@
     @article{bocchi2026escape,
       title={Escape dynamics and implicit bias of one-pass {SGD} in overparameterized quadratic networks},
       author={Bocchi, Dario and Regimbeau, Theotime and Lucibello, Carlo and Saglietti, Luca and Cammarota, Chiara},
-      journal={arXiv preprint arXiv:2604.03068},
-      year={2026}
+      journal={Machine Learning: Science and Technology},
+      volume={7},
+      number={6},
+      pages={065011},
+      year={2026},
+      doi={10.1088/2632-2153/aeb5a0}
     }
 
 - title: "Overparametrization bends the landscape: BBP transitions at initialization in simple Neural Networks"
