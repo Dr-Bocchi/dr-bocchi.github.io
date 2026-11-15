@@ -23,7 +23,7 @@ listing:
       <span class="next-dot"></span>Incoming postdoc · ENS Paris</p>
   </div>
 </section>
-<script src="assets/eigenflow.js" defer></script>
+<script src="assets/eigenflow.js?v=3" defer></script>
 
 <section class="about">
   <img src="photo.jpeg" alt="Portrait of Dario Bocchi" class="portrait">
@@ -59,6 +59,7 @@ listing:
     <div class="tl-body">
       <div class="tl-title">PhD in Theoretical Physics</div>
       <div class="tl-org">Sapienza University of Rome</div>
+      <div class="tl-thesis">Loss Landscape Instabilities and the Emergence of Weight Structure in Neural Network Training</div>
     </div>
   </li>
   <li class="tl tl-msc">

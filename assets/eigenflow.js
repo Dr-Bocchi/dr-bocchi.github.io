@@ -3,7 +3,8 @@
 
    The eigenvalues of a slowly evolving random symmetric matrix, traced over
    time. They repel each other and never cross (level repulsion), fanning out
-   from a single point into a semicircle-shaped band, then weaving on forever.
+   from a single point, then weaving on forever. At the head, the eigenvalues
+   pile up into Wigner's semicircle, drawn as a stippled density.
 
    Implementation: a GOE matrix in tridiagonal (Dumitriu–Edelman) form whose
    underlying Gaussians follow an Ornstein–Uhlenbeck process, started from
@@ -89,10 +90,25 @@
   var hist = [];           // sorted spectra, newest last
   var cap = 0;
 
+  // time-averaged density on the eigenvalue axis (starts at the semicircle,
+  // then follows the live spectrum once the flow has left the zero matrix)
+  var BINS = 44, BMIN = -2.2, BMAX = 2.2, BW = (BMAX - BMIN) / BINS;
+  var dens = new Float64Array(BINS), pushes = 0;
+  for (i = 0; i < BINS; i++) {
+    var lc = BMIN + (i + 0.5) * BW;
+    dens[i] = Math.sqrt(Math.max(0, 4 - lc * lc)) / (2 * Math.PI);
+  }
+
   function push() {
     evolve(RHO);
-    hist.push(spectrum());
+    var sp = spectrum();
+    hist.push(sp);
     if (hist.length > cap) hist.shift();
+    if (++pushes > 300) {
+      var cnt = new Float64Array(BINS), k, b;
+      for (k = 0; k < N; k++) { b = Math.floor((sp[k] - BMIN) / BW); if (b >= 0 && b < BINS) cnt[b]++; }
+      for (b = 0; b < BINS; b++) dens[b] += 0.004 * (cnt[b] / (N * BW) - dens[b]);
+    }
   }
 
   /* ---------------- layout & colours ---------------- */
@@ -113,8 +129,8 @@
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     var narrow = W < 640;
     Lay = narrow
-      ? { x0: 0, x1: W - 10, cy: H - 90, amp: 64, fadeFrom: 0, fadeTo: W * 0.45 }
-      : { x0: W * 0.50, x1: W - 14, cy: H * 0.5, amp: H * 0.36, fadeFrom: W * 0.52, fadeTo: W * 0.9 };
+      ? { x0: 0, x1: W - 62, cy: H - 90, amp: 64, semW: 46, fadeFrom: 0, fadeTo: W * 0.45 }
+      : { x0: W * 0.50, x1: W - 92, cy: H * 0.5, amp: H * 0.36, semW: 74, fadeFrom: W * 0.53, fadeTo: W * 0.84 };
     cap = Math.ceil((Lay.x1 - Lay.x0) / STEP) + 2;
     while (hist.length > cap) hist.shift();
   }
@@ -160,6 +176,35 @@
     ctx.fillStyle = g;
     ctx.fillRect(0, 0, W, H);
     ctx.globalCompositeOperation = "source-over";
+
+    drawSemicircle(xHead + 9);
+  }
+
+  // stippled eigenvalue density at the head, plus a hairline semicircle
+  function drawSemicircle(xs) {
+    var b, k, y, n;
+    var maxDots = Math.floor(Lay.semW / 4.6);
+    ctx.fillStyle = colors.fg;
+    for (b = 0; b < BINS; b++) {
+      y = Lay.cy - (BMIN + (b + 0.5) * BW) / 2 * Lay.amp;
+      n = Math.min(maxDots + 2, Math.round(dens[b] * Math.PI * maxDots));
+      for (k = 0; k < n; k++) {
+        ctx.globalAlpha = 0.5 - 0.32 * k / (maxDots + 1);
+        ctx.beginPath(); ctx.arc(xs + k * 4.6, y, 1.25, 0, 6.2832); ctx.fill();
+      }
+    }
+    ctx.globalAlpha = 0.35;
+    ctx.strokeStyle = colors.fg;
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    for (k = 0; k <= 60; k++) {
+      var l = -2 + 4 * k / 60;
+      var xx = xs + Math.sqrt(Math.max(0, 4 - l * l)) / 2 * (maxDots - 1) * 4.6;
+      y = Lay.cy - l / 2 * Lay.amp;
+      if (k === 0) ctx.moveTo(xx, y); else ctx.lineTo(xx, y);
+    }
+    ctx.stroke();
+    ctx.globalAlpha = 1;
   }
 
   /* ---------------- loop ---------------- */

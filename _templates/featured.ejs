@@ -1,20 +1,16 @@
 ```{=html}
 <%
 const esc = s => String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-const me = s => esc(s).replace('Dario Bocchi', '<span class="me">Dario Bocchi</span>');
 %>
-<div class="featured">
+<ul class="featured">
 <% for (const item of items) { %>
-<a class="feat" href="<%= esc(item.url) %>" target="_blank" rel="noopener">
-<% if (item.image) { %><div class="feat-img"><img src="<%= esc(item.image) %>" alt="Figure from “<%= esc(item.title) %>”" loading="lazy"></div><% } %>
+<li class="feat">
+<% if (item.logo) { %><img class="venue-logo venue-logo-lg" src="images/venues/<%= esc(item.logo) %>.png" alt="" aria-hidden="true"><% } %>
 <div class="feat-text">
-<div class="pub-head">
-<span class="pub-venue pub-venue-<%= esc(item.kind) %>"><%= esc(item.venue) %></span>
-<% if (item.badge) { %><span class="pub-badge"><i class="bi bi-star-fill"></i> <%= esc(item.badge) %></span><% } %>
+<a class="feat-title" href="<%= esc(item.url) %>" target="_blank" rel="noopener"><%= esc(item.title) %></a>
+<div class="feat-meta"><%= esc(item.venue_long ? item.venue_long.split(' ').slice(0, 99).join(' ') : item.venue) %><% if (item.venue_long) { %>, <%= item.year %><% } %><% if (item.badge) { %> <span class="pub-badge"><i class="bi bi-star-fill"></i> <%= esc(item.badge) %></span><% } %></div>
 </div>
-<div class="feat-title"><%= esc(item.title) %></div>
-</div>
-</a>
+</li>
 <% } %>
-</div>
+</ul>
 ```

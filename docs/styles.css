@@ -29,9 +29,10 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1px; }
   box-shadow: none !important;
 }
 .navbar .navbar-title {
-  font-family: "Instrument Serif", Georgia, serif;
-  font-size: 1.45rem;
-  letter-spacing: 0;
+  font-family: "Space Grotesk", "Inter", system-ui, sans-serif;
+  font-size: 1.12rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
   color: var(--fg) !important;
 }
 .navbar .nav-link {
@@ -50,10 +51,10 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1px; }
 #title-block-header .description,
 #title-block-header .quarto-title-meta { display: none; }
 h1.title {
-  font-family: "Instrument Serif", Georgia, serif;
-  font-weight: 400;
-  font-size: clamp(2.6rem, 6vw, 3.6rem);
-  letter-spacing: -0.01em;
+  font-family: "Space Grotesk", "Inter", system-ui, sans-serif;
+  font-weight: 600;
+  font-size: clamp(2.3rem, 5.5vw, 3.1rem);
+  letter-spacing: -0.035em;
   line-height: 1.05;
 }
 
@@ -105,7 +106,7 @@ h2.sec::after, main.content h2::after {
   cursor: ew-resize;
   touch-action: pan-y;
 }
-.hero-text { max-width: 21rem; pointer-events: none; }
+.hero-text { max-width: 25rem; pointer-events: none; }
 .eyebrow {
   font-family: "JetBrains Mono", ui-monospace, monospace;
   font-size: .76rem;
@@ -116,11 +117,11 @@ h2.sec::after, main.content h2::after {
 }
 .eyebrow .x { color: var(--accent); }
 .hero-name {
-  font-family: "Instrument Serif", Georgia, serif;
-  font-weight: 400;
-  font-size: clamp(3.2rem, 8vw, 4.6rem);
-  line-height: .98;
-  letter-spacing: -0.015em;
+  font-family: "Space Grotesk", "Inter", system-ui, sans-serif;
+  font-weight: 600;
+  font-size: clamp(2.6rem, 6.4vw, 3.5rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
   margin: 0 0 1rem;
   border: 0;
   padding: 0;
@@ -314,57 +315,29 @@ h2.sec::after, main.content h2::after {
 }
 
 /* ---------- Featured papers (home) ---------- */
-.featured {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-}
+.featured { list-style: none; padding: 0; margin: 0; }
 .feat {
-  display: flex;
-  flex-direction: column;
-  gap: .7rem;
-  color: var(--fg) !important;
-  text-decoration: none !important;
+  display: grid;
+  grid-template-columns: 26px 1fr;
+  gap: .9rem;
+  align-items: start;
+  padding: .8rem 0;
+  border-bottom: 1px dashed var(--line);
 }
-.feat-img {
-  aspect-ratio: 4 / 3;
-  border-radius: 10px;
-  overflow: hidden;
-  background: #fff;
-  border: 1px solid var(--line);
-  transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease;
-}
-.feat-img img {
-  width: 100%;
-  height: 100%;
+.feat:last-child { border-bottom: 0; }
+.feat-title { display: block; font-weight: 600; line-height: 1.4; color: var(--fg) !important; }
+.feat-meta { font-size: .86rem; color: var(--muted); margin-top: .15rem; display: flex; align-items: center; flex-wrap: wrap; gap: .45rem; }
+
+/* venue icons */
+.venue-logo {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
   object-fit: contain;
-  padding: 8px;
-  transition: transform .5s ease;
+  flex: 0 0 auto;
 }
-.feat:hover .feat-img {
-  border-color: color-mix(in srgb, var(--fg) 30%, var(--line));
-  box-shadow: 0 10px 24px -18px rgba(0, 0, 0, .4);
-  transform: translateY(-2px);
-}
-.feat:hover .feat-img img { transform: scale(1.04); }
-.quarto-dark .feat-img { filter: brightness(.9) contrast(1.05); }
-.feat-text .pub-head { gap: .35rem; }
-.feat-title {
-  font-size: .9rem;
-  font-weight: 600;
-  line-height: 1.4;
-  margin-top: .35rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-.feat:hover .feat-title { color: var(--accent); }
-@media (max-width: 640px) {
-  .featured { grid-template-columns: 1fr; gap: .9rem; }
-  .feat { flex-direction: row; align-items: center; gap: .9rem; }
-  .feat-img { flex: 0 0 112px; }
-}
+.venue-logo-lg { width: 24px; height: 24px; border-radius: 6px; margin-top: .1rem; }
+.quarto-dark .venue-logo { background: #fff; padding: 1px; }
 
 /* ---------- Publications ---------- */
 .pub-filters { display: flex; flex-wrap: wrap; gap: .4rem; margin: 2rem 0 .5rem; }
@@ -383,8 +356,10 @@ h2.sec::after, main.content h2::after {
 .chip-n { font-family: "JetBrains Mono", monospace; font-size: .7rem; opacity: .6; margin-left: .2rem; }
 
 .pub-year {
-  font-family: "Instrument Serif", Georgia, serif;
-  font-size: 1.9rem;
+  font-family: "Space Grotesk", "Inter", system-ui, sans-serif;
+  font-size: 1.45rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
   color: var(--faint);
   margin: 2rem 0 .3rem;
   line-height: 1;

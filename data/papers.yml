@@ -1,10 +1,12 @@
 # One entry per paper, newest first. Fields:
 #   kind: conference | journal | preprint     badge: optional highlight (e.g. "Oral")
 #   featured: true -> also shown on the home page
+#   logo: arxiv | iclr | elsevier | iop  (icon in images/venues/)
 - title: "Generalization properties of the token perceptron: the role of embedding and vocabulary"
   authors: "Dario Bocchi, Matteo Negri, Flavio Nicoletti, Francesco D'Amico"
   year: 2026
   kind: preprint
+  logo: arxiv
   venue: "arXiv:2610.32788"
   url: https://arxiv.org/abs/2610.32788
   links:
@@ -39,6 +41,7 @@
   authors: "Chanju Park, Dario Bocchi, Francesco D'Amico, Biagio Lucini, Gert Aarts"
   year: 2026
   kind: preprint
+  logo: arxiv
   venue: "arXiv:2606.28486"
   url: https://arxiv.org/abs/2606.28486
   links:
@@ -67,10 +70,10 @@
     }
 
 - title: "Discontinuous BBP transitions"
-  image: images/papers/discontinuous-bbp.png
   authors: "Dario Bocchi, Giulio Biroli, Chiara Cammarota, Federico Ricci-Tersenghi"
   year: 2026
   kind: preprint
+  logo: arxiv
   venue: "arXiv:2604.27992"
   url: https://arxiv.org/abs/2604.27992
   featured: true
@@ -103,6 +106,7 @@
   authors: "Dario Bocchi, Theotime Regimbeau, Carlo Lucibello, Luca Saglietti, Chiara Cammarota"
   year: 2026
   kind: journal
+  logo: iop
   venue: "Mach. Learn.: Sci. Technol."
   venue_long: "Machine Learning: Science and Technology 7, 065011"
   url: https://doi.org/10.1088/2632-2153/aeb5a0
@@ -135,10 +139,10 @@
     }
 
 - title: "Overparametrization bends the landscape: BBP transitions at initialization in simple Neural Networks"
-  image: images/papers/overparametrization.png
   authors: "Brandon Livio Annesi, Dario Bocchi, Chiara Cammarota"
   year: 2026
   kind: conference
+  logo: iclr
   venue: "ICLR 2026"
   venue_long: "International Conference on Learning Representations"
   badge: "Oral"
@@ -176,10 +180,10 @@
     }
 
 - title: "Implicit bias produces neural scaling laws in learning curves, from perceptrons to deep networks"
-  image: images/papers/scaling-laws.png
   authors: "Francesco D'Amico, Dario Bocchi, Matteo Negri"
   year: 2026
   kind: conference
+  logo: iclr
   venue: "ICLR 2026"
   venue_long: "International Conference on Learning Representations"
   url: https://openreview.net/forum?id=qBAV2DEvAC
@@ -216,6 +220,7 @@
   authors: "Francesco D'Amico, Dario Bocchi, Luca Maria Del Bono, Saverio Rossi, Matteo Negri"
   year: 2026
   kind: journal
+  logo: elsevier
   venue: "Physica A"
   venue_long: "Physica A: Statistical Mechanics and its Applications 692, 131497"
   url: https://doi.org/10.1016/j.physa.2026.131497
@@ -249,6 +254,7 @@
   authors: "Stefano Bae, Dario Bocchi, Luca Maria Del Bono, Luca Leuzzi"
   year: 2025
   kind: preprint
+  logo: arxiv
   venue: "arXiv:2507.02574"
   url: https://arxiv.org/abs/2507.02574
   links:
@@ -276,6 +282,7 @@
   authors: "Ludovica Serricchio, Dario Bocchi, Claudio Chilin, Raffaele Marino, Matteo Negri, Chiara Cammarota, Federico Ricci-Tersenghi"
   year: 2025
   kind: journal
+  logo: elsevier
   venue: "Neural Networks"
   venue_long: "Neural Networks 186, 107216"
   url: https://doi.org/10.1016/j.neunet.2025.107216
