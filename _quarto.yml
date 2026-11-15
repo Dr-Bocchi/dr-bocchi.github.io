@@ -24,9 +24,6 @@ website:
         text: Research
       - href: presentations.qmd
         text: Talks
-      - href: bocchi_CV.pdf
-        text: CV
-        target: _blank
     right:
       - icon: mortarboard-fill
         href: https://scholar.google.com/citations?user=LQc7rbIAAAAJ

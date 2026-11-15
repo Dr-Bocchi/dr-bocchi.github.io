@@ -22,11 +22,8 @@ listing:
     <p class="hero-role">PhD · Sapienza University of Rome<br>
       <span class="next-dot"></span>Incoming postdoc · ENS Paris</p>
   </div>
-  <div class="spectrum-caption" aria-hidden="true">
-    <span>spiked random matrix</span>
-    <span id="spectrum-readout">θ = 1.00</span>
-  </div>
 </section>
+<script src="assets/spectrum.js" defer></script>
 
 <section class="about">
   <img src="photo.jpeg" alt="Portrait of Dario Bocchi" class="portrait">
