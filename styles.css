@@ -155,10 +155,9 @@ h2.sec::after, main.content h2::after {
   border-radius: 50%;
   border: 1px solid var(--line);
   box-shadow: 0 0 0 0 var(--bg), 0 0 0 0 transparent;
-  transition: transform .6s cubic-bezier(.2, .8, .2, 1), box-shadow .6s cubic-bezier(.2, .8, .2, 1);
+  transition: box-shadow .6s cubic-bezier(.2, .8, .2, 1);
 }
 .portrait:hover {
-  transform: scale(1.035) rotate(-1.5deg);
   box-shadow: 0 0 0 5px var(--bg), 0 0 0 6.5px var(--c-milestone);
 }
 .about-text p { margin-bottom: .9rem; }
