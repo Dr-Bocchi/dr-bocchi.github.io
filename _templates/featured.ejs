@@ -13,9 +13,7 @@ const me = s => esc(s).replace('Dario Bocchi', '<span class="me">Dario Bocchi</s
 <% if (item.badge) { %><span class="pub-badge"><i class="bi bi-star-fill"></i> <%= esc(item.badge) %></span><% } %>
 </div>
 <div class="feat-title"><%= esc(item.title) %></div>
-<div class="pub-authors"><%= me(item.authors) %></div>
 </div>
-<i class="bi bi-arrow-up-right feat-arrow"></i>
 </a>
 <% } %>
 </div>

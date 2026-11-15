@@ -114,7 +114,7 @@
     var narrow = W < 640;
     Lay = narrow
       ? { x0: 0, x1: W - 10, cy: H - 90, amp: 64, fadeFrom: 0, fadeTo: W * 0.45 }
-      : { x0: W * 0.40, x1: W - 14, cy: H * 0.5, amp: H * 0.36, fadeFrom: W * 0.42, fadeTo: W * 0.86 };
+      : { x0: W * 0.50, x1: W - 14, cy: H * 0.5, amp: H * 0.36, fadeFrom: W * 0.52, fadeTo: W * 0.9 };
     cap = Math.ceil((Lay.x1 - Lay.x0) / STEP) + 2;
     while (hist.length > cap) hist.shift();
   }

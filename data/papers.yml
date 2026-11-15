@@ -176,7 +176,7 @@
     }
 
 - title: "Implicit bias produces neural scaling laws in learning curves, from perceptrons to deep networks"
-  image: images/papers/implicit-bias.png
+  image: images/papers/scaling-laws.png
   authors: "Francesco D'Amico, Dario Bocchi, Matteo Negri"
   year: 2026
   kind: conference
