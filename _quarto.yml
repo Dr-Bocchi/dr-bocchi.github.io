@@ -40,7 +40,6 @@ website:
         aria-label: Email
   page-footer:
     left: "© 2026 Dario Bocchi"
-    right: "Rome → Paris"
 
 format:
   html:
