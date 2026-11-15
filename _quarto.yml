@@ -6,6 +6,7 @@ project:
     - myPapers.bib
     - assets/
     - photo.jpeg
+    - images/papers/
 
 website:
   title: "Dario Bocchi"

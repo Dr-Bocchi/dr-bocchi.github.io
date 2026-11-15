@@ -6,12 +6,15 @@ const me = s => esc(s).replace('Dario Bocchi', '<span class="me">Dario Bocchi</s
 <div class="featured">
 <% for (const item of items) { %>
 <a class="feat" href="<%= esc(item.url) %>" target="_blank" rel="noopener">
+<% if (item.image) { %><div class="feat-img"><img src="<%= esc(item.image) %>" alt="Figure from “<%= esc(item.title) %>”" loading="lazy"></div><% } %>
+<div class="feat-text">
 <div class="pub-head">
 <span class="pub-venue pub-venue-<%= esc(item.kind) %>"><%= esc(item.venue) %></span>
 <% if (item.badge) { %><span class="pub-badge"><i class="bi bi-star-fill"></i> <%= esc(item.badge) %></span><% } %>
 </div>
 <div class="feat-title"><%= esc(item.title) %></div>
 <div class="pub-authors"><%= me(item.authors) %></div>
+</div>
 <i class="bi bi-arrow-up-right feat-arrow"></i>
 </a>
 <% } %>

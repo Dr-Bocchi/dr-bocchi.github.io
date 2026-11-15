@@ -44,83 +44,47 @@ listing:
 
 <h2 class="sec">Path</h2>
 
-<div class="tl-legend" aria-hidden="true">
-  <span><i style="--c: var(--c-next)"></i>Next</span>
-  <span><i style="--c: var(--c-milestone)"></i>Milestones</span>
-  <span><i style="--c: var(--c-research)"></i>Research</span>
-  <span><i style="--c: var(--c-edu)"></i>Education</span>
-</div>
-
 <ol class="timeline">
   <li class="tl tl-next">
     <div class="tl-when">Next</div>
     <div class="tl-dot"></div>
     <div class="tl-body">
       <div class="tl-title">Postdoctoral researcher</div>
-      <div class="tl-org">École Normale Supérieure · Paris</div>
+      <div class="tl-org">École Normale Supérieure, Paris</div>
     </div>
   </li>
-  <li class="tl tl-milestone">
-    <div class="tl-when">Apr 2026</div>
-    <div class="tl-dot"></div>
-    <div class="tl-body">
-      <div class="tl-title">Oral at ICLR 2026</div>
-      <div class="tl-org">Rio de Janeiro</div>
-      <p class="tl-desc"><a href="https://iclr.cc/virtual/2026/oral/10006659" target="_blank" rel="noopener">Overparametrization bends the landscape</a>, plus a poster on neural scaling laws.</p>
-    </div>
-  </li>
-  <li class="tl tl-milestone">
-    <div class="tl-when">2026</div>
-    <div class="tl-dot"></div>
-    <div class="tl-body">
-      <div class="tl-title">RAPTOR project funded</div>
-      <div class="tl-org">Sapienza · “Avvio alla ricerca”</div>
-      <p class="tl-desc">Random-matrix Applications and Theory of neural networks in the Overparameterized Regime.</p>
-    </div>
-  </li>
-  <li class="tl tl-research">
+  <li class="tl tl-phd">
     <div class="tl-when">2023 – 2026</div>
     <div class="tl-dot"></div>
     <div class="tl-body">
       <div class="tl-title">PhD in Theoretical Physics</div>
       <div class="tl-org">Sapienza University of Rome</div>
-      <p class="tl-desc">Statistical mechanics of learning: BBP transitions, loss landscapes, SGD dynamics, associative memories.</p>
     </div>
   </li>
-  <li class="tl tl-edu">
+  <li class="tl tl-msc">
     <div class="tl-when">2021 – 2023</div>
     <div class="tl-dot"></div>
     <div class="tl-body">
       <div class="tl-title">MSc in Theoretical Physics</div>
       <div class="tl-org">Sapienza University of Rome</div>
-      <p class="tl-desc">110/110 cum laude · Excellence track. Thesis: <em>Beyond Hopfield models: from structured synthetic datasets to real images</em>.</p>
+      <div class="tl-thesis">Beyond Hopfield models: from structured synthetic datasets to real images</div>
     </div>
   </li>
-  <li class="tl tl-research">
-    <div class="tl-when">2021</div>
-    <div class="tl-dot"></div>
-    <div class="tl-body">
-      <div class="tl-title">Research internship</div>
-      <div class="tl-org">INFN · Turin</div>
-      <p class="tl-desc">Machine learning analysis of Fermi-LAT telescope data.</p>
-    </div>
-  </li>
-  <li class="tl tl-edu">
+  <li class="tl tl-bsc">
     <div class="tl-when">2018 – 2021</div>
     <div class="tl-dot"></div>
     <div class="tl-body">
       <div class="tl-title">BSc in Physics</div>
       <div class="tl-org">University of Turin</div>
-      <p class="tl-desc">110/110 cum laude. Thesis: <em>Unsupervised machine learning techniques for cosmic electron selection in Fermi-LAT data</em>.</p>
+      <div class="tl-thesis">Unsupervised machine learning techniques for cosmic electron selection in Fermi-LAT data</div>
     </div>
   </li>
-  <li class="tl tl-early">
+  <li class="tl tl-liceo">
     <div class="tl-when">2013 – 2018</div>
     <div class="tl-dot"></div>
     <div class="tl-body">
-      <div class="tl-title">Liceo Scientifico “Galileo Ferraris”</div>
-      <div class="tl-org">Turin</div>
-      <p class="tl-desc">Math Olympiad national finalist, 2016 – 2018.</p>
+      <div class="tl-title">Scientific high school</div>
+      <div class="tl-org">Liceo “Galileo Ferraris”, Turin</div>
     </div>
   </li>
 </ol>

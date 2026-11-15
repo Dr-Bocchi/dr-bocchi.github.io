@@ -41,9 +41,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-9ade03a996393c3fe1ae1b6997dfe453.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-ffbe6ecca4fdf0127caae42c85e14552.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-3f8b6eaafc5d98d299a682e9f2d3001d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-ffbe6ecca4fdf0127caae42c85e14552.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-58aa080d5a3bceb93031098529a6c738.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-7e765105e1a8fbbb0b86ed31628e2a63.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-58aa080d5a3bceb93031098529a6c738.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -69,9 +69,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-authors','listing-year','listing-kind','listing-venue','listing-url','listing-featured','listing-links','listing-abstract','listing-bibtex','listing-venue_long','listing-badge',{ data: ['index'] },{ data: ['categories'] }],
+      valueNames: ['listing-title','listing-image','listing-authors','listing-year','listing-kind','listing-venue','listing-url','listing-featured','listing-links','listing-abstract','listing-bibtex','listing-venue_long','listing-badge',{ data: ['index'] },{ data: ['categories'] }],
       
-      searchColumns: ["listing-title","listing-authors","listing-year","listing-kind","listing-venue","listing-url","listing-featured","listing-links","listing-abstract","listing-bibtex","listing-venue_long","listing-badge"],
+      searchColumns: ["listing-title","listing-image","listing-authors","listing-year","listing-kind","listing-venue","listing-url","listing-featured","listing-links","listing-abstract","listing-bibtex","listing-venue_long","listing-badge"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -403,83 +403,47 @@ window.Quarto = {
 
 <h2 class="sec">Path</h2>
 
-<div class="tl-legend" aria-hidden="true">
-  <span><i style="--c: var(--c-next)"></i>Next</span>
-  <span><i style="--c: var(--c-milestone)"></i>Milestones</span>
-  <span><i style="--c: var(--c-research)"></i>Research</span>
-  <span><i style="--c: var(--c-edu)"></i>Education</span>
-</div>
-
 <ol class="timeline">
   <li class="tl tl-next">
     <div class="tl-when">Next</div>
     <div class="tl-dot"></div>
     <div class="tl-body">
       <div class="tl-title">Postdoctoral researcher</div>
-      <div class="tl-org">École Normale Supérieure · Paris</div>
+      <div class="tl-org">École Normale Supérieure, Paris</div>
     </div>
   </li>
-  <li class="tl tl-milestone">
-    <div class="tl-when">Apr 2026</div>
-    <div class="tl-dot"></div>
-    <div class="tl-body">
-      <div class="tl-title">Oral at ICLR 2026</div>
-      <div class="tl-org">Rio de Janeiro</div>
-      <p class="tl-desc"><a href="https://iclr.cc/virtual/2026/oral/10006659" target="_blank" rel="noopener">Overparametrization bends the landscape</a>, plus a poster on neural scaling laws.</p>
-    </div>
-  </li>
-  <li class="tl tl-milestone">
-    <div class="tl-when">2026</div>
-    <div class="tl-dot"></div>
-    <div class="tl-body">
-      <div class="tl-title">RAPTOR project funded</div>
-      <div class="tl-org">Sapienza · “Avvio alla ricerca”</div>
-      <p class="tl-desc">Random-matrix Applications and Theory of neural networks in the Overparameterized Regime.</p>
-    </div>
-  </li>
-  <li class="tl tl-research">
+  <li class="tl tl-phd">
     <div class="tl-when">2023 – 2026</div>
     <div class="tl-dot"></div>
     <div class="tl-body">
       <div class="tl-title">PhD in Theoretical Physics</div>
       <div class="tl-org">Sapienza University of Rome</div>
-      <p class="tl-desc">Statistical mechanics of learning: BBP transitions, loss landscapes, SGD dynamics, associative memories.</p>
     </div>
   </li>
-  <li class="tl tl-edu">
+  <li class="tl tl-msc">
     <div class="tl-when">2021 – 2023</div>
     <div class="tl-dot"></div>
     <div class="tl-body">
       <div class="tl-title">MSc in Theoretical Physics</div>
       <div class="tl-org">Sapienza University of Rome</div>
-      <p class="tl-desc">110/110 cum laude · Excellence track. Thesis: <em>Beyond Hopfield models: from structured synthetic datasets to real images</em>.</p>
+      <div class="tl-thesis">Beyond Hopfield models: from structured synthetic datasets to real images</div>
     </div>
   </li>
-  <li class="tl tl-research">
-    <div class="tl-when">2021</div>
-    <div class="tl-dot"></div>
-    <div class="tl-body">
-      <div class="tl-title">Research internship</div>
-      <div class="tl-org">INFN · Turin</div>
-      <p class="tl-desc">Machine learning analysis of Fermi-LAT telescope data.</p>
-    </div>
-  </li>
-  <li class="tl tl-edu">
+  <li class="tl tl-bsc">
     <div class="tl-when">2018 – 2021</div>
     <div class="tl-dot"></div>
     <div class="tl-body">
       <div class="tl-title">BSc in Physics</div>
       <div class="tl-org">University of Turin</div>
-      <p class="tl-desc">110/110 cum laude. Thesis: <em>Unsupervised machine learning techniques for cosmic electron selection in Fermi-LAT data</em>.</p>
+      <div class="tl-thesis">Unsupervised machine learning techniques for cosmic electron selection in Fermi-LAT data</div>
     </div>
   </li>
-  <li class="tl tl-early">
+  <li class="tl tl-liceo">
     <div class="tl-when">2013 – 2018</div>
     <div class="tl-dot"></div>
     <div class="tl-body">
-      <div class="tl-title">Liceo Scientifico “Galileo Ferraris”</div>
-      <div class="tl-org">Turin</div>
-      <p class="tl-desc">Math Olympiad national finalist, 2016 – 2018.</p>
+      <div class="tl-title">Scientific high school</div>
+      <div class="tl-org">Liceo “Galileo Ferraris”, Turin</div>
     </div>
   </li>
 </ol>
@@ -490,32 +454,41 @@ window.Quarto = {
 <div class="featured">
 
 <a class="feat" href="https://arxiv.org/abs/2604.27992" target="_blank" rel="noopener">
+<div class="feat-img"><img src="images/papers/discontinuous-bbp.png" alt="Figure from “Discontinuous BBP transitions”" loading="lazy"></div>
+<div class="feat-text">
 <div class="pub-head">
 <span class="pub-venue pub-venue-preprint">arXiv:2604.27992</span>
 
 </div>
 <div class="feat-title">Discontinuous BBP transitions</div>
 <div class="pub-authors"><span class="me">Dario Bocchi</span>, Giulio Biroli, Chiara Cammarota, Federico Ricci-Tersenghi</div>
+</div>
 <i class="bi bi-arrow-up-right feat-arrow"></i>
 </a>
 
 <a class="feat" href="https://openreview.net/forum?id=xDLE5n3x9Y" target="_blank" rel="noopener">
+<div class="feat-img"><img src="images/papers/overparametrization.png" alt="Figure from “Overparametrization bends the landscape: BBP transitions at initialization in simple Neural Networks”" loading="lazy"></div>
+<div class="feat-text">
 <div class="pub-head">
 <span class="pub-venue pub-venue-conference">ICLR 2026</span>
 <span class="pub-badge"><i class="bi bi-star-fill"></i> Oral</span>
 </div>
 <div class="feat-title">Overparametrization bends the landscape: BBP transitions at initialization in simple Neural Networks</div>
 <div class="pub-authors">Brandon Livio Annesi, <span class="me">Dario Bocchi</span>, Chiara Cammarota</div>
+</div>
 <i class="bi bi-arrow-up-right feat-arrow"></i>
 </a>
 
 <a class="feat" href="https://openreview.net/forum?id=qBAV2DEvAC" target="_blank" rel="noopener">
+<div class="feat-img"><img src="images/papers/implicit-bias.png" alt="Figure from “Implicit bias produces neural scaling laws in learning curves, from perceptrons to deep networks”" loading="lazy"></div>
+<div class="feat-text">
 <div class="pub-head">
 <span class="pub-venue pub-venue-conference">ICLR 2026</span>
 
 </div>
 <div class="feat-title">Implicit bias produces neural scaling laws in learning curves, from perceptrons to deep networks</div>
 <div class="pub-authors">Francesco D'Amico, <span class="me">Dario Bocchi</span>, Matteo Negri</div>
+</div>
 <i class="bi bi-arrow-up-right feat-arrow"></i>
 </a>
 

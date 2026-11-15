@@ -67,6 +67,7 @@
     }
 
 - title: "Discontinuous BBP transitions"
+  image: images/papers/discontinuous-bbp.png
   authors: "Dario Bocchi, Giulio Biroli, Chiara Cammarota, Federico Ricci-Tersenghi"
   year: 2026
   kind: preprint
@@ -129,6 +130,7 @@
     }
 
 - title: "Overparametrization bends the landscape: BBP transitions at initialization in simple Neural Networks"
+  image: images/papers/overparametrization.png
   authors: "Brandon Livio Annesi, Dario Bocchi, Chiara Cammarota"
   year: 2026
   kind: conference
@@ -169,6 +171,7 @@
     }
 
 - title: "Implicit bias produces neural scaling laws in learning curves, from perceptrons to deep networks"
+  image: images/papers/implicit-bias.png
   authors: "Francesco D'Amico, Dario Bocchi, Matteo Negri"
   year: 2026
   kind: conference
