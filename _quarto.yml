@@ -6,14 +6,16 @@ project:
     - myPapers.bib
     - assets/
     - photo.jpeg
-    - images/papers/
+    - images/share.png
 
 website:
   title: "Dario Bocchi"
   description: "Statistical physics of learning — PhD in Theoretical Physics at Sapienza, incoming postdoc at ENS Paris."
   site-url: https://dr-bocchi.github.io/
   favicon: images/perceptron.svg
+  image: images/share.png
   open-graph: true
+  twitter-card: true
   search: false
   page-navigation: false
   navbar:

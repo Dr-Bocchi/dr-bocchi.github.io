@@ -2,6 +2,8 @@
 pagetitle: "Dario Bocchi"
 description: "Statistical physics of learning — PhD in Theoretical Physics at Sapienza, incoming postdoc at ENS Paris."
 page-layout: article
+image: images/share.png
+image-alt: "Dario Bocchi — dr-bocchi.github.io"
 body-classes: home
 listing:
   - id: featured
