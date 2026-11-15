@@ -101,8 +101,6 @@ h2.sec::after, main.content h2::after {
   width: 100%;
   height: 100%;
   z-index: -1;
-  cursor: ew-resize;
-  touch-action: pan-y;
 }
 .hero-text { max-width: 25rem; pointer-events: none; }
 .eyebrow {
