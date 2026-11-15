@@ -15,6 +15,8 @@
   "use strict";
   var canvas = document.getElementById("spectrum");
   if (!canvas) return;
+  // no banner on phone-sized screens (the canvas is hidden there by CSS)
+  if (window.matchMedia("(max-width: 640px)").matches) return;
   var ctx = canvas.getContext("2d");
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
