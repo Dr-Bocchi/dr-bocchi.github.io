@@ -35,7 +35,7 @@
       byName[a].papers.push(p.i);
     });
   });
-  var me = { type: "me", x: 0, y: 0, fixed: true };
+  var me = { type: "me", name: ME, x: 0, y: 0, fixed: true };
 
   /* ---------------- deterministic randomness ---------------- */
   var seed = 7;
@@ -139,7 +139,7 @@
         samples.forEach(function (pt) { if (pt[0] > rr[0] && pt[0] < rr[2] && pt[1] > rr[1] && pt[1] < rr[3]) c += 1; });
         return c;
       };
-      people.slice().sort(function (a, b) { return a.y - b.y; }).forEach(function (q) {
+      people.concat([me]).sort(function (a, b) { return a.y - b.y; }).forEach(function (q) {
         var best = null;
         (G.narrow ? ["down", "up"] : ["down", "up", "left", "right"]).forEach(function (pos) {
           var r = labelRect(q, pos), c = cost(r, pos);
@@ -176,6 +176,19 @@
     if (cut > 1 && /^(del|de|di|da|van|von|la|le)$/i.test(w[cut - 1])) cut--;
     return [w.slice(0, cut).join(" "), w.slice(cut).join(" ")];
   }
+  function addLabel(g, q, r) {
+    var G = geo, lines = splitName(q.name);
+    var lp = q.labelPos, tx = 0, ty = r + 6 + 14 * G.fs, anchor = "middle";
+    if (lp === "up") ty = -(r + 12 + 16 * G.fs);
+    if (lp === "left") { tx = -(r + 10); ty = -3 * G.fs; anchor = "end"; }
+    if (lp === "right") { tx = r + 10; ty = -3 * G.fs; anchor = "start"; }
+    var t = el("text", { x: tx, y: ty, "text-anchor": anchor, class: "net-name" }, g);
+    el("tspan", { x: tx, dy: 0 }, t).textContent = lines[0];
+    if (lines[1]) el("tspan", { x: tx, dy: 16 * G.fs, class: "net-surname" }, t).textContent = lines[1];
+    var bb = t.getBBox();
+    g.insertBefore(el("rect", { x: bb.x - 5, y: bb.y - 2, width: bb.width + 10, height: bb.height + 4, rx: 7, class: "net-name-bg" }), t);
+  }
+
   function curve(a, b, bend) {
     var mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2, dx = b.x - a.x, dy = b.y - a.y;
     var cx = mx - dy * bend, cy = my + dx * bend;
@@ -248,18 +261,7 @@
         el("circle", { cx: 0, cy: -r * 0.22, r: r * 0.34, class: "net-anon" }, g);
         el("path", { d: "M" + (-r * 0.62) + "," + (r * 0.72) + " a" + (r * 0.62) + "," + (r * 0.55) + " 0 0 1 " + (r * 1.24) + ",0 z", class: "net-anon" }, g);
       }
-      if (G.labels) {
-        var lines = splitName(q.name);
-        var lp = q.labelPos, tx = 0, ty = r + 6 + 14 * G.fs, anchor = "middle";
-        if (lp === "up") ty = -(r + 12 + 16 * G.fs);
-        if (lp === "left") { tx = -(r + 10); ty = -3 * G.fs; anchor = "end"; }
-        if (lp === "right") { tx = r + 10; ty = -3 * G.fs; anchor = "start"; }
-        var t = el("text", { x: tx, y: ty, "text-anchor": anchor, class: "net-name" }, g);
-        el("tspan", { x: tx, dy: 0 }, t).textContent = lines[0];
-        if (lines[1]) el("tspan", { x: tx, dy: 16 * G.fs, class: "net-surname" }, t).textContent = lines[1];
-        var bb = t.getBBox();
-        g.insertBefore(el("rect", { x: bb.x - 5, y: bb.y - 2, width: bb.width + 10, height: bb.height + 4, rx: 7, class: "net-name-bg" }), t);
-      }
+      if (G.labels) addLabel(g, q, r);
       q.node = g; bind(g, q);
     });
 
@@ -267,6 +269,7 @@
     var mg = el("g", { class: "net-el net-node net-me" }, gN);
     el("circle", { r: G.cr + 3.5, class: "net-ring" }, mg);
     el("image", { href: "images/people/dario-bocchi.jpg", x: -G.cr, y: -G.cr, width: 2 * G.cr, height: 2 * G.cr, "clip-path": "url(#net-clip)", preserveAspectRatio: "xMidYMid slice" }, mg);
+    if (G.labels) addLabel(mg, me, G.cr);
     me.node = mg;
 
     place(0);
