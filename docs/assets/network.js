@@ -107,36 +107,53 @@
     }
     // squash slightly to the container's aspect ratio
     nodes.forEach(function (n) { n.x *= G.sx; n.bx = n.x; n.by = n.y; n.ph = (hash(n.name || n.title || "me") % 1000) / 1000 * TAU; });
-    // put each name on the side of the photo away from that person's lines
-    people.forEach(function (q) {
-      var sy = 0;
-      q.papers.forEach(function (pi) { sy += papers[pi].y - q.y; });
-      q.labelUp = sy > 0;
-    });
-    // ...unless that side would collide with another photo or name
+    // place each name (below / above / left / right of the photo) where it
+    // collides least with photos, paper dots, other names and lines
+    people.forEach(function (q) { q.labelPos = "down"; });
     if (G.labels) {
-      var rects = [], ov = function (a, b) { return a[0] < b[2] && b[0] < a[2] && a[1] < b[3] && b[1] < a[3]; };
-      var labelRect = function (q, up) {
-        var w = Math.max.apply(null, splitName(q.name).map(function (t) { return t.length; })) * 7.4 + 10;
-        return up ? [q.x - w / 2, q.y - G.pr - 46, q.x + w / 2, q.y - G.pr - 4] : [q.x - w / 2, q.y + G.pr + 4, q.x + w / 2, q.y + G.pr + 46];
+      var ov = function (a, b) { return a[0] < b[2] && b[0] < a[2] && a[1] < b[3] && b[1] < a[3]; };
+      var labelRect = function (q, pos) {
+        var w = Math.max.apply(null, splitName(q.name).map(function (t) { return t.length; })) * 7.6 + 10, h = 40, r = G.pr;
+        if (pos === "up") return [q.x - w / 2, q.y - r - h - 6, q.x + w / 2, q.y - r - 6];
+        if (pos === "left") return [q.x - r - 12 - w, q.y - h / 2, q.x - r - 8, q.y + h / 2];
+        if (pos === "right") return [q.x + r + 8, q.y - h / 2, q.x + r + 12 + w, q.y + h / 2];
+        return [q.x - w / 2, q.y + r + 4, q.x + w / 2, q.y + r + h + 6];
       };
-      var discs = people.map(function (q) { return [q.x - G.pr - 4, q.y - G.pr - 4, q.x + G.pr + 4, q.y + G.pr + 4]; })
+      var discs = people.map(function (q) { return [q.x - G.pr - 5, q.y - G.pr - 5, q.x + G.pr + 5, q.y + G.pr + 5]; })
+        .concat(papers.map(function (p) { return [p.x - G.dot - 8, p.y - G.dot - 8, p.x + G.dot + 8, p.y + G.dot + 8]; }))
         .concat([[-G.cr - 8, -G.cr - 8, G.cr + 8, G.cr + 8]]);
-      var hits = function (r) { return discs.concat(rects).filter(function (o) { return ov(r, o); }).length; };
+      // sample points along every edge (same curves as drawn)
+      var samples = [];
+      var sampleCurve = function (a, b, bend) {
+        var mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2, dx = b.x - a.x, dy = b.y - a.y, cx = mx - dy * bend, cy = my + dx * bend;
+        for (var t = 0.02; t < 1; t += 0.02) { var u = 1 - t; samples.push([u * u * a.x + 2 * u * t * cx + t * t * b.x, u * u * a.y + 2 * u * t * cy + t * t * b.y]); }
+      };
+      papers.forEach(function (p, k) { sampleCurve(me, p, ((k % 2) ? 1 : -1) * 0.08); });
+      people.forEach(function (q) { q.papers.forEach(function (pi) { sampleCurve(papers[pi], q, ((hash(q.name + pi) & 1) ? 1 : -1) * (0.12 + ((hash(q.name) >>> 3) % 10) / 100)); }); });
+      var rects = [], bias = { down: 0, up: 0.5, left: 3, right: 3 };
+      var cost = function (r, pos) {
+        var c = bias[pos], m = 4, rr = [r[0] - m, r[1] - m, r[2] + m, r[3] + m];
+        discs.forEach(function (o) { if (ov(rr, o)) c += 100; });
+        rects.forEach(function (o) { if (ov(rr, o)) c += 100; });
+        samples.forEach(function (pt) { if (pt[0] > rr[0] && pt[0] < rr[2] && pt[1] > rr[1] && pt[1] < rr[3]) c += 1; });
+        return c;
+      };
       people.slice().sort(function (a, b) { return a.y - b.y; }).forEach(function (q) {
-        var pref = labelRect(q, q.labelUp), alt = labelRect(q, !q.labelUp);
-        if (hits(pref) > hits(alt)) { q.labelUp = !q.labelUp; pref = alt; }
-        rects.push(pref);
+        var best = null;
+        ["down", "up", "left", "right"].forEach(function (pos) {
+          var r = labelRect(q, pos), c = cost(r, pos);
+          if (!best || c < best.c) best = { c: c, pos: pos, r: r };
+        });
+        q.labelPos = best.pos; q.labelBox = best.r; rects.push(best.r);
       });
     }
     // bounding box (with labels above or below photos)
     var minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
     nodes.forEach(function (n) {
       var r = n.type === "me" ? G.cr + 12 : (n.type === "paper" ? G.dot + 14 : G.pr + 6);
-      var lab = n.type === "person" && G.labels ? 46 : 0, side = n.type === "person" && G.labels ? 55 : 0;
-      var above = n.labelUp ? lab : 0, below = n.labelUp ? 0 : lab;
-      minX = Math.min(minX, n.x - Math.max(r, side)); maxX = Math.max(maxX, n.x + Math.max(r, side));
-      minY = Math.min(minY, n.y - r - above); maxY = Math.max(maxY, n.y + r + below);
+      minX = Math.min(minX, n.x - r); maxX = Math.max(maxX, n.x + r);
+      minY = Math.min(minY, n.y - r); maxY = Math.max(maxY, n.y + r);
+      if (n.labelBox) { var lb = n.labelBox; minX = Math.min(minX, lb[0]); maxX = Math.max(maxX, lb[2]); minY = Math.min(minY, lb[1]); maxY = Math.max(maxY, lb[3]); }
     });
     var pad = 24;
     return [minX - pad, minY - pad, maxX - minX + 2 * pad, maxY - minY + 2 * pad];
@@ -231,9 +248,15 @@
       }
       if (G.labels) {
         var lines = splitName(q.name);
-        var t = el("text", { x: 0, y: q.labelUp ? -(r + 30) : r + 20, "text-anchor": "middle", class: "net-name" }, g);
-        el("tspan", { x: 0, dy: 0 }, t).textContent = lines[0];
-        if (lines[1]) el("tspan", { x: 0, dy: 16, class: "net-surname" }, t).textContent = lines[1];
+        var lp = q.labelPos, tx = 0, ty = r + 20, anchor = "middle";
+        if (lp === "up") ty = -(r + 30);
+        if (lp === "left") { tx = -(r + 10); ty = -3; anchor = "end"; }
+        if (lp === "right") { tx = r + 10; ty = -3; anchor = "start"; }
+        var t = el("text", { x: tx, y: ty, "text-anchor": anchor, class: "net-name" }, g);
+        el("tspan", { x: tx, dy: 0 }, t).textContent = lines[0];
+        if (lines[1]) el("tspan", { x: tx, dy: 16, class: "net-surname" }, t).textContent = lines[1];
+        var bb = t.getBBox();
+        g.insertBefore(el("rect", { x: bb.x - 5, y: bb.y - 2, width: bb.width + 10, height: bb.height + 4, rx: 7, class: "net-name-bg" }), t);
       }
       q.node = g; bind(g, q);
     });
@@ -335,7 +358,7 @@
     tip.classList.add("show");
     var tw = tip.offsetWidth, th = tip.offsetHeight, rr = (node.type === "person" ? geo.pr : geo.dot + 4) * s;
     tip.style.left = Math.min(Math.max(8, x - tw / 2), hb.width - tw - 8) + "px";
-    var labelBelow = node.type === "person" && geo.labels && !node.labelUp, labelAbove = node.type === "person" && geo.labels && node.labelUp;
+    var labelBelow = node.type === "person" && geo.labels && node.labelPos === "down", labelAbove = node.type === "person" && geo.labels && node.labelPos === "up";
     var up = labelBelow ? true : (labelAbove ? false : node.by > 0);
     tip.style.top = (up ? y - th - rr - 12 : y + rr + 14) + "px";
   }
