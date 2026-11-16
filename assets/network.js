@@ -107,13 +107,36 @@
     }
     // squash slightly to the container's aspect ratio
     nodes.forEach(function (n) { n.x *= G.sx; n.bx = n.x; n.by = n.y; n.ph = (hash(n.name || n.title || "me") % 1000) / 1000 * TAU; });
-    // bounding box (with labels below photos)
+    // put each name on the side of the photo away from that person's lines
+    people.forEach(function (q) {
+      var sy = 0;
+      q.papers.forEach(function (pi) { sy += papers[pi].y - q.y; });
+      q.labelUp = sy > 0;
+    });
+    // ...unless that side would collide with another photo or name
+    if (G.labels) {
+      var rects = [], ov = function (a, b) { return a[0] < b[2] && b[0] < a[2] && a[1] < b[3] && b[1] < a[3]; };
+      var labelRect = function (q, up) {
+        var w = Math.max.apply(null, splitName(q.name).map(function (t) { return t.length; })) * 7.4 + 10;
+        return up ? [q.x - w / 2, q.y - G.pr - 46, q.x + w / 2, q.y - G.pr - 4] : [q.x - w / 2, q.y + G.pr + 4, q.x + w / 2, q.y + G.pr + 46];
+      };
+      var discs = people.map(function (q) { return [q.x - G.pr - 4, q.y - G.pr - 4, q.x + G.pr + 4, q.y + G.pr + 4]; })
+        .concat([[-G.cr - 8, -G.cr - 8, G.cr + 8, G.cr + 8]]);
+      var hits = function (r) { return discs.concat(rects).filter(function (o) { return ov(r, o); }).length; };
+      people.slice().sort(function (a, b) { return a.y - b.y; }).forEach(function (q) {
+        var pref = labelRect(q, q.labelUp), alt = labelRect(q, !q.labelUp);
+        if (hits(pref) > hits(alt)) { q.labelUp = !q.labelUp; pref = alt; }
+        rects.push(pref);
+      });
+    }
+    // bounding box (with labels above or below photos)
     var minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
     nodes.forEach(function (n) {
       var r = n.type === "me" ? G.cr + 12 : (n.type === "paper" ? G.dot + 14 : G.pr + 6);
-      var below = n.type === "person" && G.labels ? 46 : 0, side = n.type === "person" && G.labels ? 55 : 0;
+      var lab = n.type === "person" && G.labels ? 46 : 0, side = n.type === "person" && G.labels ? 55 : 0;
+      var above = n.labelUp ? lab : 0, below = n.labelUp ? 0 : lab;
       minX = Math.min(minX, n.x - Math.max(r, side)); maxX = Math.max(maxX, n.x + Math.max(r, side));
-      minY = Math.min(minY, n.y - r); maxY = Math.max(maxY, n.y + r + below);
+      minY = Math.min(minY, n.y - r - above); maxY = Math.max(maxY, n.y + r + below);
     });
     var pad = 24;
     return [minX - pad, minY - pad, maxX - minX + 2 * pad, maxY - minY + 2 * pad];
@@ -211,7 +234,7 @@
       }
       if (G.labels) {
         var lines = splitName(q.name);
-        var t = el("text", { x: 0, y: r + 20, "text-anchor": "middle", class: "net-name" }, g);
+        var t = el("text", { x: 0, y: q.labelUp ? -(r + 30) : r + 20, "text-anchor": "middle", class: "net-name" }, g);
         el("tspan", { x: 0, dy: 0 }, t).textContent = lines[0];
         if (lines[1]) el("tspan", { x: 0, dy: 16, class: "net-surname" }, t).textContent = lines[1];
       }
@@ -316,7 +339,9 @@
     tip.classList.add("show");
     var tw = tip.offsetWidth, th = tip.offsetHeight, rr = (node.type === "person" ? geo.pr : geo.dot + 4) * s;
     tip.style.left = Math.min(Math.max(8, x - tw / 2), hb.width - tw - 8) + "px";
-    tip.style.top = (node.by > 0 ? y - th - rr - 12 : y + rr + 14 + (node.type === "person" && geo.labels ? 36 * s : 0)) + "px";
+    var labelBelow = node.type === "person" && geo.labels && !node.labelUp, labelAbove = node.type === "person" && geo.labels && node.labelUp;
+    var up = labelBelow ? true : (labelAbove ? false : node.by > 0);
+    tip.style.top = (up ? y - th - rr - 12 : y + rr + 14) + "px";
   }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
   function open(node) {
