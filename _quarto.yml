@@ -7,6 +7,7 @@ project:
     - assets/
     - photo.jpeg
     - images/share.png
+    - images/people/
 
 website:
   title: "Dario Bocchi"
@@ -27,6 +28,8 @@ website:
         text: Research
       - href: presentations.qmd
         text: Talks
+      - href: collaborators.qmd
+        text: Collaborators
     right:
       - icon: mortarboard-fill
         href: https://scholar.google.com/citations?user=LQc7rbIAAAAJ

@@ -142,14 +142,14 @@ h2.sec::after, main.content h2::after {
 /* ---------- About ---------- */
 .about {
   display: grid;
-  grid-template-columns: 148px 1fr;
-  gap: 2rem;
-  align-items: start;
+  grid-template-columns: 200px 1fr;
+  gap: 2.5rem;
+  align-items: center;
   margin-top: 2rem;
 }
 .portrait {
-  width: 148px;
-  height: 148px;
+  width: 200px;
+  height: 200px;
   object-fit: cover;
   border-radius: 50%;
   border: 1px solid var(--line);
@@ -499,3 +499,69 @@ h2.sec::after, main.content h2::after {
 /* Home: no title block, start the hero right under the navbar */
 .home #title-block-header { display: none; }
 .home main.content { margin-top: 1.25rem; }
+
+/* ---------- Collaborators graph ---------- */
+.network { position: relative; margin: -1rem auto 0; max-width: 1120px; }
+.net-svg { display: block; width: 100%; height: auto; overflow: visible; }
+.net-el { transition: opacity .35s ease; }
+/* project clouds */
+.net-hull { stroke-linejoin: round; stroke-linecap: round; opacity: .05; }
+.net-hull.k-journal    { fill: var(--c-research); stroke: var(--c-research); }
+.net-hull.k-conference { fill: var(--c-milestone); stroke: var(--c-milestone); }
+.net-hull.k-preprint   { fill: var(--c-edu); stroke: var(--c-edu); }
+/* edges: gradients from me -> paper colour -> faint */
+.net-edge { fill: none; stroke-linecap: round; }
+.net-edge-c { stroke-width: 1.6; opacity: .75; }
+.net-edge-p { stroke-width: 1.2; opacity: .55; transition: opacity .35s ease, stroke-width .35s ease; }
+.net-stop-me  { stop-color: var(--c-milestone); stop-opacity: .9; }
+.net-stop-end { stop-color: var(--fg); stop-opacity: .25; }
+.net-stop.k-journal    { stop-color: var(--c-research); }
+.net-stop.k-conference { stop-color: var(--c-milestone); }
+.net-stop.k-preprint   { stop-color: var(--c-edu); }
+/* paper points: ringed dots like the timeline */
+.net-pring { fill: var(--bg); stroke-width: 2; }
+.net-paper.k-journal    .net-pring { stroke: var(--c-research); }
+.net-paper.k-conference .net-pring { stroke: var(--c-milestone); }
+.net-paper.k-preprint   .net-pring { stroke: var(--c-edu); }
+.net-paper.k-journal    .net-dot { fill: var(--c-research); }
+.net-paper.k-conference .net-dot { fill: var(--c-milestone); }
+.net-paper.k-preprint   .net-dot { fill: var(--c-edu); }
+.net-halo { fill: none; stroke: var(--c-milestone); stroke-width: 1.2; opacity: .5; stroke-dasharray: 2 4; }
+.net-hit { fill: transparent; }
+.net-node { cursor: pointer; outline: none; }
+.net-paper .net-pring, .net-paper .net-dot { transition: transform .25s ease; }
+.net-paper:hover .net-pring, .net-paper.on .net-pring { transform: scale(1.18); }
+/* people */
+.net-ring { fill: var(--bg); stroke: var(--line); stroke-width: 2; transition: stroke .25s ease, stroke-width .25s ease; }
+.net-person:hover .net-ring, .net-person.on .net-ring { stroke: var(--c-milestone); stroke-width: 3; }
+.net-anon-bg { fill: color-mix(in srgb, var(--fg) 8%, var(--bg)); }
+.net-anon { fill: color-mix(in srgb, var(--fg) 30%, var(--bg)); }
+.net-name { font: 500 13.5px "Inter", system-ui, sans-serif; fill: var(--muted); letter-spacing: -0.01em; paint-order: stroke; stroke: var(--bg); stroke-width: 4px; stroke-linejoin: round; }
+.net-name .net-surname { font-weight: 600; fill: var(--fg); }
+/* me */
+.net-me { cursor: default; }
+.net-me-ring { fill: var(--bg); stroke: var(--c-milestone); stroke-width: 2.5; }
+.net-glow-in  { stop-color: var(--c-milestone); stop-opacity: .22; }
+.net-glow-out { stop-color: var(--c-milestone); stop-opacity: 0; }
+.net-me-glow { transform-origin: center; animation: net-breathe 5s ease-in-out infinite; }
+@keyframes net-breathe { 0%, 100% { transform: scale(.92); opacity: .8; } 50% { transform: scale(1.08); opacity: 1; } }
+/* focus: dim everything not connected */
+.network.focus .net-el:not(.on) { opacity: .1; }
+.network.focus .net-hull:not(.on) { opacity: .015; }
+.network.focus .net-hull.on { opacity: .08; }
+.network.focus .net-edge.on { opacity: 1; stroke-width: 2.2; }
+/* entrance */
+.net-pre .net-node { opacity: 0; }
+.net-node { transition: opacity .6s ease; }
+/* tooltip */
+.net-tip {
+  position: absolute; z-index: 2; max-width: 300px; pointer-events: none;
+  padding: .55rem .75rem; border-radius: 10px;
+  background: var(--card); border: 1px solid var(--line);
+  box-shadow: 0 10px 30px -14px rgba(0,0,0,.35);
+  font-size: .82rem; line-height: 1.4; color: var(--fg);
+  opacity: 0; transform: translateY(4px); transition: opacity .18s ease, transform .18s ease;
+}
+.net-tip.show { opacity: 1; transform: none; }
+.net-tip strong { display: block; font-weight: 600; }
+.net-tip span { display: block; color: var(--muted); font-family: "JetBrains Mono", ui-monospace, monospace; font-size: .72rem; margin-top: .2rem; }

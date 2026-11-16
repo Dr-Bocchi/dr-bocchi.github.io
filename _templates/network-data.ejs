@@ -1,0 +1,13 @@
+```{=html}
+<%
+// Emits the listing items as JSON for assets/network.js.
+// Used twice on collaborators.qmd: once for papers, once for people.
+const pick = (o, keys) => Object.fromEntries(keys.filter(k => o[k] !== undefined).map(k => [k, o[k]]));
+const isPeople = items.length && items[0].authors === undefined;
+const data = isPeople
+  ? items.map(i => pick(i, ['name', 'photo', 'url']))
+  : items.map(i => pick(i, ['title', 'authors', 'year', 'kind', 'venue', 'badge', 'url']));
+const json = JSON.stringify(data).replace(/</g, '\\u003c');
+%>
+<script>window.<%= isPeople ? 'NET_PEOPLE' : 'NET_PAPERS' %> = <%= json %>;</script>
+```

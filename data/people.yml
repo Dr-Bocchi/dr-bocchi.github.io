@@ -1,0 +1,63 @@
+# Co-authors shown on the Collaborators page.
+# Names must match the author strings in data/papers.yml exactly.
+# photo: file in images/people/ (omit for a neutral silhouette); url: profile link.
+
+- name: "Chiara Cammarota"
+  photo: images/people/chiara-cammarota.jpg
+  url: https://scholar.google.com/citations?user=vsLT1BIAAAAJ
+- name: "Matteo Negri"
+  photo: images/people/matteo-negri.jpg
+  url: https://scholar.google.com/citations?user=KvRjw-4AAAAJ
+- name: "Francesco D'Amico"
+  photo: images/people/francesco-d-amico.jpg
+  url: https://scholar.google.com/citations?user=fcoliR8AAAAJ
+- name: "Federico Ricci-Tersenghi"
+  photo: images/people/federico-ricci-tersenghi.jpg
+  url: https://scholar.google.com/citations?user=k8nSlL4AAAAJ
+- name: "Raffaele Marino"
+  photo: images/people/raffaele-marino.jpg
+  url: https://scholar.google.com/citations?user=T_IUrRkAAAAJ
+- name: "Claudio Chilin"
+  photo: images/people/claudio-chilin.jpg
+  url: https://scholar.google.com/citations?user=rGDF-R4AAAAJ
+- name: "Ludovica Serricchio"
+  photo: images/people/ludovica-serricchio.jpg
+  url: https://scholar.google.com/citations?user=GSeh-bkAAAAJ
+- name: "Luca Maria Del Bono"
+  photo: images/people/luca-maria-del-bono.jpg
+  url: https://scholar.google.com/citations?user=BjqGMNQAAAAJ
+- name: "Saverio Rossi"
+  photo: images/people/saverio-rossi.jpg
+  url: https://scholar.google.com/citations?user=3BTh4GoAAAAJ
+- name: "Brandon Livio Annesi"
+  photo: images/people/brandon-livio-annesi.jpg
+  url: https://scholar.google.com/citations?user=VZ4LVTAAAAAJ
+- name: "Giulio Biroli"
+  photo: images/people/giulio-biroli.jpg
+  url: https://scholar.google.com/citations?user=BadZJUsAAAAJ
+- name: "Luca Leuzzi"
+  photo: images/people/luca-leuzzi.jpg
+  url: https://scholar.google.com/citations?user=UzlqiSMAAAAJ
+- name: "Stefano Bae"
+  photo: images/people/stefano-bae.jpg
+  url: https://scholar.google.com/citations?user=fO5ViJsAAAAJ
+- name: "Luca Saglietti"
+  photo: images/people/luca-saglietti.jpg
+  url: https://scholar.google.com/citations?user=klxwxyUAAAAJ
+- name: "Carlo Lucibello"
+  photo: images/people/carlo-lucibello.jpg
+  url: https://scholar.google.com/citations?user=1IPn2HgAAAAJ
+- name: "Biagio Lucini"
+  photo: images/people/biagio-lucini.jpg
+  url: https://scholar.google.com/citations?user=B8oZzXAAAAAJ
+- name: "Chanju Park"
+  photo: images/people/chanju-park.jpg
+  url: https://scholar.google.com/citations?user=5uROqYwAAAAJ
+- name: "Gert Aarts"
+  photo: images/people/gert-aarts.jpg
+  url: https://scholar.google.com/citations?user=iGgf9KwAAAAJ
+- name: "Flavio Nicoletti"
+  photo: images/people/flavio-nicoletti.jpg
+  url: https://scholar.google.com/citations?user=wuT8GWoAAAAJ
+- name: "Theotime Regimbeau"
+  url: ""

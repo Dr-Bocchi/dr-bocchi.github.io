@@ -55,6 +55,7 @@
   event: "Beg Rohu Summer School — Learning with Machines, Physics and Minds"
   place: "Saint-Pierre-Quiberon, France"
   links:
+    - { label: Poster, url: "assets/posters/neural-scaling-laws-beg-rohu-2025.pdf", icon: image }
     - { label: Paper, url: "https://arxiv.org/abs/2505.13230", icon: file-earmark-text }
 
 - when: "Jun 2024"
@@ -64,4 +65,5 @@
   event: "Beg Rohu Summer School — Concepts and Methods of Statistical Physics"
   place: "Saint-Pierre-Quiberon, France"
   links:
+    - { label: Poster, url: "assets/posters/daydreaming-hopfield-beg-rohu-2024.pdf", icon: image }
     - { label: Paper, url: "https://doi.org/10.1016/j.neunet.2025.107216", icon: file-earmark-text }

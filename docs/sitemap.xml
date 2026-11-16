@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://dr-bocchi.github.io/presentations.html</loc>
-    <lastmod>2026-11-15T22:27:57.068Z</lastmod>
+    <loc>https://dr-bocchi.github.io/collaborators.html</loc>
+    <lastmod>2026-11-16T10:07:35.535Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dr-bocchi.github.io/index.html</loc>
+    <lastmod>2026-11-15T23:21:00.395Z</lastmod>
   </url>
   <url>
     <loc>https://dr-bocchi.github.io/papers.html</loc>
     <lastmod>2026-11-15T22:15:27.637Z</lastmod>
   </url>
   <url>
-    <loc>https://dr-bocchi.github.io/index.html</loc>
-    <lastmod>2026-11-15T23:21:00.395Z</lastmod>
+    <loc>https://dr-bocchi.github.io/presentations.html</loc>
+    <lastmod>2026-11-15T22:27:57.068Z</lastmod>
   </url>
 </urlset>

@@ -1,0 +1,30 @@
+---
+title: "Collaborators"
+description: "The people I have written papers with."
+listing:
+  - id: net-papers
+    contents: data/papers.yml
+    template: _templates/network-data.ejs
+    sort: false
+    page-size: 100
+  - id: net-people
+    contents: data/people.yml
+    template: _templates/network-data.ejs
+    sort: false
+    page-size: 100
+---
+
+::: {#net-papers}
+:::
+
+::: {#net-people}
+:::
+
+::: {.column-screen-inset}
+```{=html}
+<figure class="network" id="network" aria-label="Graph of my papers and co-authors">
+  <div class="net-tip" id="net-tip" role="status" aria-live="polite"></div>
+</figure>
+<script src="assets/network.js?v=4" defer></script>
+```
+:::
