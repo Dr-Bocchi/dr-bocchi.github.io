@@ -8,7 +8,7 @@ const esc = s => String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'
 <% if (item.logo) { %><img class="venue-logo venue-logo-lg" src="images/venues/<%= esc(item.logo) %>.png" alt="" aria-hidden="true"><% } %>
 <div class="feat-text">
 <a class="feat-title" href="<%= esc(item.url) %>" target="_blank" rel="noopener"><%= esc(item.title) %></a>
-<div class="feat-meta"><%= esc(item.venue_long ? item.venue_long.split(' ').slice(0, 99).join(' ') : item.venue) %><% if (item.venue_long) { %>, <%= item.year %><% } %><% if (item.badge) { %> <span class="pub-badge"><i class="bi bi-star-fill"></i> <%= esc(item.badge) %></span><% } %></div>
+<div class="feat-meta"><%= esc(item.venue_long ? item.venue_long.split(' ').slice(0, 99).join(' ') : item.venue) %><% if (item.venue_long) { %>, <%= item.year %><% } %><% if (item.badge) { %> · <%= esc(item.badge) %><% } %></div>
 </div>
 </li>
 <% } %>

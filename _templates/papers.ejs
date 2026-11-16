@@ -17,8 +17,7 @@ const count = k => k === 'all' ? items.length : items.filter(i => i.kind === k).
 <article class="pub" data-kind="<%= esc(item.kind) %>" data-year="<%= item.year %>">
 <div class="pub-head">
 <% if (item.logo) { %><img class="venue-logo" src="images/venues/<%= esc(item.logo) %>.png" alt="" aria-hidden="true"><% } %>
-<span class="pub-venue pub-venue-<%= esc(item.kind) %>"><%= esc(item.venue) %></span>
-<% if (item.badge) { %><span class="pub-badge"><i class="bi bi-star-fill"></i> <%= esc(item.badge) %></span><% } %>
+<span class="pub-venue pub-venue-<%= esc(item.kind) %>"><%= esc(item.venue) %><% if (item.badge) { %> · <%= esc(item.badge) %><% } %></span>
 </div>
 <a class="pub-title" href="<%= esc(item.url) %>" target="_blank" rel="noopener"><%= esc(item.title) %></a>
 <div class="pub-authors"><%= me(item.authors) %></div>

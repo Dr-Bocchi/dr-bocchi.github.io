@@ -471,7 +471,7 @@ h2.sec::after, main.content h2::after {
   color: var(--c);
 }
 .talk-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--c); }
-.talk-oral .talk-kind    { --c: var(--c-milestone); }
+.talk-oral .talk-kind    { --c: var(--c-next); }
 .talk-talk .talk-kind    { --c: var(--c-next); }
 .talk-seminar .talk-kind { --c: var(--c-research); }
 .talk-poster .talk-kind  { --c: var(--c-edu); }
