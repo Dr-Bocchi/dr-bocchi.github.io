@@ -521,7 +521,6 @@ h2.sec::after, main.content h2::after {
 .net-paper.k-journal    .net-dot { fill: var(--c-research); }
 .net-paper.k-conference .net-dot { fill: var(--c-milestone); }
 .net-paper.k-preprint   .net-dot { fill: var(--c-edu); }
-.net-halo { fill: none; stroke: var(--c-milestone); stroke-width: 1.2; opacity: .5; stroke-dasharray: 2 4; }
 .net-hit { fill: transparent; }
 .net-node { cursor: pointer; outline: none; }
 .net-paper .net-pring, .net-paper .net-dot { transition: transform .25s ease; }

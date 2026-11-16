@@ -192,7 +192,6 @@
     papers.forEach(function (p) {
       var g = el("g", { class: "net-el net-node net-paper k-" + p.kind, tabindex: "0" }, gP);
       el("circle", { r: G.dot + 12, class: "net-hit" }, g);
-      if (p.badge) el("circle", { r: G.dot + 12, class: "net-halo" }, g);
       el("circle", { r: G.dot + 3.5, class: "net-pring" }, g);
       el("circle", { r: G.dot - 1.5, class: "net-dot" }, g);
       p.node = g; bind(g, p);
