@@ -504,11 +504,6 @@ h2.sec::after, main.content h2::after {
 .network { position: relative; margin: -1rem auto 0; max-width: 1120px; }
 .net-svg { display: block; width: 100%; height: auto; overflow: visible; }
 .net-el { transition: opacity .35s ease; }
-/* project clouds */
-.net-hull { stroke-linejoin: round; stroke-linecap: round; opacity: .05; }
-.net-hull.k-journal    { fill: var(--c-research); stroke: var(--c-research); }
-.net-hull.k-conference { fill: var(--c-milestone); stroke: var(--c-milestone); }
-.net-hull.k-preprint   { fill: var(--c-edu); stroke: var(--c-edu); }
 /* edges: gradients from me -> paper colour -> faint */
 .net-edge { fill: none; stroke-linecap: round; }
 .net-edge-c { stroke-width: 1.6; opacity: .75; }
@@ -547,8 +542,6 @@ h2.sec::after, main.content h2::after {
 @keyframes net-breathe { 0%, 100% { transform: scale(.92); opacity: .8; } 50% { transform: scale(1.08); opacity: 1; } }
 /* focus: dim everything not connected */
 .network.focus .net-el:not(.on) { opacity: .1; }
-.network.focus .net-hull:not(.on) { opacity: .015; }
-.network.focus .net-hull.on { opacity: .08; }
 .network.focus .net-edge.on { opacity: 1; stroke-width: 2.2; }
 /* entrance */
 .net-pre .net-node { opacity: 0; }

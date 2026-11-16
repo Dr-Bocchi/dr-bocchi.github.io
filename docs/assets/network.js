@@ -160,11 +160,7 @@
     el("stop", { offset: "0%", class: "net-glow-in" }, glow);
     el("stop", { offset: "100%", class: "net-glow-out" }, glow);
 
-    var gH = el("g", { class: "net-hulls" }, svg);
     var gE = el("g", { class: "net-edges" }, svg), gP = el("g", {}, svg), gN = el("g", {}, svg);
-    papers.forEach(function (p) {
-      p.hull = el("path", { class: "net-el net-hull k-" + p.kind, "stroke-width": 2 * (G.pr + 14) }, gH);
-    });
     edges = []; meEdges = [];
 
     // me → paper
@@ -243,28 +239,11 @@
       n.node.setAttribute("transform", "translate(" + n.x.toFixed(2) + "," + n.y.toFixed(2) + ")");
     });
     me.node.setAttribute("transform", "translate(0,0)");
-    papers.forEach(function (p) {
-      var pts = [[p.x, p.y]].concat(p.authors.map(function (a) { return [byName[a].x, byName[a].y]; }));
-      p.hull.setAttribute("d", hullPath(pts));
-    });
     meEdges.concat(edges).forEach(function (e) {
       e.path.setAttribute("d", curve(e.a, e.b, e.bend));
       e.grad.setAttribute("x1", e.a.x.toFixed(1)); e.grad.setAttribute("y1", e.a.y.toFixed(1));
       e.grad.setAttribute("x2", e.b.x.toFixed(1)); e.grad.setAttribute("y2", e.b.y.toFixed(1));
     });
-  }
-
-  // convex hull (monotone chain) as a closed path; the thick round-joined
-  // stroke in CSS inflates it into a soft blob
-  function hullPath(pts) {
-    pts = pts.slice().sort(function (a, b) { return a[0] - b[0] || a[1] - b[1]; });
-    if (pts.length < 3) return "M" + pts.map(function (q) { return q[0].toFixed(1) + "," + q[1].toFixed(1); }).join(" L") + " Z";
-    var cross = function (o, a, b) { return (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0]); };
-    var lower = [], upper = [], i;
-    for (i = 0; i < pts.length; i++) { while (lower.length >= 2 && cross(lower[lower.length - 2], lower[lower.length - 1], pts[i]) <= 0) lower.pop(); lower.push(pts[i]); }
-    for (i = pts.length - 1; i >= 0; i--) { while (upper.length >= 2 && cross(upper[upper.length - 2], upper[upper.length - 1], pts[i]) <= 0) upper.pop(); upper.push(pts[i]); }
-    var h = lower.slice(0, -1).concat(upper.slice(0, -1));
-    return "M" + h.map(function (q) { return q[0].toFixed(1) + "," + q[1].toFixed(1); }).join(" L") + " Z";
   }
 
   var raf = null, visible = true;
@@ -312,11 +291,11 @@
     var mark = function (e) { if (e) e.classList.add("on"); };
     if (node.type === "person") {
       mark(node.node); node.edges.forEach(mark);
-      node.papers.forEach(function (pi) { mark(papers[pi].node); mark(papers[pi].edge); mark(papers[pi].hull); });
+      node.papers.forEach(function (pi) { mark(papers[pi].node); mark(papers[pi].edge); });
       var n = node.papers.length;
       showTip("<strong>" + esc(node.name) + "</strong><span>" + n + (n === 1 ? " paper" : " papers") + " together</span>", node);
     } else {
-      mark(node.node); mark(node.edge); mark(node.hull);
+      mark(node.node); mark(node.edge);
       node.authors.forEach(function (a) {
         var q = byName[a]; mark(q.node);
         q.edges.forEach(function (e) { if (e._paper === node.i) mark(e); });
