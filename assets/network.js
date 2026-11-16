@@ -391,8 +391,9 @@
   function fit() {
     if (!svg || !geo) return;
     if (geo.narrow) { svg.style.width = ""; return; }
-    var top = host.getBoundingClientRect().top + window.scrollY;
-    var avail = Math.max(420, window.innerHeight - Math.min(top, 260) - 12);
+    // the graph itself (not the title above it) should fit one screen below the navbar
+    var nav = document.querySelector("#quarto-header");
+    var avail = Math.max(480, window.innerHeight - (nav ? nav.offsetHeight : 66) - 16);
     var w = Math.min(host.clientWidth, avail * geo.vb[2] / geo.vb[3]);
     svg.style.width = Math.round(w) + "px";
     svg.style.margin = "0 auto";
