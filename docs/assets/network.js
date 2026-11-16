@@ -292,8 +292,7 @@
     if (node.type === "person") {
       mark(node.node); node.edges.forEach(mark);
       node.papers.forEach(function (pi) { mark(papers[pi].node); mark(papers[pi].edge); });
-      var n = node.papers.length;
-      showTip("<strong>" + esc(node.name) + "</strong><span>" + n + (n === 1 ? " paper" : " papers") + " together</span>", node);
+      showTip("<strong>" + esc(node.name) + "</strong>", node);
     } else {
       mark(node.node); mark(node.edge);
       node.authors.forEach(function (a) {
