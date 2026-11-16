@@ -15,8 +15,6 @@
   "use strict";
   var canvas = document.getElementById("spectrum");
   if (!canvas) return;
-  // no banner on phone-sized screens (the canvas is hidden there by CSS)
-  if (window.matchMedia("(max-width: 640px)").matches) return;
   var ctx = canvas.getContext("2d");
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -107,6 +105,7 @@
     colors.hot = cs.getPropertyValue("--c-milestone").trim() || "#f59e0b";
   }
 
+  var heroText = document.querySelector(".hero-text");
   function resize() {
     var r = canvas.getBoundingClientRect();
     dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -114,12 +113,21 @@
     canvas.width = Math.round(W * dpr);
     canvas.height = Math.round(H * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    var narrow = W < 640;
-    Lay = narrow
-      ? { x0: 0, x1: W - 12, cy: H - 90, amp: 64, fadeFrom: 0, fadeTo: W * 0.45 }
-      : { x0: W * 0.50, x1: W - 16, cy: H * 0.5, amp: H * 0.36, fadeFrom: W * 0.53, fadeTo: W * 0.86 };
-    cap = Math.ceil((Lay.x1 - Lay.x0) / STEP) + 2;
+    Lay = null;
+    if (W < 10 || H < 10) return;                       // hidden (phones)
+    // the band starts to the right of the name, never underneath it
+    var textRight = heroText ? heroText.getBoundingClientRect().right - r.left : W * 0.4;
+    var x0 = Math.max(W * 0.5, textRight + 40), x1 = W - 16, span = x1 - x0;
+    if (span < 180) return;                              // not enough room: draw nothing
+    Lay = { x0: x0, x1: x1, cy: H * 0.5, amp: H * 0.36, fadeFrom: x0 + 0.06 * span, fadeTo: x0 + 0.72 * span };
+    cap = Math.ceil(span / STEP) + 2;
     while (hist.length > cap) hist.shift();
+    // (re)fill so the fan is on screen when the banner (re)appears
+    if (hist.length < 2) {
+      gd.fill(0); go.fill(0);
+      var pre = Math.floor(cap * (reduceMotion ? 1 : 0.62));
+      for (var k = 0; k < pre; k++) push();
+    }
   }
 
   /* ---------------- drawing ---------------- */
@@ -127,6 +135,7 @@
 
   function draw(frac) {
     ctx.clearRect(0, 0, W, H);
+    if (!Lay) return;
     var n = hist.length;
     if (n < 2) return;
     var xHead = Lay.x1, k, j, x, top = N - 1;
@@ -180,7 +189,7 @@
 
   function frame(t) {
     raf = null;
-    if (!visible || document.hidden) { lastT = null; return; }
+    if (!visible || document.hidden || !Lay) { lastT = null; return; }
     if (t - lastColorCheck > 600) { readColors(); lastColorCheck = t; }
     var dt = lastT == null ? 16 : Math.min(60, t - lastT);
     lastT = t;
@@ -195,15 +204,18 @@
     new IntersectionObserver(function (es) { visible = es[0].isIntersecting; if (visible) kick(); }).observe(canvas);
   }
   document.addEventListener("visibilitychange", kick);
-  window.addEventListener("resize", function () { resize(); draw(0); kick(); });
+  var rz, onResize = function () {
+    clearTimeout(rz);
+    rz = setTimeout(function () { resize(); draw(0); kick(); }, 60);
+  };
+  window.addEventListener("resize", onResize);
+  // also catches the banner going from hidden (phones) to visible and back
+  if ("ResizeObserver" in window) new ResizeObserver(onResize).observe(canvas);
   new MutationObserver(function () { readColors(); draw(0); })
     .observe(document.body, { attributes: true, attributeFilter: ["class"] });
 
-  resize();
   readColors();
-  // pre-fill part of the window so the fan-out from zero is on screen at load
-  var pre = Math.floor(cap * (reduceMotion ? 1 : 0.62));
-  for (i = 0; i < pre; i++) push();
+  resize();                     // also pre-fills the fan when the banner is visible
   draw(0);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { readColors(); draw(0); });
   kick();

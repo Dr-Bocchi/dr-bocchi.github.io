@@ -196,7 +196,7 @@
   }
 
   function render() {
-    var narrow = host.clientWidth < 640;
+    var narrow = document.documentElement.clientWidth < 640;   // not host width: a sized svg would keep it wide
     var G = narrow
       ? { R1: 150, L: 160, pr: 40, cr: 40, dot: 10, labels: false, fs: 1, sx: 1.0, ax: 0.8, narrow: true, wall: 0, yPull: 0.004 }
       : { R1: 175, L: 185, pr: 34, cr: 34, dot: 8, labels: true, fs: 1, sx: 1.18, ax: 1, narrow: false, wall: 0, yPull: 0.004 };
@@ -397,6 +397,7 @@
     // the graph itself (not the title above it) should fit one screen below the navbar
     var nav = document.querySelector("#quarto-header");
     var avail = Math.max(480, window.innerHeight - (nav ? nav.offsetHeight : 66) - 16);
+    svg.style.width = "";
     var w = Math.min(host.clientWidth, avail * geo.vb[2] / geo.vb[3]);
     svg.style.width = Math.round(w) + "px";
     svg.style.margin = "0 auto";
