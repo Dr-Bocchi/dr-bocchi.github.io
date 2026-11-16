@@ -156,7 +156,7 @@
       minY = Math.min(minY, n.y - r); maxY = Math.max(maxY, n.y + r);
       if (n.labelBox) { var lb = n.labelBox; minX = Math.min(minX, lb[0]); maxX = Math.max(maxX, lb[2]); minY = Math.min(minY, lb[1]); maxY = Math.max(maxY, lb[3]); }
     });
-    var pad = 24;
+    var pad = 6;
     return [minX - pad, minY - pad, maxX - minX + 2 * pad, maxY - minY + 2 * pad];
   }
 
@@ -194,6 +194,7 @@
     if (svg) svg.remove();
     svg = el("svg", { viewBox: vb.map(function (v) { return v.toFixed(0); }).join(" "), class: "net-svg" + (G.narrow ? " net-mobile" : ""), "aria-hidden": "true" });
     host.insertBefore(svg, tip);
+    fit();
     var defs = el("defs", {}, svg);
     var cp = el("clipPath", { id: "net-clip", clipPathUnits: "objectBoundingBox" }, defs);
     el("circle", { cx: ".5", cy: ".5", r: ".5" }, cp);
@@ -386,7 +387,17 @@
 
   render();
   var rt;
-  window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(render, 150); });
+  // desktop: scale the graph so it fits in the window below its title
+  function fit() {
+    if (!svg || !geo) return;
+    if (geo.narrow) { svg.style.width = ""; return; }
+    var top = host.getBoundingClientRect().top + window.scrollY;
+    var avail = Math.max(420, window.innerHeight - Math.min(top, 260) - 12);
+    var w = Math.min(host.clientWidth, avail * geo.vb[2] / geo.vb[3]);
+    svg.style.width = Math.round(w) + "px";
+    svg.style.margin = "0 auto";
+  }
+  window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(function () { render(); fit(); }, 150); });
 
   // text alternative for screen readers
   var list = document.createElement("ul");
