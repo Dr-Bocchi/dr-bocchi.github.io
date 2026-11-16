@@ -167,8 +167,8 @@
   function render() {
     var narrow = host.clientWidth < 640;
     var G = narrow
-      ? { R1: 170, L: 175, pr: 38, cr: 56, dot: 9, labels: false, sx: 1.0 }
-      : { R1: 175, L: 185, pr: 34, cr: 56, dot: 8, labels: true, sx: 1.18 };
+      ? { R1: 170, L: 175, pr: 38, cr: 38, dot: 9, labels: false, sx: 1.0 }
+      : { R1: 175, L: 185, pr: 34, cr: 34, dot: 8, labels: true, sx: 1.18 };
     if (geo && geo.labels === G.labels && svg) return;
     geo = G;
     var vb = layout(G);
@@ -179,9 +179,6 @@
     var defs = el("defs", {}, svg);
     var cp = el("clipPath", { id: "net-clip", clipPathUnits: "objectBoundingBox" }, defs);
     el("circle", { cx: ".5", cy: ".5", r: ".5" }, cp);
-    var glow = el("radialGradient", { id: "net-glow" }, defs);
-    el("stop", { offset: "0%", class: "net-glow-in" }, glow);
-    el("stop", { offset: "100%", class: "net-glow-out" }, glow);
 
     var gE = el("g", { class: "net-edges" }, svg), gP = el("g", {}, svg), gN = el("g", {}, svg);
     edges = []; meEdges = [];
@@ -243,8 +240,7 @@
 
     // me
     var mg = el("g", { class: "net-el net-node net-me" }, gN);
-    el("circle", { r: G.cr + 34, fill: "url(#net-glow)", class: "net-me-glow" }, mg);
-    el("circle", { r: G.cr + 6, class: "net-me-ring" }, mg);
+    el("circle", { r: G.cr + 3.5, class: "net-ring" }, mg);
     el("image", { href: "images/people/dario-bocchi.jpg", x: -G.cr, y: -G.cr, width: 2 * G.cr, height: 2 * G.cr, "clip-path": "url(#net-clip)", preserveAspectRatio: "xMidYMid slice" }, mg);
     me.node = mg;
 
