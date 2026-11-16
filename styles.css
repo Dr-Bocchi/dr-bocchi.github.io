@@ -532,6 +532,7 @@ h2.sec::after, main.content h2::after {
 .net-anon { fill: color-mix(in srgb, var(--fg) 30%, var(--bg)); }
 .net-name { font: 500 13.5px "Inter", system-ui, sans-serif; fill: var(--muted); letter-spacing: -0.01em; paint-order: stroke; stroke: var(--bg); stroke-width: 7px; stroke-linejoin: round; stroke-opacity: .92; }
 .net-name-bg { fill: var(--bg); opacity: .88; }
+.net-mobile .net-name { font-size: 21px; stroke-width: 9px; }
 .net-name .net-surname { font-weight: 600; fill: var(--fg); }
 /* me */
 /* focus: dim everything not connected */
@@ -552,3 +553,18 @@ h2.sec::after, main.content h2::after {
 .net-tip.show { opacity: 1; transform: none; }
 .net-tip strong { display: block; font-weight: 600; }
 .net-tip span { display: block; color: var(--muted); font-family: "JetBrains Mono", ui-monospace, monospace; font-size: .72rem; margin-top: .2rem; }
+
+/* Mobile menu: social icons on one row instead of four full-width rows */
+@media (max-width: 991.98px) {
+  .navbar-collapse .navbar-nav.ms-auto {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: .25rem;
+    padding: .6rem 0 .4rem;
+    margin-top: .4rem;
+    border-top: 1px solid var(--line);
+  }
+  .navbar-collapse .navbar-nav.ms-auto .nav-item { flex: 0 0 auto; }
+  .navbar-collapse .navbar-nav.ms-auto .nav-link { padding: .45rem .7rem; font-size: 1.15rem; }
+  .navbar-collapse .navbar-nav.ms-auto .nav-link .menu-text { display: none; }
+}

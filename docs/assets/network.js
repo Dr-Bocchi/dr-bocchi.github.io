@@ -50,7 +50,7 @@
     // initial guess: papers on a ring, people near the mean of their papers
     papers.forEach(function (p, k) {
       var a = -Math.PI / 2 + TAU * k / P;
-      p.x = G.R1 * Math.cos(a); p.y = G.R1 * Math.sin(a);
+      p.x = G.R1 * G.ax * Math.cos(a); p.y = G.R1 * Math.sin(a);
       p.r = G.dot + 8;
       links.push({ a: me, b: p, len: G.R1, k: 0.3 });
     });
@@ -59,8 +59,8 @@
       q.papers.forEach(function (pi) { sx += papers[pi].x; sy += papers[pi].y; });
       var n = q.papers.length, ang = Math.atan2(sy, sx) + (rnd() - 0.5) * 0.6;
       var rad = G.R1 + G.L * (1.25 - 0.18 * Math.min(n, 4));
-      q.x = rad * Math.cos(ang); q.y = rad * Math.sin(ang);
-      q.r = G.pr + (G.labels ? 30 : 8);
+      q.x = rad * G.ax * Math.cos(ang); q.y = rad * Math.sin(ang);
+      q.r = G.pr + (G.labels ? 30 * G.fs : 8);
       q.papers.forEach(function (pi) { links.push({ a: papers[pi], b: q, len: G.L * (n > 1 ? 0.9 : 1), k: 0.05 }); });
     });
     // co-authors of the same paper attract each other -> project clusters
@@ -95,14 +95,15 @@
       }
       // radial preference for people
       people.forEach(function (q) {
-        var d = Math.sqrt(q.x * q.x + q.y * q.y) || 1, f = (d - q.target) * 0.02 * alpha;
-        q.vx -= q.x / d * f; q.vy -= q.y / d * f;
+        var ex = q.x / G.ax, d = Math.sqrt(ex * ex + q.y * q.y) || 1, f = (d - q.target) * (G.wall ? 0.006 : 0.02) * alpha;
+        q.vx -= ex / d * f * G.ax; q.vy -= q.y / d * f;
       });
       // gentle pull to the centre keeps it compact
       nodes.forEach(function (n) {
         if (n.fixed) return;
-        n.vx -= n.x * 0.004 * alpha; n.vy -= n.y * 0.004 * alpha;
+        n.vx -= n.x * 0.004 * alpha / (G.ax * G.ax); n.vy -= n.y * G.yPull * alpha;
         n.x += n.vx; n.y += n.vy; n.vx *= 0.55; n.vy *= 0.55;
+        if (G.wall) { var lim = G.wall - (n.type === "person" ? G.pr + 6 : 14); if (n.x > lim) { n.x = lim; n.vx = 0; } if (n.x < -lim) { n.x = -lim; n.vx = 0; } }
       });
     }
     // squash slightly to the container's aspect ratio
@@ -113,7 +114,7 @@
     if (G.labels) {
       var ov = function (a, b) { return a[0] < b[2] && b[0] < a[2] && a[1] < b[3] && b[1] < a[3]; };
       var labelRect = function (q, pos) {
-        var w = Math.max.apply(null, splitName(q.name).map(function (t) { return t.length; })) * 7.6 + 10, h = 40, r = G.pr;
+        var w = Math.max.apply(null, splitName(q.name).map(function (t) { return t.length; })) * 7.6 * G.fs + 10, h = 40 * G.fs, r = G.pr;
         if (pos === "up") return [q.x - w / 2, q.y - r - h - 6, q.x + w / 2, q.y - r - 6];
         if (pos === "left") return [q.x - r - 12 - w, q.y - h / 2, q.x - r - 8, q.y + h / 2];
         if (pos === "right") return [q.x + r + 8, q.y - h / 2, q.x + r + 12 + w, q.y + h / 2];
@@ -140,7 +141,7 @@
       };
       people.slice().sort(function (a, b) { return a.y - b.y; }).forEach(function (q) {
         var best = null;
-        ["down", "up", "left", "right"].forEach(function (pos) {
+        (G.narrow ? ["down", "up"] : ["down", "up", "left", "right"]).forEach(function (pos) {
           var r = labelRect(q, pos), c = cost(r, pos);
           if (!best || c < best.c) best = { c: c, pos: pos, r: r };
         });
@@ -184,14 +185,14 @@
   function render() {
     var narrow = host.clientWidth < 640;
     var G = narrow
-      ? { R1: 170, L: 175, pr: 38, cr: 38, dot: 9, labels: false, sx: 1.0 }
-      : { R1: 175, L: 185, pr: 34, cr: 34, dot: 8, labels: true, sx: 1.18 };
-    if (geo && geo.labels === G.labels && svg) return;
+      ? { R1: 150, L: 165, pr: 40, cr: 40, dot: 10, labels: true, fs: 1.5, sx: 1.0, ax: 1, narrow: true, wall: 215, yPull: 0.0012 }
+      : { R1: 175, L: 185, pr: 34, cr: 34, dot: 8, labels: true, fs: 1, sx: 1.18, ax: 1, narrow: false, wall: 0, yPull: 0.004 };
+    if (geo && geo.narrow === G.narrow && svg) return;
     geo = G;
     var vb = layout(G);
     G.vb = vb;
     if (svg) svg.remove();
-    svg = el("svg", { viewBox: vb.map(function (v) { return v.toFixed(0); }).join(" "), class: "net-svg", "aria-hidden": "true" });
+    svg = el("svg", { viewBox: vb.map(function (v) { return v.toFixed(0); }).join(" "), class: "net-svg" + (G.narrow ? " net-mobile" : ""), "aria-hidden": "true" });
     host.insertBefore(svg, tip);
     var defs = el("defs", {}, svg);
     var cp = el("clipPath", { id: "net-clip", clipPathUnits: "objectBoundingBox" }, defs);
@@ -248,13 +249,13 @@
       }
       if (G.labels) {
         var lines = splitName(q.name);
-        var lp = q.labelPos, tx = 0, ty = r + 20, anchor = "middle";
-        if (lp === "up") ty = -(r + 30);
-        if (lp === "left") { tx = -(r + 10); ty = -3; anchor = "end"; }
-        if (lp === "right") { tx = r + 10; ty = -3; anchor = "start"; }
+        var lp = q.labelPos, tx = 0, ty = r + 6 + 14 * G.fs, anchor = "middle";
+        if (lp === "up") ty = -(r + 12 + 16 * G.fs);
+        if (lp === "left") { tx = -(r + 10); ty = -3 * G.fs; anchor = "end"; }
+        if (lp === "right") { tx = r + 10; ty = -3 * G.fs; anchor = "start"; }
         var t = el("text", { x: tx, y: ty, "text-anchor": anchor, class: "net-name" }, g);
         el("tspan", { x: tx, dy: 0 }, t).textContent = lines[0];
-        if (lines[1]) el("tspan", { x: tx, dy: 16, class: "net-surname" }, t).textContent = lines[1];
+        if (lines[1]) el("tspan", { x: tx, dy: 16 * G.fs, class: "net-surname" }, t).textContent = lines[1];
         var bb = t.getBBox();
         g.insertBefore(el("rect", { x: bb.x - 5, y: bb.y - 2, width: bb.width + 10, height: bb.height + 4, rx: 7, class: "net-name-bg" }), t);
       }
