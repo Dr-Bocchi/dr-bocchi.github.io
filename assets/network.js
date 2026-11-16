@@ -185,7 +185,7 @@
   function render() {
     var narrow = host.clientWidth < 640;
     var G = narrow
-      ? { R1: 150, L: 165, pr: 40, cr: 40, dot: 10, labels: true, fs: 1.5, sx: 1.0, ax: 1, narrow: true, wall: 215, yPull: 0.0012 }
+      ? { R1: 150, L: 160, pr: 40, cr: 40, dot: 10, labels: false, fs: 1, sx: 1.0, ax: 0.8, narrow: true, wall: 0, yPull: 0.004 }
       : { R1: 175, L: 185, pr: 34, cr: 34, dot: 8, labels: true, fs: 1, sx: 1.18, ax: 1, narrow: false, wall: 0, yPull: 0.004 };
     if (geo && geo.narrow === G.narrow && svg) return;
     geo = G;
