@@ -502,7 +502,7 @@ h2.sec::after, main.content h2::after {
 
 /* ---------- Collaborators graph ---------- */
 .network { position: relative; margin: -1rem auto 0; max-width: 1120px; }
-.net-svg { display: block; width: 100%; max-width: 100%; height: auto; overflow: visible; }
+.net-svg { display: block; width: 100%; max-width: 100%; height: auto; overflow: visible; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
 .net-el { transition: opacity .35s ease; }
 /* edges: gradients from me -> paper colour -> faint */
 .net-edge { fill: none; stroke-linecap: round; }

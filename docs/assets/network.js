@@ -372,17 +372,26 @@
     var url = node.type === "person" ? node.meta.url : node.url;
     if (url) window.open(url, "_blank", "noopener");
   }
-  var lastPointer = "mouse";
+  // mouse: hover highlights, click opens.
+  // touch: a tap acts like hover (highlight + name); a double tap opens the page.
+  var lastPointer = "mouse", lastTap = { node: null, t: 0 }, DOUBLE_TAP = 450;
   function bind(g, node) {
     g.addEventListener("pointerdown", function (e) { lastPointer = e.pointerType; });
     g.addEventListener("pointerenter", function (e) { if (e.pointerType === "mouse") focusOn(node); });
     g.addEventListener("pointerleave", function (e) { if (e.pointerType === "mouse") clearFocus(); });
     g.addEventListener("click", function (e) {
       e.stopPropagation();
-      if (lastPointer !== "mouse" && current !== node) { focusOn(node); return; } // touch: first tap highlights
-      open(node);
+      if (lastPointer === "mouse") { open(node); return; }
+      var now = Date.now();
+      if (lastTap.node === node && now - lastTap.t < DOUBLE_TAP) { lastTap.node = null; open(node); return; }
+      lastTap = { node: node, t: now };
+      focusOn(node);
     });
-    g.addEventListener("focus", function () { focusOn(node); });
+    // keyboard focus highlights; focus caused by a tap is handled by the click above
+    g.addEventListener("focus", function () {
+      var kb = true; try { kb = g.matches(":focus-visible"); } catch (err) {}
+      if (kb) focusOn(node);
+    });
     g.addEventListener("blur", clearFocus);
     g.addEventListener("keydown", function (e) { if (e.key === "Enter") open(node); });
   }
