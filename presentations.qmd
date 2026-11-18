@@ -21,5 +21,6 @@ listing:
   <li><span class="news-when">Sep 2025</span><span>Summer school — <em>Mathematical methods for high-dimensional data</em></span></li>
   <li><span class="news-when">Jun 2025</span><span>Beg Rohu Summer School — <em>Learning with Machines, Physics and Minds</em> · Saint-Pierre-Quiberon, France</span></li>
   <li><span class="news-when">Jun 2024</span><span>Beg Rohu Summer School — <em>Concepts and Methods of Statistical Physics</em> · Saint-Pierre-Quiberon, France</span></li>
+  <li><span class="news-when">Sep 2019</span><span>Summer School of Mathematics “Alfaclass” · Politecnico di Torino &amp; University of Turin, Italy</span></li>
 </ul>
 ```
