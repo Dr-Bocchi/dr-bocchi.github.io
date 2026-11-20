@@ -119,13 +119,13 @@
     var textRight = heroText ? heroText.getBoundingClientRect().right - r.left : W * 0.4;
     var x0 = Math.max(W * 0.5, textRight + 40), x1 = W - 16, span = x1 - x0;
     if (span < 180) return;                              // not enough room: draw nothing
-    Lay = { x0: x0, x1: x1, cy: H * 0.5, amp: H * 0.36, fadeFrom: x0, fadeTo: x0 + 0.45 * span };
+    Lay = { x0: x0, x1: x1, cy: H * 0.5, amp: H * 0.36, fadeFrom: x0 + 0.06 * span, fadeTo: x0 + 0.72 * span };
     cap = Math.ceil(span / STEP) + 2;
     while (hist.length > cap) hist.shift();
     // (re)fill so the fan is on screen when the banner (re)appears
     if (hist.length < 2) {
       gd.fill(0); go.fill(0);
-      var pre = Math.floor(cap * (reduceMotion ? 1 : 0.4));   // t = 0 stays visible
+      var pre = Math.floor(cap * (reduceMotion ? 1 : 0.62));
       for (var k = 0; k < pre; k++) push();
     }
   }
