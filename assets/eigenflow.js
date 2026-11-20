@@ -12,17 +12,9 @@
    eigenvalues trace continuous, non-crossing curves.
    ========================================================================== */
 (function () {
-"use strict";
-// options (data attributes on the canvas, as fractions of the band width):
-//   data-prefill   how much history to simulate before the first frame (0 = start live from t = 0)
-//   data-fade-from / data-fade-to   where the left fade-out starts / ends
-function Eigenflow(canvas) {
-  var ds = canvas.dataset;
-  var opt = {
-    prefill: ds.prefill != null ? +ds.prefill : 0.62,
-    fadeFrom: ds.fadeFrom != null ? +ds.fadeFrom : 0.06,
-    fadeTo: ds.fadeTo != null ? +ds.fadeTo : 0.72
-  };
+  "use strict";
+  var canvas = document.getElementById("spectrum");
+  if (!canvas) return;
   var ctx = canvas.getContext("2d");
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -113,7 +105,7 @@ function Eigenflow(canvas) {
     colors.hot = cs.getPropertyValue("--c-milestone").trim() || "#f59e0b";
   }
 
-  var heroText = canvas.parentNode.querySelector(".hero-text");
+  var heroText = document.querySelector(".hero-text");
   function resize() {
     var r = canvas.getBoundingClientRect();
     dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -127,17 +119,15 @@ function Eigenflow(canvas) {
     var textRight = heroText ? heroText.getBoundingClientRect().right - r.left : W * 0.4;
     var x0 = Math.max(W * 0.5, textRight + 40), x1 = W - 16, span = x1 - x0;
     if (span < 180) return;                              // not enough room: draw nothing
-    Lay = { x0: x0, x1: x1, cy: H * 0.5, amp: H * 0.36, fadeFrom: x0 + opt.fadeFrom * span, fadeTo: x0 + opt.fadeTo * span };
+    Lay = { x0: x0, x1: x1, cy: H * 0.5, amp: H * 0.36, fadeFrom: x0, fadeTo: x0 + 0.45 * span };
     cap = Math.ceil(span / STEP) + 2;
     while (hist.length > cap) hist.shift();
     // (re)fill so the fan is on screen when the banner (re)appears
-    if (hist.length < 2) restart();
-  }
-  // t = 0: the zero matrix, all eigenvalues at one point
-  function restart() {
-    hist = []; gd.fill(0); go.fill(0); acc = 0;
-    var pre = Math.max(1, Math.floor(cap * (reduceMotion ? 1 : opt.prefill)));
-    for (var k = 0; k < pre; k++) push();
+    if (hist.length < 2) {
+      gd.fill(0); go.fill(0);
+      var pre = Math.floor(cap * (reduceMotion ? 1 : 0.4));   // t = 0 stays visible
+      for (var k = 0; k < pre; k++) push();
+    }
   }
 
   /* ---------------- drawing ---------------- */
@@ -147,7 +137,7 @@ function Eigenflow(canvas) {
     ctx.clearRect(0, 0, W, H);
     if (!Lay) return;
     var n = hist.length;
-    if (n < 1) return;
+    if (n < 2) return;
     var xHead = Lay.x1, k, j, x, top = N - 1;
 
     // trails: the history of each eigenvalue, newest point pinned at the head
@@ -229,7 +219,4 @@ function Eigenflow(canvas) {
   draw(0);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { readColors(); draw(0); });
   kick();
-  canvas.eigenflow = { restart: function () { if (Lay) { restart(); draw(0); kick(); } } };
-}
-document.querySelectorAll("canvas.eigenflow, #spectrum").forEach(Eigenflow);
 })();
