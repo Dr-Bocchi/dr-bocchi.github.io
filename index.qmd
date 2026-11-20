@@ -25,7 +25,7 @@ listing:
       <span class="next-dot"></span>Incoming postdoc · ENS Paris</p>
   </div>
 </section>
-<script src="assets/eigenflow.js?v=8" defer></script>
+<script src="assets/eigenflow.js?v=9" defer></script>
 
 <section class="about">
   <img src="photo.jpeg" alt="Portrait of Dario Bocchi" class="portrait">
