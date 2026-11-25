@@ -367,25 +367,30 @@
     // the hovered node and the ones it lights up count much more (and get a wider margin: lit rings grow)
     var obst = [], self = null;
     svg.querySelectorAll(".net-node").forEach(function (g) {
-      var b = g.getBoundingClientRect(), on = g.classList.contains("on"), m = on ? 10 : 4;
-      var box = { l: b.left - hb.left - m, t: b.top - hb.top - m, r: b.right - hb.left + m, b: b.bottom - hb.top + m, w: on ? 30 : 1 };
-      if (g === node.node) self = box; else obst.push(box);   // unlit nodes are dimmed anyway
+      var on = g.classList.contains("on") || g === me.node;  // "me" is lit with every node
+      if (!on && g !== node.node) return;                     // dimmed people may be covered (the tip is translucent)
+      var b = g.getBoundingClientRect(), m = 8;               // margin: lit rings grow a little
+      var box = { l: b.left - hb.left - m, t: b.top - hb.top - m, r: b.right - hb.left + m, b: b.bottom - hb.top + m };
+      if (g === node.node) self = box; else obst.push(box);
     });
-    // try a grid of spots around the node; cost = what it covers + how far it drifts from the node
-    var best = null, bestC = Infinity, reach = geo.narrow ? 320 : 130, l, t;
+    // try spots close to the node; cost = distance from the node + how much of the highlighted people it covers
+    var best = null, bestC = Infinity, reach = geo.narrow ? 110 : 70, l, t;
     // stay inside the figure and, when possible, inside the visible part of the window
-    var top = Math.max(-40, 8 - hb.top), bot = Math.min(hb.height + 40, window.innerHeight - hb.top - 8);
+    var spill = geo.narrow ? 200 : 40;   // phones: the tip may hang a little below the graph
+    var top = Math.max(-40, 8 - hb.top), bot = Math.min(hb.height + spill, window.innerHeight - hb.top - 8);
     if (bot - top < th + 2 * rr + 30) { top = -40; bot = hb.height + 40; }
-    for (l = x - tw - rr - reach; l <= x + rr + reach; l += 12) {
-      for (t = y - th - rr - reach; t <= y + rr + reach; t += 10) {
+    for (l = x - tw - rr - reach; l <= x + rr + reach; l += 8) {
+      for (t = y - th - rr - reach; t <= y + rr + reach; t += 8) {
         var r = l + tw, b = t + th;
         if (l < 4 || r > hb.width - 4 || t < top || b > bot) continue;
         if (self && l < self.r && self.l < r && t < self.b && self.t < b) continue;   // never over the hovered node
         var dx = Math.max(l - x, 0, x - r), dy = Math.max(t - y, 0, y - b);
-        var cost = 30 * Math.sqrt(dx * dx + dy * dy) + (dy === 0 ? 400 : 0);         // stay close; prefer above/below
+        var far = Math.sqrt(dx * dx + dy * dy) - rr - gap;
+        if (far > reach) continue;                                                  // never drift far
+        var cost = 40 * Math.max(0, far) + (dy === 0 ? 600 : 0);                   // prefer above/below to beside
         for (var k = 0; k < obst.length && cost < bestC; k++) {
           var o = obst[k], ow = Math.min(r, o.r) - Math.max(l, o.l), oh = Math.min(b, o.b) - Math.max(t, o.t);
-          if (ow > 0 && oh > 0) cost += ow * oh * o.w;
+          if (ow > 0 && oh > 0) cost += 2 * ow * oh;
         }
         if (cost < bestC) { bestC = cost; best = [l, t]; }
       }
