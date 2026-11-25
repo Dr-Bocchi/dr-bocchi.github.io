@@ -545,12 +545,14 @@ h2.sec::after, main.content h2::after {
 .net-tip {
   position: absolute; z-index: 2; max-width: 300px; pointer-events: none;
   padding: .55rem .75rem; border-radius: 10px;
-  background: var(--card); border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--card) 82%, transparent); border: 1px solid var(--line);
+  -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
   box-shadow: 0 10px 30px -14px rgba(0,0,0,.35);
   font-size: .82rem; line-height: 1.4; color: var(--fg);
   opacity: 0; transform: translateY(4px); transition: opacity .18s ease, transform .18s ease;
 }
 .net-tip.show { opacity: 1; transform: none; }
+@media (max-width: 640px) { .net-tip { max-width: 230px; } }
 .net-tip strong { display: block; font-weight: 600; }
 .net-tip span { display: block; color: var(--muted); font-family: "JetBrains Mono", ui-monospace, monospace; font-size: .72rem; margin-top: .2rem; }
 

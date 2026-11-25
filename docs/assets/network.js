@@ -357,15 +357,43 @@
   }
   function showTip(html, node) {
     tip.innerHTML = html;
+    tip.style.left = "0px"; tip.style.top = "0px";               // measure at full width, not squeezed by its last spot
     var box = svg.getBoundingClientRect(), hb = host.getBoundingClientRect(), vb = geo.vb;
     var s = box.width / vb[2];
     var x = (node.bx - vb[0]) * s + (box.left - hb.left), y = (node.by - vb[1]) * s + (box.top - hb.top);
     tip.classList.add("show");
-    var tw = tip.offsetWidth, th = tip.offsetHeight, rr = (node.type === "person" ? geo.pr : geo.dot + 4) * s;
-    tip.style.left = Math.min(Math.max(8, x - tw / 2), hb.width - tw - 8) + "px";
-    var labelBelow = node.type === "person" && geo.labels && node.labelPos === "down", labelAbove = node.type === "person" && geo.labels && node.labelPos === "up";
-    var up = labelBelow ? true : (labelAbove ? false : node.by > 0);
-    tip.style.top = (up ? y - th - rr - 12 : y + rr + 14) + "px";
+    var tw = tip.offsetWidth, th = tip.offsetHeight, rr = (node.type === "person" ? geo.pr : geo.dot + 4) * s, gap = 12;
+    // everything the tip could cover (photos, names, dots), relative to the host;
+    // the hovered node and the ones it lights up count much more (and get a wider margin: lit rings grow)
+    var obst = [], self = null;
+    svg.querySelectorAll(".net-node").forEach(function (g) {
+      var b = g.getBoundingClientRect(), on = g.classList.contains("on"), m = on ? 10 : 4;
+      var box = { l: b.left - hb.left - m, t: b.top - hb.top - m, r: b.right - hb.left + m, b: b.bottom - hb.top + m, w: on ? 30 : 1 };
+      if (g === node.node) self = box; else obst.push(box);   // unlit nodes are dimmed anyway
+    });
+    // try a grid of spots around the node; cost = what it covers + how far it drifts from the node
+    var best = null, bestC = Infinity, reach = geo.narrow ? 320 : 130, l, t;
+    // stay inside the figure and, when possible, inside the visible part of the window
+    var top = Math.max(-40, 8 - hb.top), bot = Math.min(hb.height + 40, window.innerHeight - hb.top - 8);
+    if (bot - top < th + 2 * rr + 30) { top = -40; bot = hb.height + 40; }
+    for (l = x - tw - rr - reach; l <= x + rr + reach; l += 12) {
+      for (t = y - th - rr - reach; t <= y + rr + reach; t += 10) {
+        var r = l + tw, b = t + th;
+        if (l < 4 || r > hb.width - 4 || t < top || b > bot) continue;
+        if (self && l < self.r && self.l < r && t < self.b && self.t < b) continue;   // never over the hovered node
+        var dx = Math.max(l - x, 0, x - r), dy = Math.max(t - y, 0, y - b);
+        var cost = 30 * Math.sqrt(dx * dx + dy * dy) + (dy === 0 ? 400 : 0);         // stay close; prefer above/below
+        for (var k = 0; k < obst.length && cost < bestC; k++) {
+          var o = obst[k], ow = Math.min(r, o.r) - Math.max(l, o.l), oh = Math.min(b, o.b) - Math.max(t, o.t);
+          if (ow > 0 && oh > 0) cost += ow * oh * o.w;
+        }
+        if (cost < bestC) { bestC = cost; best = [l, t]; }
+      }
+    }
+    if (!best) bestC = 1e6;
+    if (bestC >= 1e6) best = [Math.min(Math.max(4, x - tw / 2), hb.width - tw - 4), y - rr - gap - th];
+    tip.style.left = Math.round(best[0]) + "px";
+    tip.style.top = Math.round(best[1]) + "px";
   }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
   function open(node) {
